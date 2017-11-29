@@ -1,0 +1,4 @@
+*.mdj
+*.architect
+*.architect~
+target/
