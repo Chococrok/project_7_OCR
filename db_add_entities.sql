@@ -23,7 +23,12 @@ INSERT INTO book (name, author_id, copy, publisher_id)
 	('La nuit des temps', 2, 2, 2),
 	('Da vinci code', 3, 2, 3);
 	
-INSERT INTO book_tag (book_id, tag_id) VALUES (1, 3);
+INSERT INTO book_tag (book_id, tag_id) 
+	VALUES 
+	(1, 3),
+	(2, 1),
+	(3, 2),
+	(3, 3);
 
 INSERT INTO account (first_name, last_name, email) 
 	VALUES

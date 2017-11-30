@@ -1,4 +1,4 @@
-package io.ab.library;
+package io.ab.library.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -9,24 +9,28 @@ import java.util.List;
 
 
 /**
- * The persistent class for the publisher database table.
+ * The persistent class for the author database table.
  * 
  */
 @Entity
-public class Publisher implements Serializable {
+public class Author implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private Integer id;
 
-	private String name;
+	@Column(name="first_name")
+	private String firstName;
+
+	@Column(name="last_name")
+	private String lastName;
 
 	//bi-directional many-to-one association to Book
 	@JsonIgnore
-	@OneToMany(mappedBy="publisher")
+	@OneToMany(mappedBy="author")
 	private List<Book> books;
 
-	public Publisher() {
+	public Author() {
 	}
 
 	public Integer getId() {
@@ -37,12 +41,20 @@ public class Publisher implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return this.name;
+	public String getFirstName() {
+		return this.firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return this.lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public List<Book> getBooks() {
@@ -55,14 +67,14 @@ public class Publisher implements Serializable {
 
 	public Book addBook(Book book) {
 		getBooks().add(book);
-		book.setPublisher(this);
+		book.setAuthor(this);
 
 		return book;
 	}
 
 	public Book removeBook(Book book) {
 		getBooks().remove(book);
-		book.setPublisher(null);
+		book.setAuthor(null);
 
 		return book;
 	}

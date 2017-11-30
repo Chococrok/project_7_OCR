@@ -1,4 +1,4 @@
-package io.ab.library;
+package io.ab.library.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
