@@ -2,6 +2,7 @@ package io.ab.library.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  * The persistent class for the rental database table.
  * 
  */
+@XmlType(namespace = "http://ab.io/library")
 @Entity
 public class Rental implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -1,0 +1,7 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ab.io/library" targetNamespace="http://ab.io/library"
+	elementFormDefault="qualified">
+	
+	<xs:element name="getAllAuthorsRequest"/>
+
+</xs:schema>

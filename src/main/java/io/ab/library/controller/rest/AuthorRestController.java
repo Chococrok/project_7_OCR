@@ -1,4 +1,4 @@
-package io.ab.library.controller;
+package io.ab.library.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ import io.ab.library.repository.AuthorRepository;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/author")
-public class AuthorController {
+public class AuthorRestController {
 	
 	@Autowired
 	AuthorRepository authorRepository;

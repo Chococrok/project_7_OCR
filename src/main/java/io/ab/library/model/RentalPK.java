@@ -2,11 +2,13 @@ package io.ab.library.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * The primary key class for the rental database table.
  * 
  */
+@XmlType(namespace = "http://ab.io/library")
 @Embeddable
 public class RentalPK implements Serializable {
 	//default serial version id, required for serializable classes.

@@ -1,4 +1,4 @@
-package io.ab.library.controller;
+package io.ab.library.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import io.ab.library.model.Tag;
-import io.ab.library.repository.TagRepository;
+import io.ab.library.model.Publisher;
+import io.ab.library.repository.PublisherRepository;
 
 @Controller
-@RequestMapping("/tag")
-public class TagController {
+@RequestMapping("/publisher")
+public class PublisherRestController {
 	
 	@Autowired
-	TagRepository publisherRepository;
+	PublisherRepository publisherRepository;
 	
 	@GetMapping("/all")
-	public @ResponseBody Iterable<Tag> getAllPublishers() {
+	public @ResponseBody Iterable<Publisher> getAllPublishers() {
 		return this.publisherRepository.findAll();
 	}
 

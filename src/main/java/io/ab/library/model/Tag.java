@@ -2,6 +2,7 @@ package io.ab.library.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * The persistent class for the tag database table.
  * 
  */
+@XmlType(namespace = "http://ab.io/library")
 @Entity
 @NamedQuery(name="Tag.findAll", query="SELECT t FROM Tag t")
 public class Tag implements Serializable {

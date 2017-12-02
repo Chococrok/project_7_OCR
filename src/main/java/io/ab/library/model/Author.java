@@ -2,6 +2,11 @@ package io.ab.library.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -12,6 +17,7 @@ import java.util.List;
  * The persistent class for the author database table.
  * 
  */
+@XmlType(namespace = "http://ab.io/library")
 @Entity
 public class Author implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,10 +31,10 @@ public class Author implements Serializable {
 	@Column(name="last_name")
 	private String lastName;
 
-	//bi-directional many-to-one association to Book
-	@JsonIgnore
+	/*//bi-directional many-to-one association to Book
+	@JsonIgnore 
 	@OneToMany(mappedBy="author")
-	private List<Book> books;
+	private List<Book> books;*/
 
 	public Author() {
 	}
@@ -57,7 +63,7 @@ public class Author implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public List<Book> getBooks() {
+	/*public List<Book> getBooks() {
 		return this.books;
 	}
 
@@ -77,6 +83,6 @@ public class Author implements Serializable {
 		book.setAuthor(null);
 
 		return book;
-	}
+	}*/
 
 }

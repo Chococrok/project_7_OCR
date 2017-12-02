@@ -1,58 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.ab</groupId>
-    <artifactId>library-api</artifactId>
-    <version>0.1.0</version>
+	<groupId>io.ab</groupId>
+	<artifactId>library-api</artifactId>
+	<version>0.1.0</version>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.8.RELEASE</version>
-    </parent>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.8.RELEASE</version>
+	</parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        
-        <!-- JPA Data (We are going to use Repositories, Entities, Hibernate, etc...) -->
-        
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        
-        <!-- psql -->
-        
-        <dependency>
-		<groupId>org.postgresql</groupId>
-		<artifactId>postgresql</artifactId>
-		<version>42.1.4</version>
-		<scope>runtime</scope>
-	</dependency>
-        
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+		<!-- JPA Data (We are going to use Repositories, Entities, Hibernate, etc...) -->
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- for the SOAP ws -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+
+		<!-- psql -->
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.1.4</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>generation</id>
+			<activation>
+				<file>
+					<missing>${basedir}/generated</missing>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>jaxb2-maven-plugin</artifactId>
+						<version>2.2</version>
+						<executions>
+							<execution>
+								<id>schemagen</id>
+
+								<goals>
+									<goal>schemagen</goal>
+								</goals>
+
+								<configuration>
+									<transformSchemas>
+										<transformSchema>
+											<uri>http://ab.io/library</uri>
+											<toFile>model.xsd</toFile>
+										</transformSchema>
+									</transformSchemas>
+
+									<outputDirectory>${project.basedir}/generated/</outputDirectory>
+
+									<sources>
+										<source>${project.basedir}/src/main/java/io/ab/library/model/</source>
+									</sources>
+
+									<clearOutputDir>false</clearOutputDir>
+									<verbose>true</verbose>
+									<generateEpisode>false</generateEpisode>
+								</configuration>
+							</execution>
+
+							<execution>
+								<id>xjc-request</id>
+
+								<goals>
+									<goal>xjc</goal>
+								</goals>
+
+								<configuration>
+									<outputDirectory>${project.basedir}/generated/</outputDirectory>
+									<packageName>io.ab.library.request</packageName>
+
+									<sources>
+										<source>/home/utilisateur/dev/OCR/project_4/src/main/resources/request.xsd</source>
+									</sources>
+
+									<clearOutputDir>false</clearOutputDir>
+									<verbose>true</verbose>
+									<generateEpisode>false</generateEpisode>
+								</configuration>
+							</execution>
+
+							<execution>
+								<id>xjc-response</id>
+
+								<goals>
+									<goal>xjc</goal>
+								</goals>
+
+								<configuration>
+									<outputDirectory>${project.basedir}/generated/</outputDirectory>
+									<packageName>io.ab.library.response</packageName>
+
+									<sources>
+										<source>/home/utilisateur/dev/OCR/project_4/src/main/resources/response.xsd</source>
+									</sources>
+
+									<clearOutputDir>false</clearOutputDir>
+									<verbose>true</verbose>
+									<generateEpisode>false</generateEpisode>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

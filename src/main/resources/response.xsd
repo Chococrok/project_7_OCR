@@ -1,0 +1,15 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ab.io/library" targetNamespace="http://ab.io/library"
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="model.xsd"/>
+
+	<xs:element name="getAllAuthorsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="authors" type="tns:author" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

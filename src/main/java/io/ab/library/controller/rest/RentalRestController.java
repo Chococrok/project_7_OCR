@@ -1,4 +1,4 @@
-package io.ab.library.controller;
+package io.ab.library.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ import io.ab.library.repository.RentalRepository;
 
 @Controller
 @RequestMapping("/rental")
-public class RentalController {
+public class RentalRestController {
 	
 	@Autowired
 	RentalRepository rentalRepository;
