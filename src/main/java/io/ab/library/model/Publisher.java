@@ -24,9 +24,9 @@ public class Publisher implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to Book
-	@JsonIgnore
+	/*@JsonIgnore
 	@OneToMany(mappedBy="publisher")
-	private List<Book> books;
+	private List<Book> books;*/
 
 	public Publisher() {
 	}
@@ -47,7 +47,7 @@ public class Publisher implements Serializable {
 		this.name = name;
 	}
 
-	public List<Book> getBooks() {
+	/*public List<Book> getBooks() {
 		return this.books;
 	}
 
@@ -67,6 +67,6 @@ public class Publisher implements Serializable {
 		book.setPublisher(null);
 
 		return book;
-	}
+	}*/
 
 }

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="18b65201-926c-4cdb-bbaa-92348f783f4c" activeEnvironment="Default" name="library" resourceRoot="" soapui-version="5.4.0-EB" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="be86353f-caa6-45e2-bc57-3adccd130cc8" wsaVersion="NONE" name="LibraryPortSoap11" type="wsdl" bindingName="{http://ab.io/library}LibraryPortSoap11" soapVersion="1_1" anonymous="optional" definition="file:/home/utilisateur/dev/OCR/project_4/src/main/resources/library.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/utilisateur/dev/OCR/project_4/src/main/resources/library.wsdl"><con:part><con:url>file:/home/utilisateur/dev/OCR/project_4/src/main/resources/library.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://ab.io/library" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://ab.io/library" xmlns:sch1="http://ab.io/library" xmlns:sch2="http://ab.io/library" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ab.io/library">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ab.io/library" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="account">
+        <xs:annotation>
+          <xs:documentation>The persistent class for the account database table.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="rentals" nillable="true" type="tns:rental"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rental">
+        <xs:annotation>
+          <xs:documentation>The persistent class for the rental database table.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="account" type="tns:account"/>
+          <xs:element minOccurs="0" name="book" type="tns:book"/>
+          <xs:element minOccurs="0" name="deadLine" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="id" type="tns:rentalPK"/>
+          <xs:element minOccurs="0" name="isExtended" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="book">
+        <xs:annotation>
+          <xs:documentation>The persistent class for the book database table.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="author" type="tns:author"/>
+          <xs:element minOccurs="0" name="copy" type="xs:int"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="publisher" type="tns:publisher"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="rentals" nillable="true" type="tns:rental"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="tags" nillable="true" type="tns:tag"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="author">
+        <xs:annotation>
+          <xs:documentation>The persistent class for the author database table.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:book"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="publisher">
+        <xs:annotation>
+          <xs:documentation>The persistent class for the publisher database table.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:book"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tag">
+        <xs:annotation>
+          <xs:documentation>The persistent class for the tag database table.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:book"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rentalPK">
+        <xs:annotation>
+          <xs:documentation>The primary key class for the rental database table.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="accountId" type="xs:int"/>
+          <xs:element minOccurs="0" name="bookId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ab.io/library" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getAllAuthorsRequest"/>
+      <xs:element name="getAllBooksRequest"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ab.io/library" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:include schemaLocation="model.xsd"/>
+      <xs:element name="getAllAuthorsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="authors" type="tns:author"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllBooksResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="books" type="tns:book"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAllBooksResponse">
+    <wsdl:part element="tns:getAllBooksResponse" name="getAllBooksResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllAuthorsResponse">
+    <wsdl:part element="tns:getAllAuthorsResponse" name="getAllAuthorsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllBooksRequest">
+    <wsdl:part element="tns:getAllBooksRequest" name="getAllBooksRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllAuthorsRequest">
+    <wsdl:part element="tns:getAllAuthorsRequest" name="getAllAuthorsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LibraryPort">
+    <wsdl:operation name="getAllBooks">
+      <wsdl:input message="tns:getAllBooksRequest" name="getAllBooksRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllBooksResponse" name="getAllBooksResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAuthors">
+      <wsdl:input message="tns:getAllAuthorsRequest" name="getAllAuthorsRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllAuthorsResponse" name="getAllAuthorsResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LibraryPortSoap11" type="tns:LibraryPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAllBooks">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllBooksRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllBooksResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAuthors">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllAuthorsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllAuthorsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LibraryPortService">
+    <wsdl:port binding="tns:LibraryPortSoap11" name="LibraryPortSoap11">
+      <soap:address location="http://localhost:8080/soap"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/home/utilisateur/dev/OCR/project_4/src/main/resources/model.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://ab.io/library" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ab.io/library">
+  <xs:complexType name="account">
+    <xs:annotation>
+      <xs:documentation>The persistent class for the account database table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="rentals" nillable="true" type="tns:rental"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rental">
+    <xs:annotation>
+      <xs:documentation>The persistent class for the rental database table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="account" type="tns:account"/>
+      <xs:element minOccurs="0" name="book" type="tns:book"/>
+      <xs:element minOccurs="0" name="deadLine" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="id" type="tns:rentalPK"/>
+      <xs:element minOccurs="0" name="isExtended" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="book">
+    <xs:annotation>
+      <xs:documentation>The persistent class for the book database table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="author" type="tns:author"/>
+      <xs:element minOccurs="0" name="copy" type="xs:int"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="publisher" type="tns:publisher"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="rentals" nillable="true" type="tns:rental"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="tags" nillable="true" type="tns:tag"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="author">
+    <xs:annotation>
+      <xs:documentation>The persistent class for the author database table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:book"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="publisher">
+    <xs:annotation>
+      <xs:documentation>The persistent class for the publisher database table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:book"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tag">
+    <xs:annotation>
+      <xs:documentation>The persistent class for the tag database table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:book"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rentalPK">
+    <xs:annotation>
+      <xs:documentation>The primary key class for the rental database table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:int"/>
+      <xs:element minOccurs="0" name="bookId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/soap</con:endpoint></con:endpoints><con:operation id="1d47576e-bd5f-455f-aeb1-74e2d7b46d72" isOneWay="false" action="" name="getAllAuthors" bindingOperationName="getAllAuthors" type="Request-Response" outputName="getAllAuthorsResponse" inputName="getAllAuthorsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4dec89d0-b5a8-4300-bdac-e19cf5af3f84" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllAuthorsRequest>?</lib:getAllAuthorsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllAuthorsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ff70ac0c-09fe-4b4b-a640-7100fe338665" isOneWay="false" action="" name="getAllBooks" bindingOperationName="getAllBooks" type="Request-Response" outputName="getAllBooksResponse" inputName="getAllBooksRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6c1657a7-7e3b-4c2c-92f0-91aedae235a5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllBooksRequest>?</lib:getAllBooksRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllBooksRequest"/></con:call></con:operation></con:interface><con:testSuite id="36b6724d-04f0-42cc-9389-d422287da0c2" name="LibraryPortSoap11 TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="c8e7f21e-9202-469d-ac08-1b75d03a36e6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllAuthors TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="9b396a10-cae2-4aae-b805-a4524dc00470" name="getAllAuthors"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllAuthors</con:operation><con:request name="getAllAuthors" id="f1e51a16-0206-4e9e-bb92-c14ab210a876"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllAuthorsRequest>?</lib:getAllAuthorsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllAuthorsRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4bdc06aa-ceb7-437a-af68-53a67fe14f68" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllBooks TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="354b368e-1d56-4afe-b7e9-7a044ecb225c" name="getAllBooks"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllBooks</con:operation><con:request name="getAllBooks" id="bdb6f510-a0fa-4eff-9055-e2237c85b0e3"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllBooksRequest>?</lib:getAllBooksRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllBooksRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

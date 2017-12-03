@@ -36,6 +36,12 @@
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
 		</dependency>
+		<!-- https://docs.spring.io/spring-ws/sites/1.5/reference/html/server.html#server-automatic-wsdl-exposure -->
+		<dependency>
+			<groupId>org.apache.ws.xmlschema</groupId>
+			<artifactId>xmlschema-core</artifactId>
+			<version>2.2.2</version>
+		</dependency>
 
 		<!-- psql -->
 

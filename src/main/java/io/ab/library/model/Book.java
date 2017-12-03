@@ -34,7 +34,7 @@ public class Book implements Serializable {
 	private Publisher publisher;
 
 	//bi-directional many-to-many association to Tag
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
 		name="book_tag"
 		, joinColumns={
@@ -47,9 +47,9 @@ public class Book implements Serializable {
 	private List<Tag> tags;
 
 	//bi-directional many-to-one association to Rental
-	@JsonIgnore
+	/*@JsonIgnore
 	@OneToMany(mappedBy="book", fetch=FetchType.LAZY)
-	private List<Rental> rentals;
+	private List<Rental> rentals;*/
 
 	public Book() {
 	}
@@ -102,7 +102,7 @@ public class Book implements Serializable {
 		this.tags = tags;
 	}
 
-	public List<Rental> getRentals() {
+	/*public List<Rental> getRentals() {
 		return this.rentals;
 	}
 
@@ -122,6 +122,6 @@ public class Book implements Serializable {
 		rental.setBook(null);
 
 		return rental;
-	}
+	}*/
 
 }

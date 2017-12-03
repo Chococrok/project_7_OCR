@@ -2,3 +2,4 @@
 *.architect
 *.architect~
 target/
+generated/

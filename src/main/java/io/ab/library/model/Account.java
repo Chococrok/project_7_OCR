@@ -32,10 +32,10 @@ public class Account implements Serializable {
 	@Column(name="phone_number")
 	private String phoneNumber;
 
-	//bi-directional many-to-one association to Rental
+	/*//bi-directional many-to-one association to Rental
 	@JsonIgnore
 	@OneToMany(mappedBy="account")
-	private List<Rental> rentals;
+	private List<Rental> rentals;*/
 
 	public Account() {
 	}
@@ -80,7 +80,7 @@ public class Account implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public List<Rental> getRentals() {
+	/*public List<Rental> getRentals() {
 		return this.rentals;
 	}
 
@@ -100,6 +100,6 @@ public class Account implements Serializable {
 		rental.setAccount(null);
 
 		return rental;
-	}
+	}*/
 
 }

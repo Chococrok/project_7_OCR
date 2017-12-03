@@ -24,10 +24,10 @@ public class Tag implements Serializable {
 
 	private String value;
 
-	//bi-directional many-to-many association to Book
+	/*//bi-directional many-to-many association to Book
 	@JsonIgnore
 	@ManyToMany(mappedBy="tags")
-	private List<Book> books;
+	private List<Book> books;*/
 
 	public Tag() {
 	}
@@ -48,12 +48,12 @@ public class Tag implements Serializable {
 		this.value = value;
 	}
 
-	public List<Book> getBooks() {
+	/*public List<Book> getBooks() {
 		return this.books;
 	}
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
-	}
+	}*/
 
 }
