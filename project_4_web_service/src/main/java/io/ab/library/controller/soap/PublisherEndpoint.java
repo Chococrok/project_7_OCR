@@ -6,8 +6,7 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import io.ab.library.repository.AuthorRepository;
-import io.ab.library.response.GetAllAuthorsResponse;
+import io.ab.library.controller.soap.response.GetAllBooksResponse;
 import io.ab.library.service.impl.AuthorServiceImpl;
 
 @Endpoint
@@ -19,8 +18,8 @@ public class PublisherEndpoint {
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllPublishersRequest")
 	@ResponsePayload
-	public GetAllAuthorsResponse getAllAuthors() {
-		GetAllAuthorsResponse response = new GetAllAuthorsResponse();
+	public GetAllBooksResponse getAllAuthors() {
+		GetAllBooksResponse response = new GetAllBooksResponse();
 		System.out.println("processing author request");
 		
 //		this.authorService.getAllAuthors().forEach(author -> {

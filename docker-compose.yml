@@ -10,7 +10,7 @@ services:
       - ./create_tables.sql:/docker-entrypoint-initdb.d/1-tables.sql
       - ./add_entities.sql:/docker-entrypoint-initdb.d/2-data.sql
   web:
-    build: .
+    build: ./project_4_web_service
     environment:
       - VAR_SLEEP=10 # gives time for the database to boot before the application
     ports:

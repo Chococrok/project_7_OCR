@@ -6,7 +6,7 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import io.ab.library.response.GetAllBooksResponse;
+import io.ab.library.controller.soap.response.GetAllBooksResponse;
 import io.ab.library.service.BookService;
 
 @Endpoint

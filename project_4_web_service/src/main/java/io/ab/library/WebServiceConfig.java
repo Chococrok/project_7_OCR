@@ -44,6 +44,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 				new ClassPathResource("response.xsd")
 				};
 		librarySchema.setXsds(xsdResources);
+		librarySchema.setInline(true);
 		return librarySchema;
 	}
 }

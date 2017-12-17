@@ -1,8 +1,11 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:tns="http://ab.io/library" targetNamespace="http://ab.io/library"
 	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="dto.xsd"/>
 
 	<xs:element name="getAllAuthorsRequest"/>
 	<xs:element name="getAllBooksRequest"/>
+	<xs:element name="signInRequest"></xs:element>
 
 </xs:schema>

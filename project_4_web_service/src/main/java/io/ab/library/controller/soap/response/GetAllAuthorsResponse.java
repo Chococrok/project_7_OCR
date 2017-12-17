@@ -2,11 +2,11 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.03 à 04:13:07 PM CET 
+// Généré le : 2017.12.17 à 05:29:34 PM CET 
 //
 
 
-package io.ab.library.response;
+package io.ab.library.controller.soap.response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import io.ab.library.model.Book;
+import io.ab.library.model.Author;
 
 
 /**
@@ -29,7 +29,7 @@ import io.ab.library.model.Book;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="books" type="{http://ab.io/library}book" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="authors" type="{http://ab.io/library}author" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -40,41 +40,41 @@ import io.ab.library.model.Book;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "books"
+    "authors"
 })
-@XmlRootElement(name = "getAllBooksResponse")
-public class GetAllBooksResponse {
+@XmlRootElement(name = "getAllAuthorsResponse")
+public class GetAllAuthorsResponse {
 
     @XmlElement(required = true)
-    protected List<Book> books;
+    protected List<Author> authors;
 
     /**
-     * Gets the value of the books property.
+     * Gets the value of the authors property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the books property.
+     * This is why there is not a <CODE>set</CODE> method for the authors property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getBooks().add(newItem);
+     *    getAuthors().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Book }
+     * {@link Author }
      * 
      * 
      */
-    public List<Book> getBooks() {
-        if (books == null) {
-            books = new ArrayList<Book>();
+    public List<Author> getAuthors() {
+        if (authors == null) {
+            authors = new ArrayList<Author>();
         }
-        return this.books;
+        return this.authors;
     }
 
 }

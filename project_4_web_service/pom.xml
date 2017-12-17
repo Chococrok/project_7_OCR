@@ -114,10 +114,10 @@
 
 								<configuration>
 									<outputDirectory>${project.basedir}/generated/</outputDirectory>
-									<packageName>io.ab.library.request</packageName>
+									<packageName>io.ab.library.controller.soap.request</packageName>
 
 									<sources>
-										<source>/home/utilisateur/dev/OCR/project_4/src/main/resources/request.xsd</source>
+										<source>${project.basedir}/src/main/resources/request.xsd</source>
 									</sources>
 
 									<clearOutputDir>false</clearOutputDir>
@@ -135,10 +135,31 @@
 
 								<configuration>
 									<outputDirectory>${project.basedir}/generated/</outputDirectory>
-									<packageName>io.ab.library.response</packageName>
+									<packageName>io.ab.library.controller.soap.response</packageName>
 
 									<sources>
-										<source>/home/utilisateur/dev/OCR/project_4/src/main/resources/response.xsd</source>
+										<source>${project.basedir}/src/main/resources/response.xsd</source>
+									</sources>
+
+									<clearOutputDir>false</clearOutputDir>
+									<verbose>true</verbose>
+									<generateEpisode>false</generateEpisode>
+								</configuration>
+							</execution>
+							
+							<execution>
+								<id>xjc-dto</id>
+
+								<goals>
+									<goal>xjc</goal>
+								</goals>
+
+								<configuration>
+									<outputDirectory>${project.basedir}/generated/</outputDirectory>
+									<packageName>io.ab.library.controller.soap.dto</packageName>
+
+									<sources>
+										<source>${project.basedir}/src/main/resources/dto.xsd</source>
 									</sources>
 
 									<clearOutputDir>false</clearOutputDir>
