@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS account, tag, book, publisher, author, rental, book_tag CASCADE;
-
 CREATE SEQUENCE public.publisher_id_seq;
 
 CREATE TABLE public.publisher (

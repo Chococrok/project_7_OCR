@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db:
+    image: "postgres:9"
+    environment:
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=dbuser
+      - POSTGRES_DB=library
+    volumes:
+      - ./create_tables.sql:/docker-entrypoint-initdb.d/1-tables.sql
+      - ./add_entities.sql:/docker-entrypoint-initdb.d/2-data.sql
+  web:
+    build: .
+    environment:
+      - VAR_SLEEP=10 # gives time for the database to boot before the application
+    ports:
+      - "8080:8080"
+  
