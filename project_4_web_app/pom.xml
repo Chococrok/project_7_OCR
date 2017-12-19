@@ -6,58 +6,91 @@
 	<groupId>io.ab</groupId>
 	<artifactId>library-app</artifactId>
 	<version>0.1.0</version>
-
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.9.RELEASE</version>
-	</parent>
+	<packaging>war</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
+		<!-- spring dependencyies -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.0.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.0.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-core</artifactId>
+			<version>3.0.0.RELEASE</version>
+		</dependency>
+
+		<!-- Struts2 -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-core</artifactId>
+			<version>2.5.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-convention-plugin</artifactId>
+			<version>2.5.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-spring-plugin</artifactId>
+			<version>2.5.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-config-browser-plugin</artifactId>
+			<version>2.5.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.10.0</version>
+		</dependency>
+
+		<!-- jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<!-- tag::wsdl[] -->
-			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>0.13.1</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
 				<configuration>
-					<schemaLanguage>WSDL</schemaLanguage>
-					<generatePackage>io.ab.library.webapp</generatePackage>
-					<generateDirectory>${project.basedir}/generated/</generateDirectory>
-					<schemas>
-						<schema>
-							<url>http://localhost:8080/soap/library.wsdl</url>
-						</schema>
-					</schemas>
+					<port>8081</port>
+					<path>/library</path>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
-			<!-- end::wsdl[] -->
 
 			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId> 
 				<version>2.2</version> <executions> <execution> <id>xjc-app</id> <goals> 
@@ -68,5 +101,42 @@
 				</configuration> </execution> </executions> </plugin> -->
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>generate</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<!-- tag::wsdl[] -->
+					<plugin>
+						<groupId>org.jvnet.jaxb2.maven2</groupId>
+						<artifactId>maven-jaxb2-plugin</artifactId>
+						<version>0.13.1</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<schemaLanguage>WSDL</schemaLanguage>
+							<generatePackage>io.ab.library.webapp.wsdl</generatePackage>
+							<generateDirectory>${project.basedir}/generated/</generateDirectory>
+							<schemas>
+								<schema>
+									<url>http://localhost:8080/soap/library.wsdl</url>
+								</schema>
+							</schemas>
+						</configuration>
+					</plugin>
+					<!-- end::wsdl[] -->
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
