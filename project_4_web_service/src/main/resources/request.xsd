@@ -6,6 +6,45 @@
 
 	<xs:element name="getAllAuthorsRequest"/>
 	<xs:element name="getAllBooksRequest"/>
-	<xs:element name="signInRequest"></xs:element>
+	<xs:element name="getAllTagsRequest"/>
+	
+	<xs:element name="signInRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="signInForm" type="tns:SignInForm"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="searchBooksByBookRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="search" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="searchBooksByAuthorRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="search" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
+	<xs:element name="searchBooksByPublisherRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="search" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="searchBooksByTagRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="search" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>

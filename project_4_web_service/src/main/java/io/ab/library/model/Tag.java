@@ -26,8 +26,9 @@ public class Tag implements Serializable {
 
 	/*//bi-directional many-to-many association to Book
 	@JsonIgnore
-	@ManyToMany(mappedBy="tags")
-	private List<Book> books;*/
+	@ManyToMany(mappedBy="tags")*/
+	@Transient
+	private List<Book> books;
 
 	public Tag() {
 	}

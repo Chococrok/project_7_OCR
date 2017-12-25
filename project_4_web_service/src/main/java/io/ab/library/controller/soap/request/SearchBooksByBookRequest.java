@@ -6,17 +6,13 @@
 //
 
 
-package io.ab.library.controller.soap.response;
+package io.ab.library.controller.soap.request;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import io.ab.library.model.Book;
 
 
 /**
@@ -29,7 +25,7 @@ import io.ab.library.model.Book;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="books" type="{http://ab.io/library}book" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="search" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -40,41 +36,36 @@ import io.ab.library.model.Book;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "books"
+    "search"
 })
-@XmlRootElement(name = "getAllBooksResponse")
-public class GetAllBooksResponse {
+@XmlRootElement(name = "searchBooksByBookRequest")
+public class SearchBooksByBookRequest {
 
     @XmlElement(required = true)
-    protected List<Book> books;
+    protected String search;
 
     /**
-     * Gets the value of the books property.
+     * Obtient la valeur de la propriété search.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the books property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getBooks().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Book }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<Book> getBooks() {
-        if (books == null) {
-            books = new ArrayList<Book>();
-        }
-        return this.books;
+    public String getSearch() {
+        return search;
+    }
+
+    /**
+     * Définit la valeur de la propriété search.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSearch(String value) {
+        this.search = value;
     }
 
 }

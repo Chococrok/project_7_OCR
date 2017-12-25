@@ -19,5 +19,21 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="getAllTagsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tags" type="tns:tag" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="searchBooksResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="books" type="tns:book" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 </xs:schema>

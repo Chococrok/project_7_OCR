@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.ab</groupId>
@@ -8,7 +9,10 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<log4j2.version>2.10.0</log4j2.version>
 	</properties>
 
 	<dependencies>
@@ -17,6 +21,17 @@
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-core</artifactId>
 			<version>3.0.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j2.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -31,6 +46,8 @@
 					<path>/library</path>
 					<source>1.8</source>
 					<target>1.8</target>
+					<uriEncoding>UTF-8</uriEncoding>
+					<charset>UTF-8</charset>
 				</configuration>
 			</plugin>
 
@@ -81,12 +98,12 @@
 		</profile>
 	</profiles>
 
-  <modules>
-    <module>library_webapp_client</module>
-    <module>library_webapp_service</module>
-    <module>library_webapp_controller</module>
-    <module>library_webapp_model</module>
-    <module>library_webapp_model_soap</module>
-    <module>library_webapp_client_soap</module>
-  </modules>
+	<modules>
+		<module>library_webapp_client</module>
+		<module>library_webapp_service</module>
+		<module>library_webapp_controller</module>
+		<module>library_webapp_model</module>
+		<module>library_webapp_model_soap</module>
+		<module>library_webapp_client_soap</module>
+	</modules>
 </project>

@@ -12,5 +12,18 @@ public class BookService extends AbstractService {
 	public List<Book> getBooks() {
 		return this.bookClient.getBooks();
 	}
+	
+	public List<Book> searchBooksByBookName(String search) {
+		return this.bookClient.searchBooksByBookName(search);
+	}
+	public List<Book> searchBooksByAuthorName(String search) {
+		return this.bookClient.searchBooksByAuthorName(search);
+	}
+	public List<Book> searchBooksByPublisherName(String search) {
+		return this.bookClient.searchBooksByPublisherName(search);
+	}
+	public List<Book> searchBooksByTagName(String search) {
+		return this.bookClient.searchBooksByTagName(search);
+	}
 
 }

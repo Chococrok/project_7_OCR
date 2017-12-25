@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.action.includeJars" value=".*?/controller.*?jar(!/)?" />
+
+	<constant name="struts.action.extension" value="" />
+
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<constant name="struts.mapper.alwaysSelectFullNamespace"
+		value="false" />
+	<constant name="struts.patternMatcher" value="regex" />
+
+<!-- 	<package name="loginPackage" extends="struts-default"> -->
+<!-- 		<interceptors> -->
+<!-- 			<interceptor name="login" -->
+<!-- 				class="io.ab.climbing.controller.interceptor.LoginInterceptor" /> -->
+<!-- 			<interceptor-stack name="loginStack"> -->
+<!-- 				<interceptor-ref name="defaultStack" /> -->
+<!-- 				<interceptor-ref name="login" /> -->
+<!-- 			</interceptor-stack> -->
+<!-- 		</interceptors> -->
+
+
+<!-- 		<global-results> -->
+<!-- 			<result name="loginRedirect" type="redirect">/login</result> -->
+<!-- 		</global-results> -->
+<!-- 	</package> -->
+
+</struts>
+

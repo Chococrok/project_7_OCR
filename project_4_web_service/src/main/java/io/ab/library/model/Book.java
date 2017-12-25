@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
-
 /**
  * The persistent class for the book database table.
  * 
@@ -25,31 +24,25 @@ public class Book implements Serializable {
 
 	private String name;
 
-	//bi-directional many-to-one association to Author
+	// bi-directional many-to-one association to Author
 	@ManyToOne
 	private Author author;
 
-	//bi-directional many-to-one association to Publisher
+	// bi-directional many-to-one association to Publisher
 	@ManyToOne
 	private Publisher publisher;
 
-	//bi-directional many-to-many association to Tag
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(
-		name="book_tag"
-		, joinColumns={
-			@JoinColumn(name="book_id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="tag_id")
-			}
-		)
+	// bi-directional many-to-many association to Tag
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "book_tag", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "tag_id") })
 	private List<Tag> tags;
 
-	//bi-directional many-to-one association to Rental
-	/*@JsonIgnore
-	@OneToMany(mappedBy="book", fetch=FetchType.LAZY)
-	private List<Rental> rentals;*/
+	// bi-directional many-to-one association to Rental
+	// @JsonIgnore
+	//@OneToMany(mappedBy="book")
+	@Transient
+	private List<Rental> rentals;
 
 	public Book() {
 	}
@@ -102,7 +95,7 @@ public class Book implements Serializable {
 		this.tags = tags;
 	}
 
-	/*public List<Rental> getRentals() {
+	public List<Rental> getRentals() {
 		return this.rentals;
 	}
 
@@ -122,6 +115,6 @@ public class Book implements Serializable {
 		rental.setBook(null);
 
 		return rental;
-	}*/
+	}
 
 }

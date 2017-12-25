@@ -2,21 +2,18 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.23 à 02:57:01 PM CET 
+// Généré le : 2017.12.24 à 12:14:58 AM CET 
 //
 
 
-package io.ab.library.controller.soap.response;
+package io.ab.library.webapp.wsdl;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import io.ab.library.model.Book;
 
 
 /**
@@ -29,7 +26,7 @@ import io.ab.library.model.Book;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="books" type="{http://ab.io/library}book" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="books" type="{http://ab.io/library}book" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -42,10 +39,9 @@ import io.ab.library.model.Book;
 @XmlType(name = "", propOrder = {
     "books"
 })
-@XmlRootElement(name = "getAllBooksResponse")
-public class GetAllBooksResponse {
+@XmlRootElement(name = "searchBooksResponse")
+public class SearchBooksResponse {
 
-    @XmlElement(required = true)
     protected List<Book> books;
 
     /**

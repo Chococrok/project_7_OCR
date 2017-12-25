@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -29,7 +28,7 @@ import io.ab.library.model.Book;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="books" type="{http://ab.io/library}book" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="books" type="{http://ab.io/library}book" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -42,10 +41,9 @@ import io.ab.library.model.Book;
 @XmlType(name = "", propOrder = {
     "books"
 })
-@XmlRootElement(name = "getAllBooksResponse")
-public class GetAllBooksResponse {
+@XmlRootElement(name = "searchBooksResponse")
+public class SearchBooksResponse {
 
-    @XmlElement(required = true)
     protected List<Book> books;
 
     /**
