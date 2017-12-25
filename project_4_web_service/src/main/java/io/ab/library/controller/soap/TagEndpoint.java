@@ -7,25 +7,27 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import io.ab.library.controller.soap.response.GetAllAuthorsResponse;
+import io.ab.library.controller.soap.response.GetAllTagsResponse;
 import io.ab.library.repository.AuthorRepository;
 import io.ab.library.service.impl.AuthorServiceImpl;
+import io.ab.library.service.impl.TagServiceImpl;
 
 @Endpoint
 public class TagEndpoint {
 	private static final String NAMESPACE_URI = "http://ab.io/library";
 
 	@Autowired
-	private AuthorServiceImpl authorService;
+	private TagServiceImpl tagService;
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllTagsRequest")
 	@ResponsePayload
-	public GetAllAuthorsResponse getAllAuthors() {
-		GetAllAuthorsResponse response = new GetAllAuthorsResponse();
-		System.out.println("processing author request");
+	public GetAllTagsResponse getAllTags() {
+		GetAllTagsResponse response = new GetAllTagsResponse();
+		System.out.println("processing getAllTags request");
 		
-//		this.authorService.getAllAuthors().forEach(author -> {
-//			response.getAuthors().add(author);
-//		});
+		this.tagService.findAll().forEach(tag -> {
+			response.getTags().add(tag);
+		});
 
 		return response;
 	}
