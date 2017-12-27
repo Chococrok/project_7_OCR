@@ -11,8 +11,8 @@ import io.ab.library.model.Account;
 public interface AccountRepository extends CrudRepository<Account, Long> {
 	
 	Account findByEmailIs(String email);
-	@Query("SELECT EXISTS (SELECT account FROM Account account WHERE account.email = ?1 AND account.password = ?2)")
-	boolean checkPassword(String email, String password);
+	@Query(value = "SELECT EXISTS(SELECT 1 FROM account WHERE account.email = ?1 AND account.password = ?2)", nativeQuery = true)
+	Boolean checkPassword(String email, String password);
 	
 
 }

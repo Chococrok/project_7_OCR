@@ -2,6 +2,9 @@ package io.ab.library.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,6 +16,7 @@ import java.util.List;
  * The persistent class for the account database table.
  * 
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(namespace = "http://ab.io/library")
 @Entity
 public class Account implements Serializable {
@@ -22,6 +26,8 @@ public class Account implements Serializable {
 	private Integer id;
 
 	private String email;
+	
+	@XmlTransient
 	private String password;
 
 	@Column(name="first_name")
