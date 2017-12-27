@@ -6,5 +6,5 @@ import io.ab.library.webapp.wsdl.Author;
 
 public interface AuthorClient {
 
-	public List<Author> getAuthors();
+	public List<Author> getAllAuthors();
 }

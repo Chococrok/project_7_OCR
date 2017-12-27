@@ -2,12 +2,14 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.27 à 01:03:25 AM CET 
+// Généré le : 2017.12.26 à 12:25:54 PM CET 
 //
 
 
-package io.ab.library.controller.soap.request;
+package io.ab.library.webapp.wsdl;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="search" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="tags" type="{http://ab.io/library}tag" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "search"
+    "tags"
 })
-@XmlRootElement(name = "searchBooksByBookRequest")
-public class SearchBooksByBookRequest {
+@XmlRootElement(name = "getAllTagsResponse")
+public class GetAllTagsResponse {
 
     @XmlElement(required = true)
-    protected String search;
+    protected List<Tag> tags;
 
     /**
-     * Obtient la valeur de la propriété search.
+     * Gets the value of the tags property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSearch() {
-        return search;
-    }
-
-    /**
-     * Définit la valeur de la propriété search.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the tags property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTags().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Tag }
+     * 
+     * 
      */
-    public void setSearch(String value) {
-        this.search = value;
+    public List<Tag> getTags() {
+        if (tags == null) {
+            tags = new ArrayList<Tag>();
+        }
+        return this.tags;
     }
 
 }

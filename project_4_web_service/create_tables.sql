@@ -28,7 +28,8 @@ CREATE TABLE public.account (
                 first_name VARCHAR NOT NULL,
                 last_name VARCHAR NOT NULL,
                 email VARCHAR NOT NULL,
-                phone_number VARCHAR,
+                password VARCHAR NOT NULL,
+                phone_number VARCHAR DEFAULT 'Non renseigné',
                 CONSTRAINT account_pk PRIMARY KEY (id)
 );
 

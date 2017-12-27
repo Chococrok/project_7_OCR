@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
 
-import io.ab.library.controller.soap.BookEndpoint;
 import io.ab.library.webapp.client.BookClient;
 import io.ab.library.webapp.wsdl.Book;
 import io.ab.library.webapp.wsdl.GetAllBooksResponse;
@@ -25,7 +24,7 @@ public class BookClientSoap extends AbstractClientSoap implements BookClient {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Book> getBooks() {
+	public List<Book> getAllBooks() {
 		this.logger.debug("performing GetAllBooksRequest");
 		
 		this.objectFactory = new ObjectFactory();

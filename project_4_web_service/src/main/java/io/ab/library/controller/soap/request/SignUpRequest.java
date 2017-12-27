@@ -14,6 +14,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import io.ab.library.controller.soap.dto.SignUpForm;
+
 
 /**
  * <p>Classe Java pour anonymous complex type.
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="search" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="signUpForm" type="{http://ab.io/library}SignUpForm"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +38,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "search"
+    "signUpForm"
 })
-@XmlRootElement(name = "searchBooksByBookRequest")
-public class SearchBooksByBookRequest {
+@XmlRootElement(name = "signUpRequest")
+public class SignUpRequest {
 
     @XmlElement(required = true)
-    protected String search;
+    protected SignUpForm signUpForm;
 
     /**
-     * Obtient la valeur de la propriété search.
+     * Obtient la valeur de la propriété signUpForm.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link SignUpForm }
      *     
      */
-    public String getSearch() {
-        return search;
+    public SignUpForm getSignUpForm() {
+        return signUpForm;
     }
 
     /**
-     * Définit la valeur de la propriété search.
+     * Définit la valeur de la propriété signUpForm.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link SignUpForm }
      *     
      */
-    public void setSearch(String value) {
-        this.search = value;
+    public void setSignUpForm(SignUpForm value) {
+        this.signUpForm = value;
     }
 
 }

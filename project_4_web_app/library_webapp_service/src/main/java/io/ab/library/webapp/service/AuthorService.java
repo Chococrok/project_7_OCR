@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class AuthorService extends AbstractService {
 	
 	public List<Author> getAuthors(){
-		return this.authorClient.getAuthors();
+		return this.authorClient.getAllAuthors();
 	}
 
 }

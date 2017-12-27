@@ -1,12 +1,19 @@
 package io.ab.library.webapp.action;
 
+import java.util.List;
+
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.stereotype.Controller;
 
 import io.ab.library.webapp.dto.BookDTO;
+import io.ab.library.webapp.wsdl.Tag;
 
 @Controller
+@ParentPackage(value ="searchPackage")
+@InterceptorRef("searchStack")
 public class SearchAction extends LibraryActionSupport {
 	
 	private static final String TAG_FR = "Tag";
@@ -22,6 +29,7 @@ public class SearchAction extends LibraryActionSupport {
 	private String search;
 	private String lastSearchType;
 	private String lastSearchTypeFR;
+	private List<Tag> tags;
 		
 	@Override
 	public String execute() throws Exception {

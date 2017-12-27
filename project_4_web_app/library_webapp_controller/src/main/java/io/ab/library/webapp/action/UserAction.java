@@ -5,12 +5,12 @@ import org.springframework.stereotype.Controller;
 import io.ab.library.webapp.dto.BookDTO;
 
 @Controller
-public class HomeAction extends LibraryActionSupport {
+public class UserAction extends LibraryActionSupport {
 			
 	@Override
 	public String execute() throws Exception {
 		this.books = BookDTO.listConverter(this.bookService.getAllBooks());
-		this.page = "home";
+		this.page = "user";
 		return SUCCESS;
 	}
 }

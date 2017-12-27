@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.24 à 12:14:58 AM CET 
+// Généré le : 2017.12.26 à 12:25:54 PM CET 
 //
 
 
@@ -36,6 +36,7 @@ public class ObjectFactory {
 
     private final static QName _GetAllAuthorsRequest_QNAME = new QName("http://ab.io/library", "getAllAuthorsRequest");
     private final static QName _GetAllBooksRequest_QNAME = new QName("http://ab.io/library", "getAllBooksRequest");
+    private final static QName _GetAllTagsRequest_QNAME = new QName("http://ab.io/library", "getAllTagsRequest");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: io.ab.library.webapp.wsdl
@@ -125,6 +126,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAllTagsResponse }
+     * 
+     */
+    public GetAllTagsResponse createGetAllTagsResponse() {
+        return new GetAllTagsResponse();
+    }
+
+    /**
+     * Create an instance of {@link Tag }
+     * 
+     */
+    public Tag createTag() {
+        return new Tag();
+    }
+
+    /**
      * Create an instance of {@link SearchBooksResponse }
      * 
      */
@@ -141,14 +158,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Rental }
-     * 
-     */
-    public Rental createRental() {
-        return new Rental();
-    }
-
-    /**
      * Create an instance of {@link Publisher }
      * 
      */
@@ -157,11 +166,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Tag }
+     * Create an instance of {@link Rental }
      * 
      */
-    public Tag createTag() {
-        return new Tag();
+    public Rental createRental() {
+        return new Rental();
     }
 
     /**
@@ -188,6 +197,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllBooksRequest")
     public JAXBElement<Object> createGetAllBooksRequest(Object value) {
         return new JAXBElement<Object>(_GetAllBooksRequest_QNAME, Object.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllTagsRequest")
+    public JAXBElement<Object> createGetAllTagsRequest(Object value) {
+        return new JAXBElement<Object>(_GetAllTagsRequest_QNAME, Object.class, null, value);
     }
 
 }

@@ -9,8 +9,8 @@ import io.ab.library.webapp.wsdl.Book;
 @Service
 public class BookService extends AbstractService {
 	
-	public List<Book> getBooks() {
-		return this.bookClient.getBooks();
+	public List<Book> getAllBooks() {
+		return this.bookClient.getAllBooks();
 	}
 	
 	public List<Book> searchBooksByBookName(String search) {

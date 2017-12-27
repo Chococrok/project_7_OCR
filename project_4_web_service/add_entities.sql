@@ -30,10 +30,10 @@ INSERT INTO book_tag (book_id, tag_id)
 	(3, 2),
 	(3, 3);
 
-INSERT INTO account (first_name, last_name, email) 
+INSERT INTO account (first_name, last_name, email, password) 
 	VALUES
-	('bruno', 'zilio', 'bruno.zilio@g.com'),
-	('yoann', 'dubois', 'yoann.dubois@g.com');
+	('bruno', 'zilio', 'bruno.zilio@g.com', 'bruno'),
+	('yoann', 'dubois', 'yoann.dubois@g.com', 'yoann');
 	
 INSERT INTO rental (account_id, book_id, dead_line) 
 	VALUES 

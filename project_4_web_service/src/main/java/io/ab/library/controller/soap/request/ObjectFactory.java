@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.25 à 11:19:28 PM CET 
+// Généré le : 2017.12.27 à 01:03:25 AM CET 
 //
 
 
@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
 import io.ab.library.controller.soap.dto.SignInForm;
+import io.ab.library.controller.soap.dto.SignUpForm;
 
 
 /**
@@ -61,6 +62,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SignUpRequest }
+     * 
+     */
+    public SignUpRequest createSignUpRequest() {
+        return new SignUpRequest();
+    }
+
+    /**
+     * Create an instance of {@link SignUpForm }
+     * 
+     */
+    public SignUpForm createSignUpForm() {
+        return new SignUpForm();
+    }
+
+    /**
      * Create an instance of {@link SearchBooksByBookRequest }
      * 
      */
@@ -90,6 +107,14 @@ public class ObjectFactory {
      */
     public SearchBooksByTagRequest createSearchBooksByTagRequest() {
         return new SearchBooksByTagRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetRentalsByUserRequest }
+     * 
+     */
+    public GetRentalsByUserRequest createGetRentalsByUserRequest() {
+        return new GetRentalsByUserRequest();
     }
 
     /**

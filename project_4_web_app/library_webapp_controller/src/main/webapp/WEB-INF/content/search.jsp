@@ -7,7 +7,7 @@
 <title>Bibliothèque</title>
 <%@ include file="/WEB-INF/style/global-style.jsp"%>
 </head>
-<body>
+<body onload="load();">
 
 	<div class="card mx-5 my-4">
 		<div class="card-header">
@@ -43,11 +43,6 @@
 								aria-label="Input group example"
 								aria-describedby="btnGroupAddon" name="search">
 							<datalist id="listSearch">
-							<option value="Internet Explorer">
-							<option value="Firefox">
-							<option value="Chrome">
-							<option value="Opera">
-							<option value="Safari">
 							</datalist>
 							<button type="submit" class="btn btn-primary ml-2">Rechercher</button>
 						</div>

@@ -35,5 +35,21 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="signInResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="account" type="tns:account"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="getRentalsByUserResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rentals" type="tns:rental" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 </xs:schema>

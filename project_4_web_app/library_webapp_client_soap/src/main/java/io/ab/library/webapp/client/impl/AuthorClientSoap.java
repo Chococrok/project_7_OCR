@@ -19,7 +19,7 @@ public class AuthorClientSoap extends AbstractClientSoap implements AuthorClient
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Author> getAuthors() {
+	public List<Author> getAllAuthors() {
 		
 		this.objectFactory = new ObjectFactory();
 

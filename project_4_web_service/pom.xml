@@ -65,11 +65,9 @@
 
 	<profiles>
 		<profile>
-			<id>generation</id>
+			<id>generateToXSD</id>
 			<activation>
-				<file>
-					<missing>${basedir}/generated</missing>
-				</file>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
 				<plugins>
@@ -104,6 +102,24 @@
 									<generateEpisode>false</generateEpisode>
 								</configuration>
 							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>generateToJava</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>jaxb2-maven-plugin</artifactId>
+						<version>2.2</version>
+						<executions>
 
 							<execution>
 								<id>xjc-request</id>

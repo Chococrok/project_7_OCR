@@ -8,6 +8,7 @@
 
 package io.ab.library.controller.soap.request;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="search" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +37,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "search"
+    "id"
 })
-@XmlRootElement(name = "searchBooksByBookRequest")
-public class SearchBooksByBookRequest {
+@XmlRootElement(name = "getRentalsByUserRequest")
+public class GetRentalsByUserRequest {
 
     @XmlElement(required = true)
-    protected String search;
+    protected BigInteger id;
 
     /**
-     * Obtient la valeur de la propriété search.
+     * Obtient la valeur de la propriété id.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public String getSearch() {
-        return search;
+    public BigInteger getId() {
+        return id;
     }
 
     /**
-     * Définit la valeur de la propriété search.
+     * Définit la valeur de la propriété id.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public void setSearch(String value) {
-        this.search = value;
+    public void setId(BigInteger value) {
+        this.id = value;
     }
 
 }
