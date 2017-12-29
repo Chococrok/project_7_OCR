@@ -9,6 +9,8 @@ import io.ab.library.webapp.wsdl.ObjectFactory;
 import io.ab.library.webapp.wsdl.SignInForm;
 import io.ab.library.webapp.wsdl.SignInRequest;
 import io.ab.library.webapp.wsdl.SignInResponse;
+import io.ab.library.webapp.wsdl.SignUpForm;
+import io.ab.library.webapp.wsdl.SignUpRequest;
 
 @Component
 public class AccountClientSoap extends AbstractClientSoap implements AccountClient {
@@ -19,8 +21,20 @@ public class AccountClientSoap extends AbstractClientSoap implements AccountClie
 	}
 
 	public Account signIn(SignInForm form) {
+		logger.debug("processing signIn with input: " + form.getEmail() + " " + form.getPassword());
 		SignInRequest request = new SignInRequest();
 		request.setSignInForm(form);
+		
+		SignInResponse response = (SignInResponse) getWebServiceTemplate()
+				.marshalSendAndReceive("http://localhost:8080/soap",
+						request,
+						null);
+		return response.getAccount();
+	}
+	
+	public Account signUp(SignUpForm form) {
+		SignUpRequest request = new SignUpRequest();
+		request.setSignUpForm(form);
 		
 		SignInResponse response = (SignInResponse) getWebServiceTemplate()
 				.marshalSendAndReceive("http://localhost:8080/soap",

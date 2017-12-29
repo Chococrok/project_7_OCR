@@ -23,6 +23,10 @@
 				<interceptor-ref name="login" />
 			</interceptor-stack>
 		</interceptors>
+		
+		<global-results>
+			<result name="loginRedirect" type="redirect">/login</result>
+		</global-results>
 	</package>
 
 	<package name="searchPackage" extends="struts-default">

@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.26 à 12:25:54 PM CET 
+// Généré le : 2017.12.28 à 11:00:16 PM CET 
 //
 
 
@@ -62,6 +62,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SignUpRequest }
+     * 
+     */
+    public SignUpRequest createSignUpRequest() {
+        return new SignUpRequest();
+    }
+
+    /**
+     * Create an instance of {@link SignUpForm }
+     * 
+     */
+    public SignUpForm createSignUpForm() {
+        return new SignUpForm();
+    }
+
+    /**
      * Create an instance of {@link SearchBooksByBookRequest }
      * 
      */
@@ -91,6 +107,14 @@ public class ObjectFactory {
      */
     public SearchBooksByTagRequest createSearchBooksByTagRequest() {
         return new SearchBooksByTagRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetRentalsByUserRequest }
+     * 
+     */
+    public GetRentalsByUserRequest createGetRentalsByUserRequest() {
+        return new GetRentalsByUserRequest();
     }
 
     /**
@@ -150,6 +174,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SignInResponse }
+     * 
+     */
+    public SignInResponse createSignInResponse() {
+        return new SignInResponse();
+    }
+
+    /**
      * Create an instance of {@link Account }
      * 
      */
@@ -158,11 +190,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Publisher }
+     * Create an instance of {@link GetRentalsByUserResponse }
      * 
      */
-    public Publisher createPublisher() {
-        return new Publisher();
+    public GetRentalsByUserResponse createGetRentalsByUserResponse() {
+        return new GetRentalsByUserResponse();
     }
 
     /**
@@ -171,6 +203,14 @@ public class ObjectFactory {
      */
     public Rental createRental() {
         return new Rental();
+    }
+
+    /**
+     * Create an instance of {@link Publisher }
+     * 
+     */
+    public Publisher createPublisher() {
+        return new Publisher();
     }
 
     /**

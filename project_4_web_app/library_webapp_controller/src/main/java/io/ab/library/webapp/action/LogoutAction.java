@@ -10,22 +10,14 @@ import org.apache.struts2.interceptor.SessionAware;
 import io.ab.library.webapp.wsdl.Account;
 import io.ab.library.webapp.wsdl.SignInForm;
 
-public class LoginAction extends LibraryActionSupport implements SessionAware {
-	
-	private static final String ACCOUNT = "account";
-		
-	private SignInForm signInForm;
+@Result(name="success", location="home", type="redirect")
+public class LogoutAction extends LibraryActionSupport implements SessionAware {
+			
 	private Map<String, Object> session;
 
 	@Override
 	public String execute() throws Exception {
-		return SUCCESS;
-	}
-	
-	@Action(value="login/submit", results= {@Result(name="success", location="user", type="redirect")})
-	public String login() throws Exception {
-		Account account = this.accountService.signIn(signInForm);
-		this.session.put(ACCOUNT, account);
+		session.clear();
 		return SUCCESS;
 	}
 
@@ -36,13 +28,4 @@ public class LoginAction extends LibraryActionSupport implements SessionAware {
 	public Map<String, Object> getSession() {
 		return session;
 	}
-
-	public SignInForm getSignInForm() {
-		return signInForm;
-	}
-
-	public void setSignInForm(SignInForm signInForm) {
-		this.signInForm = signInForm;
-	}
-
 }

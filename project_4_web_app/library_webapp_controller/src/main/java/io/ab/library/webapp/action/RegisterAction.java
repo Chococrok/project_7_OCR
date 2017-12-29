@@ -7,13 +7,9 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.SessionAware;
 
-import io.ab.climbing.business.dto.SignUpForm;
+import io.ab.library.webapp.wsdl.SignUpForm;
 
-@Results({
-	@Result(name = "success", location = "sign-up.jsp"),
-	@Result(name = "input", location = "sign-up.jsp")
-})
-public class RegisterAction extends CustomAbstractActionSupport implements SessionAware {
+public class RegisterAction extends LibraryActionSupport implements SessionAware {
 		
 	private SignUpForm signUpForm;
 	private Map<String, Object> session;
@@ -23,18 +19,12 @@ public class RegisterAction extends CustomAbstractActionSupport implements Sessi
 		return SUCCESS;
 	}
 	
-	@Action("register/submit")
+	@Action(value="register/submit", results= {@Result(location="user", type="redirectAction")})
 	public String register() throws Exception {
-		this.ownerService.signUp(signUpForm);
-		if (this.ownerService.hasError()) {
-			this.addActionError(this.ownerService.getError());
-			return INPUT;
-		}
-		this.session.put("owner", this.ownerService.findOneByEmail(signUpForm.getEmail()));
-		return OWNER;
+		this.session.put("account", this.accountService.signUp(signUpForm));
+		return SUCCESS;
 	}
 
-	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
