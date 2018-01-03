@@ -2,7 +2,7 @@
 	var buttonsNav = document.getElementsByClassName('btn-nav');
 	
 	
-	function load() {
+	function loadNav() {
 		for(var i = 0; i < buttonsNav.length; i++) {
 			buttonsNav[i].addEventListener('click', function(event) {
 				location.href = document.location.origin + '/library/' + event.target.value;

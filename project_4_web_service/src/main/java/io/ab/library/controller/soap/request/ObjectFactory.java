@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.27 à 01:03:25 AM CET 
+// Généré le : 2018.01.02 à 05:34:40 PM CET 
 //
 
 
@@ -13,8 +13,8 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import io.ab.library.controller.soap.dto.SignInForm;
-import io.ab.library.controller.soap.dto.SignUpForm;
+import io.ab.library.controller.soap.dto.*;
+import io.ab.library.model.*;
 
 
 /**
@@ -115,6 +115,70 @@ public class ObjectFactory {
      */
     public GetRentalsByUserRequest createGetRentalsByUserRequest() {
         return new GetRentalsByUserRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateRentalRequest }
+     * 
+     */
+    public UpdateRentalRequest createUpdateRentalRequest() {
+        return new UpdateRentalRequest();
+    }
+
+    /**
+     * Create an instance of {@link Rental }
+     * 
+     */
+    public Rental createRental() {
+        return new Rental();
+    }
+
+    /**
+     * Create an instance of {@link Account }
+     * 
+     */
+    public Account createAccount() {
+        return new Account();
+    }
+
+    /**
+     * Create an instance of {@link Author }
+     * 
+     */
+    public Author createAuthor() {
+        return new Author();
+    }
+
+    /**
+     * Create an instance of {@link Book }
+     * 
+     */
+    public Book createBook() {
+        return new Book();
+    }
+
+    /**
+     * Create an instance of {@link Publisher }
+     * 
+     */
+    public Publisher createPublisher() {
+        return new Publisher();
+    }
+
+    /**
+     * Create an instance of {@link RentalPK }
+     * 
+     */
+    public RentalPK createRentalPK() {
+        return new RentalPK();
+    }
+
+    /**
+     * Create an instance of {@link Tag }
+     * 
+     */
+    public Tag createTag() {
+        return new Tag();
     }
 
     /**

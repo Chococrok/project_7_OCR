@@ -13,10 +13,11 @@
 		<div class="card-header">
 			<h4 class="card-title">Création de mon compte</h4>
 			<p class="card-text">Renseignez les informations demandées puis
-				cliquez sur Envoyer pour créer votre compte.	</p>
+				cliquez sur Envoyer pour créer votre compte.</p>
 		</div>
 		<div class="card-body">
 			<form action="/library/register/submit">
+				 <s:actionerror/>
 				<div class="form-group">
 					<label for=inputEmail>Email</label>
 					<input type="email" class="form-control" id="inputEmail"
@@ -40,7 +41,8 @@
 				<div class="form-group">
 					<label for="inputCheckPassword">Confirmation</label>
 					<input type="password" class="form-control" id="inputCheckPassword"
-						placeholder="Vérifiez le mot de passe" name="signUpForm.checkPassword">
+						placeholder="Vérifiez le mot de passe"
+						name="signUpForm.checkPassword">
 				</div>
 				<div class="form-group">
 					<label for=inputPhone>Numéro de téléphone</label>

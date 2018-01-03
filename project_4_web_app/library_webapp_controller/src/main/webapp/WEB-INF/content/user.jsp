@@ -7,7 +7,7 @@
 <title>Mon espace</title>
 <%@ include file="/WEB-INF/style/global-style.jsp"%>
 </head>
-<body onload="load();">
+<body onload="loadNav();">
 
 	<div class="card mx-5 my-4">
 		<div class="card-header">
@@ -22,7 +22,28 @@
 				n'avez pas encore fini votre lecture.</a>
 			</p>
 		</div>
-		<div class="card-body"></div>
+		<div class="card-body">
+			<ul class="list-group list-group-flush">
+				<c:forEach items="${ requestScope.rentals }" var="rental">
+					<li class="list-group-item d-flex">
+						<div>
+							<p>
+								<span>
+									<strong>${ rental.book.name }</strong> de ${ rental.book.author.firstName }
+									${ rental.book.author.lastName } (Editon ${ rental.book.publisher.name })
+								</span>
+							</p>
+							<p>
+								<span>Emprunté jusqu'au ${ rental.getDeadLine().getDay() }/${ rental.getDeadLine().getMonth() }/${ rental.getDeadLine().getYear() }</span>
+							</p>
+						</div>
+						<div class="d-flex m-auto">
+							<button class="btn btn-primary">Ajouter 1 mois de location</button>
+						</div>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
 	</div>
 </body>
 </html>

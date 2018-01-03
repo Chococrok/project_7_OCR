@@ -3,6 +3,7 @@
 	elementFormDefault="qualified">
 
 	<xs:include schemaLocation="dto.xsd" />
+	<xs:include schemaLocation="model.xsd" />
 
 	<xs:element name="getAllAuthorsRequest" />
 	<xs:element name="getAllBooksRequest" />
@@ -60,6 +61,14 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="id" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="updateRentalRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rental" type="tns:rental" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

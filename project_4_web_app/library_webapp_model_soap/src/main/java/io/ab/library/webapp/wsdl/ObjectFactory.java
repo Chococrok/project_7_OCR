@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.28 à 11:00:16 PM CET 
+// Généré le : 2018.01.03 à 12:36:19 PM CET 
 //
 
 
@@ -118,6 +118,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateRentalRequest }
+     * 
+     */
+    public UpdateRentalRequest createUpdateRentalRequest() {
+        return new UpdateRentalRequest();
+    }
+
+    /**
+     * Create an instance of {@link Rental }
+     * 
+     */
+    public Rental createRental() {
+        return new Rental();
+    }
+
+    /**
      * Create an instance of {@link GetAllAuthorsResponse }
      * 
      */
@@ -198,11 +214,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Rental }
+     * Create an instance of {@link UpdateRentalResponse }
      * 
      */
-    public Rental createRental() {
-        return new Rental();
+    public UpdateRentalResponse createUpdateRentalResponse() {
+        return new UpdateRentalResponse();
     }
 
     /**

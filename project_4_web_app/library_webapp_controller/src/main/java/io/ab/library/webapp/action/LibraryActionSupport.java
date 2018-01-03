@@ -10,6 +10,7 @@ import io.ab.library.webapp.dto.BookDTO;
 import io.ab.library.webapp.service.AccountService;
 import io.ab.library.webapp.service.AuthorService;
 import io.ab.library.webapp.service.BookService;
+import io.ab.library.webapp.service.RentalService;
 import io.ab.library.webapp.wsdl.Author;
 import io.ab.library.webapp.wsdl.Book;
 
@@ -26,6 +27,8 @@ public abstract class LibraryActionSupport extends ActionSupport {
 	protected BookService bookService;
 	@Autowired
 	protected AccountService accountService;
+	@Autowired
+	protected RentalService rentalService;
 
 	public List<Author> getAuthors() {
 		return authors;
