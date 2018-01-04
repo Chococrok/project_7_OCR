@@ -25,7 +25,7 @@ public class Rental implements Serializable {
 	private Date deadLine;
 
 	@Column(name = "is_extended")
-	private Boolean isExtended;
+	private Boolean extended;
 
 	// bi-directional many-to-one association to Account
 	@ManyToOne
@@ -56,12 +56,12 @@ public class Rental implements Serializable {
 		this.deadLine = deadLine;
 	}
 
-	public Boolean getIsExtended() {
-		return this.isExtended;
+	public Boolean getExtended() {
+		return extended;
 	}
 
-	public void setIsExtended(Boolean isExtended) {
-		this.isExtended = isExtended;
+	public void setExtended(Boolean extended) {
+		this.extended = extended;
 	}
 
 	public Account getAccount() {

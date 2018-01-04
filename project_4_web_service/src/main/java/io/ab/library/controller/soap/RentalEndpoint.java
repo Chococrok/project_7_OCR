@@ -24,7 +24,7 @@ public class RentalEndpoint {
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getRentalsByUserRequest")
 	@ResponsePayload
-	public GetRentalsByUserResponse getAllRentals(@RequestPayload GetRentalsByUserRequest request) {
+	public GetRentalsByUserResponse getRentalByUser(@RequestPayload GetRentalsByUserRequest request) {
 		GetRentalsByUserResponse response = new GetRentalsByUserResponse();
 		System.out.println("processing GetRentalsByUserRequest");
 		

@@ -1,13 +1,11 @@
 package io.ab.library.webapp.service;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
-
-import javax.xml.datatype.Duration;
 
 import io.ab.library.webapp.wsdl.Rental;
 
-import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,7 +16,10 @@ public class RentalService extends AbstractService {
 	}
 	
 	public Rental extendRental(Rental rental, int durationInWeek){
-		rental.getDeadLine().toGregorianCalendar().add(Calendar.WEEK_OF_MONTH, durationInWeek);;
+		GregorianCalendar calendar = rental.getDeadLine().toGregorianCalendar();
+		calendar.add(Calendar.WEEK_OF_MONTH, durationInWeek);
+		rental.setDeadLine(calendar);
+		rental.setExtended(true);
 		return this.rentalClient.updateRental(rental);
 	}
 }

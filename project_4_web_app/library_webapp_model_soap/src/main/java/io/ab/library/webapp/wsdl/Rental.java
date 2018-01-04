@@ -8,11 +8,17 @@
 
 package io.ab.library.webapp.wsdl;
 
+import java.util.GregorianCalendar;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+
+import com.google.gson.Gson;
 
 
 /**
@@ -46,7 +52,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "book",
     "deadLine",
     "id",
-    "isExtended"
+    "extended"
 })
 public class Rental {
 
@@ -55,7 +61,7 @@ public class Rental {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar deadLine;
     protected RentalPK id;
-    protected Boolean isExtended;
+    protected Boolean extended;
 
     /**
      * Obtient la valeur de la propriété account.
@@ -125,8 +131,30 @@ public class Rental {
      *     {@link XMLGregorianCalendar }
      *     
      */
+    public void setDeadLine(String value) {
+    	DatatypeFactory factory = null;
+		try {
+			factory = DatatypeFactory.newInstance();
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        this.deadLine = factory.newXMLGregorianCalendar(value);
+    }
+    
     public void setDeadLine(XMLGregorianCalendar value) {
         this.deadLine = value;
+    }
+    
+    public void setDeadLine(GregorianCalendar value) {
+    	DatatypeFactory factory = null;
+		try {
+			factory = DatatypeFactory.newInstance();
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        this.deadLine = factory.newXMLGregorianCalendar(value);
     }
 
     /**
@@ -161,20 +189,22 @@ public class Rental {
      *     {@link Boolean }
      *     
      */
-    public Boolean isIsExtended() {
-        return isExtended;
-    }
 
-    /**
-     * Définit la valeur de la propriété isExtended.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setIsExtended(Boolean value) {
-        this.isExtended = value;
+	public Boolean getExtended() {
+		return extended;
+	}
+
+	public void setExtended(Boolean extended) {
+		this.extended = extended;
+	}
+	
+	public void isExtended(Boolean extended) {
+		this.extended = extended;
+	}
+    
+    public String toJson() {
+    	Gson gson = new Gson();
+    	return gson.toJson(this);
     }
 
 }

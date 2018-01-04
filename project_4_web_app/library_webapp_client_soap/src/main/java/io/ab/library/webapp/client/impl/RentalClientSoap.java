@@ -43,7 +43,7 @@ public class RentalClientSoap extends AbstractClientSoap implements RentalClient
 	}
 
 	public Rental updateRental(Rental rental) {
-		this.logger.debug("performing UpdateRentalRequest");
+		this.logger.debug("performing UpdateRentalRequest: " + rental.toJson());
 
 		UpdateRentalRequest request = new UpdateRentalRequest();
 		request.setRental(rental);

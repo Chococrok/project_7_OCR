@@ -14,36 +14,28 @@
 		value="false" />
 	<constant name="struts.patternMatcher" value="regex" />
 
-	<package name="loginPackage" extends="struts-default">
+	<package name="libraryPackage" extends="struts-default">
 		<interceptors>
 			<interceptor name="login"
 				class="io.ab.library.webapp.interceptor.LoginInterceptor" />
+
+			<interceptor name="addTag"
+				class="io.ab.library.webapp.interceptor.SearchParamInterceptor" />
+
 			<interceptor-stack name="loginStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="login" />
 			</interceptor-stack>
-		</interceptors>
-		
-		<global-results>
-			<result name="loginRedirect" type="redirect">/login</result>
-		</global-results>
-	</package>
 
-	<package name="searchPackage" extends="struts-default">
-		<interceptors>
-			<interceptor name="addTag"
-				class="io.ab.library.webapp.interceptor.SearchParamInterceptor" />
 			<interceptor-stack name="searchStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="addTag" />
 			</interceptor-stack>
 		</interceptors>
 
-
 		<global-results>
 			<result name="loginRedirect" type="redirect">/login</result>
 		</global-results>
 	</package>
-
 </struts>
 

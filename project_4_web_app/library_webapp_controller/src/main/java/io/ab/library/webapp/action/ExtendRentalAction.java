@@ -9,6 +9,7 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.stereotype.Controller;
 
 import io.ab.library.webapp.dto.BookDTO;
@@ -16,28 +17,35 @@ import io.ab.library.webapp.wsdl.Account;
 import io.ab.library.webapp.wsdl.Rental;
 
 @Controller
-@InterceptorRef("loginStack")
-public class UserAction extends LibraryActionSupport implements SessionAware {
+@Result(type="redirectAction", location="user")
+public class ExtendRentalAction extends LibraryActionSupport {
 	
-	private List<Rental> rentals;
-	private Map<String, Object> session;
+	private Rental rental;
+	private int durationInWeek;
 			
 	@Override
 	public String execute() throws Exception {
-		this.rentals = this.rentalService.getRentalsByUser(((Account) session.get("account")).getId());
-		this.page = "user";
+		this.rentalService.extendRental(rental, durationInWeek);
 		return SUCCESS;
 	}
 
-	public List<Rental> getRentals() {
-		return rentals;
+	public Rental getRental() {
+		return rental;
 	}
 
-	public void setRentals(List<Rental> rentals) {
-		this.rentals = rentals;
+
+	public void setRental(Rental rental) {
+		this.rental = rental;
 	}
 
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
+
+	public int getDurationInWeek() {
+		return durationInWeek;
 	}
+
+	public void setDurationInWeek(int durationInWeek) {
+		this.durationInWeek = durationInWeek;
+	}
+	
+	
 }

@@ -37,9 +37,26 @@
 								<span>Emprunté jusqu'au ${ rental.getDeadLine().getDay() }/${ rental.getDeadLine().getMonth() }/${ rental.getDeadLine().getYear() }</span>
 							</p>
 						</div>
-						<div class="d-flex m-auto">
-							<button class="btn btn-primary">Ajouter 1 mois de location</button>
-						</div>
+						<form class="d-flex m-auto" action="/library/extend-rental"
+							method="POST">
+							<input type="hidden" name="rental.id.accountId"
+								value="${ rental.id.accountId }" />
+							<input type="hidden" name="rental.id.bookId"
+								value="${ rental.id.bookId }" />
+							<input type="hidden" name="rental.book.id"
+								value="${ rental.book.id }" />
+							<input type="hidden" name="rental.account.id"
+								value="${ rental.account.id }" />
+							<input type="hidden" name="rental.deadLine"
+								value="${ rental.deadLine }" />
+							<div class="d-flex flex-column">
+								<label for="durationInput">${ rental.extended ? 'Vous avez déjà augmenter la durée de votre prêt' : 'Nombre de semaine à ajouter:' }</label>
+								<input id="durationInput" type="number" name="durationInWeek"
+									min="1" max="4" ${ rental.extended ? 'disabled' : '' }>
+								<button class="btn btn-primary"
+									${ rental.extended ? 'disabled' : '' }>Allonger mon prêt</button>
+							</div>
+						</form>
 					</li>
 				</c:forEach>
 			</ul>

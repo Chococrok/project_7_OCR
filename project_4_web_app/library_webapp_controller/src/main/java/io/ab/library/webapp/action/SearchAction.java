@@ -12,7 +12,6 @@ import io.ab.library.webapp.dto.BookDTO;
 import io.ab.library.webapp.wsdl.Tag;
 
 @Controller
-@ParentPackage(value ="searchPackage")
 @InterceptorRef("searchStack")
 public class SearchAction extends LibraryActionSupport {
 	
