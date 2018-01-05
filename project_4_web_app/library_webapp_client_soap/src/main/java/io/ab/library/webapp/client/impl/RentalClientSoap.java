@@ -6,20 +6,13 @@ import java.util.List;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
 
-import io.ab.library.webapp.client.AccountClient;
 import io.ab.library.webapp.client.RentalClient;
-import io.ab.library.webapp.wsdl.Account;
-import io.ab.library.webapp.wsdl.Book;
-import io.ab.library.webapp.wsdl.GetAllBooksResponse;
+import io.ab.library.webapp.wsdl.GetRentalByIdRequest;
+import io.ab.library.webapp.wsdl.GetRentalByIdResponse;
 import io.ab.library.webapp.wsdl.GetRentalsByUserRequest;
 import io.ab.library.webapp.wsdl.GetRentalsByUserResponse;
 import io.ab.library.webapp.wsdl.ObjectFactory;
 import io.ab.library.webapp.wsdl.Rental;
-import io.ab.library.webapp.wsdl.SignInForm;
-import io.ab.library.webapp.wsdl.SignInRequest;
-import io.ab.library.webapp.wsdl.SignInResponse;
-import io.ab.library.webapp.wsdl.SignUpForm;
-import io.ab.library.webapp.wsdl.SignUpRequest;
 import io.ab.library.webapp.wsdl.UpdateRentalRequest;
 import io.ab.library.webapp.wsdl.UpdateRentalResponse;
 
@@ -49,6 +42,19 @@ public class RentalClientSoap extends AbstractClientSoap implements RentalClient
 		request.setRental(rental);
 
 		UpdateRentalResponse response = (UpdateRentalResponse) getWebServiceTemplate()
+				.marshalSendAndReceive("http://localhost:8080/soap", request, null);
+		return response.getRental();
+	}
+
+	public Rental findOne(int accountId, int bookId) {
+		this.logger.debug("performing GetRentalByIdRequest with param:" + BigInteger.valueOf(accountId) + " "
+				+ BigInteger.valueOf(bookId));
+
+		GetRentalByIdRequest request = new GetRentalByIdRequest();
+		request.setAccountId(BigInteger.valueOf(accountId));
+		request.setBookId(BigInteger.valueOf(bookId));
+
+		GetRentalByIdResponse response = (GetRentalByIdResponse) getWebServiceTemplate()
 				.marshalSendAndReceive("http://localhost:8080/soap", request, null);
 		return response.getRental();
 	}

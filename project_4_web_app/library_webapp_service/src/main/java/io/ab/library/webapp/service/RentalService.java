@@ -15,7 +15,14 @@ public class RentalService extends AbstractService {
 		return this.rentalClient.getRentalsByUser(id);
 	}
 	
-	public Rental extendRental(Rental rental, int durationInWeek){
+	public Rental extendRental(int accountId, int bookId, int durationInWeek){
+		Rental rental = this.rentalClient.findOne(accountId, bookId);
+		
+		if(rental.isExtended()) {
+			logger.debug("rental extended = " + rental.isExtended() + " returning");
+			return rental;
+		}
+		
 		GregorianCalendar calendar = rental.getDeadLine().toGregorianCalendar();
 		calendar.add(Calendar.WEEK_OF_MONTH, durationInWeek);
 		rental.setDeadLine(calendar);

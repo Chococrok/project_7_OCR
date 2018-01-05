@@ -9,4 +9,5 @@ public interface RentalClient {
 
 	public List<Rental> getRentalsByUser(int id);
 	public Rental updateRental(Rental rental);
+	public Rental findOne(int accountId, int bookId);
 }

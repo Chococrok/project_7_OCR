@@ -2,23 +2,17 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.24 à 12:14:58 AM CET 
+// Généré le : 2018.01.05 à 08:42:50 PM CET 
 //
 
 
-package io.ab.library.webapp.wsdl;
-
-import java.util.GregorianCalendar;
+package io.ab.library.batch.wsdl;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-
-import com.google.gson.Gson;
 
 
 /**
@@ -52,7 +46,7 @@ import com.google.gson.Gson;
     "book",
     "deadLine",
     "id",
-    "extended"
+    "isExtended"
 })
 public class Rental {
 
@@ -61,7 +55,7 @@ public class Rental {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar deadLine;
     protected RentalPK id;
-    protected Boolean extended;
+    protected Boolean isExtended;
 
     /**
      * Obtient la valeur de la propriété account.
@@ -131,30 +125,8 @@ public class Rental {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDeadLine(String value) {
-    	DatatypeFactory factory = null;
-		try {
-			factory = DatatypeFactory.newInstance();
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        this.deadLine = factory.newXMLGregorianCalendar(value);
-    }
-    
     public void setDeadLine(XMLGregorianCalendar value) {
         this.deadLine = value;
-    }
-    
-    public void setDeadLine(GregorianCalendar value) {
-    	DatatypeFactory factory = null;
-		try {
-			factory = DatatypeFactory.newInstance();
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        this.deadLine = factory.newXMLGregorianCalendar(value);
     }
 
     /**
@@ -189,22 +161,20 @@ public class Rental {
      *     {@link Boolean }
      *     
      */
+    public Boolean isIsExtended() {
+        return isExtended;
+    }
 
-	public Boolean getExtended() {
-		return extended;
-	}
-
-	public Boolean isExtended() {
-		return this.extended;
-	}
-
-	public void setExtended(Boolean extended) {
-		this.extended = extended;
-	}
-    
-    public String toJson() {
-    	Gson gson = new Gson();
-    	return gson.toJson(this);
+    /**
+     * Définit la valeur de la propriété isExtended.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsExtended(Boolean value) {
+        this.isExtended = value;
     }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import io.ab.library.model.Account;
 import io.ab.library.model.Book;
 import io.ab.library.model.Rental;
+import io.ab.library.model.RentalPK;
 import io.ab.library.repository.RentalRepository;
 import io.ab.library.service.RentalService;
 
@@ -44,6 +45,19 @@ public class RentalServiceImpl implements RentalService {
 	
 	public Rental update(Rental rental) {
 		return this.rentalRepository.save(rental);
+	}
+
+	@Override
+	public Iterable<Rental> findAll() {
+		return this.rentalRepository.findAll();
+	}
+
+	@Override
+	public Rental findOne(int accountId, int bookId) {
+		RentalPK key = new RentalPK();
+		key.setAccountId(accountId);
+		key.setBookId(bookId);
+		return this.rentalRepository.findOne(key);
 	}
 
 }

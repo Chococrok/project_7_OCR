@@ -33,10 +33,13 @@ INSERT INTO book_tag (book_id, tag_id)
 INSERT INTO account (first_name, last_name, email, password) 
 	VALUES
 	('bruno', 'zilio', 'bruno.zilio@g.com', 'bruno'),
-	('yoann', 'dubois', 'yoann.dubois@g.com', 'yoann');
+	('yoann', 'dubois', 'yoann.dubois@g.com', 'yoann'),
+	('arnaud', 'barbaria', 'arnaud.barbaria@gmail.com', 'arnaud');
 	
 INSERT INTO rental (account_id, book_id, dead_line) 
 	VALUES 
 	(1, 2, CURRENT_DATE + INTERVAL '1 months'),
-	(2, 1, CURRENT_DATE + INTERVAL '1 week');
+	(1, 1, CURRENT_DATE + INTERVAL '1 months'),
+	(2, 1, CURRENT_DATE + INTERVAL '1 week'),
+	(3, 3, CURRENT_DATE - INTERVAL '1 week');
 

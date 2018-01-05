@@ -28,6 +28,14 @@
 		</xs:complexType>
 	</xs:element>
 	
+	<xs:element name="getAllRentalsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rentals" type="tns:rental" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
 	<xs:element name="searchBooksResponse">
 		<xs:complexType>
 			<xs:sequence>
@@ -48,6 +56,14 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="rentals" type="tns:rental" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="getRentalByIdResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rental" type="tns:rental"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

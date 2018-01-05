@@ -17,15 +17,15 @@ import io.ab.library.webapp.wsdl.Account;
 import io.ab.library.webapp.wsdl.Rental;
 
 @Controller
-@Result(type="redirectAction", location="user")
+@Result(type = "redirectAction", location = "user")
 public class ExtendRentalAction extends LibraryActionSupport {
-	
+
 	private Rental rental;
 	private int durationInWeek;
-			
+
 	@Override
 	public String execute() throws Exception {
-		this.rentalService.extendRental(rental, durationInWeek);
+		this.rentalService.extendRental(rental.getId().getAccountId(), rental.getId().getBookId(), durationInWeek);
 		return SUCCESS;
 	}
 
@@ -33,11 +33,9 @@ public class ExtendRentalAction extends LibraryActionSupport {
 		return rental;
 	}
 
-
 	public void setRental(Rental rental) {
 		this.rental = rental;
 	}
-
 
 	public int getDurationInWeek() {
 		return durationInWeek;
@@ -46,6 +44,5 @@ public class ExtendRentalAction extends LibraryActionSupport {
 	public void setDurationInWeek(int durationInWeek) {
 		this.durationInWeek = durationInWeek;
 	}
-	
-	
+
 }

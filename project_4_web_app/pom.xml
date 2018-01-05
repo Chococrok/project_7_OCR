@@ -102,7 +102,6 @@
 		<module>library_webapp_client</module>
 		<module>library_webapp_service</module>
 		<module>library_webapp_controller</module>
-		<module>library_webapp_model</module>
 		<module>library_webapp_model_soap</module>
 		<module>library_webapp_client_soap</module>
 	</modules>

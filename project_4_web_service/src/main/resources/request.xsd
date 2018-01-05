@@ -8,6 +8,7 @@
 	<xs:element name="getAllAuthorsRequest" />
 	<xs:element name="getAllBooksRequest" />
 	<xs:element name="getAllTagsRequest" />
+	<xs:element name="getAllRentalsRequest" />
 
 	<xs:element name="signInRequest">
 		<xs:complexType>
@@ -61,6 +62,15 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="id" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="getRentalByIdRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accountId" type="xs:integer" />
+				<xs:element name="bookId" type="xs:integer" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

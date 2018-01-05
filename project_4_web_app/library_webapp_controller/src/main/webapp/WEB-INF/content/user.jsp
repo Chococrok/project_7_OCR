@@ -43,12 +43,6 @@
 								value="${ rental.id.accountId }" />
 							<input type="hidden" name="rental.id.bookId"
 								value="${ rental.id.bookId }" />
-							<input type="hidden" name="rental.book.id"
-								value="${ rental.book.id }" />
-							<input type="hidden" name="rental.account.id"
-								value="${ rental.account.id }" />
-							<input type="hidden" name="rental.deadLine"
-								value="${ rental.deadLine }" />
 							<div class="d-flex flex-column">
 								<label for="durationInput">${ rental.extended ? 'Vous avez déjà augmenter la durée de votre prêt' : 'Nombre de semaine à ajouter:' }</label>
 								<input id="durationInput" type="number" name="durationInWeek"
