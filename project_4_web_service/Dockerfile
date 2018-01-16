@@ -4,7 +4,7 @@ WORKDIR /app
 
 ADD . /app
 
-RUN mvn -f /app/pom.xml clean package
+RUN mvn -f /app/pom.xml clean package -Dlibrary.db.host.name=${VAR_HOST}
 
 CMD echo "The application will start in ${VAR_SLEEP}s..." && \
     sleep ${VAR_SLEEP} && \

@@ -107,7 +107,7 @@
 				</plugins>
 			</build>
 		</profile>
-		
+
 		<profile>
 			<id>generateToJava</id>
 			<activation>
@@ -162,7 +162,7 @@
 									<generateEpisode>false</generateEpisode>
 								</configuration>
 							</execution>
-							
+
 							<execution>
 								<id>xjc-dto</id>
 
@@ -191,6 +191,17 @@
 	</profiles>
 
 	<build>
+		<filters>
+			<filter>src/main/filters/library-filter.properties</filter>
+		</filters>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
