@@ -8,15 +8,9 @@ import io.ab.library.webapp.wsdl.SignUpForm;
 
 import org.springframework.stereotype.Service;
 
-@Service
-public class AccountService extends AbstractService {
+public interface AccountService {
 	
-	public Account signIn(SignInForm form){
-		return this.accountClient.signIn(form);
-	}
-	
-	public Account signUp(SignUpForm form){
-		return this.accountClient.signUp(form);
-	}
+	public Account signIn(SignInForm form);
+	public Account signUp(SignUpForm form);
 
 }

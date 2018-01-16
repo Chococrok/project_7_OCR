@@ -6,11 +6,8 @@ import org.springframework.stereotype.Service;
 
 import io.ab.library.webapp.wsdl.Tag;
 
-@Service
-public class TagService extends AbstractService{
+public interface TagService {
 
-	public List<Tag> getAllTags() {
-		return this.tagClient.getAllTags();
-	}
+	public List<Tag> getAllTags();
 
 }

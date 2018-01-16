@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-import io.ab.library.webapp.service.TagService;
+import io.ab.library.webapp.service.impl.TagServiceImpl;
 
 public class SearchParamInterceptor extends AbstractInterceptor {
 	
 	@Autowired
-	private TagService tagService;
+	private TagServiceImpl tagService;
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {

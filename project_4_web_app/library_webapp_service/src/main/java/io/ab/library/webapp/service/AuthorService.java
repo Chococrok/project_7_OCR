@@ -5,11 +5,8 @@ import java.util.List;
 import io.ab.library.webapp.wsdl.Author;
 import org.springframework.stereotype.Service;
 
-@Service
-public class AuthorService extends AbstractService {
+public interface AuthorService {
 	
-	public List<Author> getAuthors(){
-		return this.authorClient.getAllAuthors();
-	}
+	public List<Author> getAuthors();
 
 }
