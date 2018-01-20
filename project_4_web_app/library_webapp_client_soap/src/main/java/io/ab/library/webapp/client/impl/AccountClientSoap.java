@@ -14,7 +14,7 @@ import io.ab.library.webapp.wsdl.SignUpRequest;
 
 @Component
 public class AccountClientSoap extends AbstractClientSoap implements AccountClient {
-	
+
 	public AccountClientSoap(ObjectFactory objectFactory, Jaxb2Marshaller marshaller) {
 		super(objectFactory, marshaller);
 		// TODO Auto-generated constructor stub
@@ -24,22 +24,16 @@ public class AccountClientSoap extends AbstractClientSoap implements AccountClie
 		logger.debug("processing signIn with input: " + form.getEmail() + " " + form.getPassword());
 		SignInRequest request = new SignInRequest();
 		request.setSignInForm(form);
-		
-		SignInResponse response = (SignInResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						request,
-						null);
+
+		SignInResponse response = (SignInResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 		return response.getAccount();
 	}
-	
+
 	public Account signUp(SignUpForm form) {
 		SignUpRequest request = new SignUpRequest();
 		request.setSignUpForm(form);
-		
-		SignInResponse response = (SignInResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						request,
-						null);
+
+		SignInResponse response = (SignInResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 		return response.getAccount();
 	}
 

@@ -31,7 +31,7 @@ public class RentalClientSoap extends AbstractClientSoap implements RentalClient
 		request.setId(BigInteger.valueOf(id));
 
 		GetRentalsByUserResponse response = (GetRentalsByUserResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap", request, null);
+				.marshalSendAndReceive(request);
 		return response.getRentals();
 	}
 
@@ -42,7 +42,7 @@ public class RentalClientSoap extends AbstractClientSoap implements RentalClient
 		request.setRental(rental);
 
 		UpdateRentalResponse response = (UpdateRentalResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap", request, null);
+				.marshalSendAndReceive(request);
 		return response.getRental();
 	}
 
@@ -55,7 +55,7 @@ public class RentalClientSoap extends AbstractClientSoap implements RentalClient
 		request.setBookId(BigInteger.valueOf(bookId));
 
 		GetRentalByIdResponse response = (GetRentalByIdResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap", request, null);
+				.marshalSendAndReceive(request);
 		return response.getRental();
 	}
 

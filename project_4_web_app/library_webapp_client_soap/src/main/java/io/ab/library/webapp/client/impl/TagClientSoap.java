@@ -24,9 +24,7 @@ public class TagClientSoap extends AbstractClientSoap implements TagClient {
 		this.objectFactory = new ObjectFactory();
 
 		GetAllTagsResponse response = (GetAllTagsResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						objectFactory.createGetAllTagsRequest(null),
-						null);
+				.marshalSendAndReceive(objectFactory.createGetAllTagsRequest(null));
 		return response.getTags();
 	}
 

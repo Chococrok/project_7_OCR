@@ -24,9 +24,7 @@ public class AuthorClientSoap extends AbstractClientSoap implements AuthorClient
 		this.objectFactory = new ObjectFactory();
 
 		GetAllAuthorsResponse response = (GetAllAuthorsResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						objectFactory.createGetAllAuthorsRequest(null),
-						null);
+				.marshalSendAndReceive(objectFactory.createGetAllAuthorsRequest(null));
 		return response.getAuthors();
 	}
 

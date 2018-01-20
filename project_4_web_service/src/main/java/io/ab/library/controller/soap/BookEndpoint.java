@@ -3,6 +3,7 @@ package io.ab.library.controller.soap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -24,12 +25,17 @@ public class BookEndpoint {
 
 	@Autowired
 	private BookService bookService;
+	
+	@Value("${spring.datasource.url}")
+	private String datasourceUrl;
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllBooksRequest")
 	@ResponsePayload
 	public GetAllBooksResponse getAllBooksWithRentals() {
 		GetAllBooksResponse response = new GetAllBooksResponse();
 		log.info("processing getAllBooks");
+		
+		log.info("################## \n ###" + datasourceUrl);
 
 		this.bookService.getAllWithRentals().forEach(book -> {
 			response.getBooks().add(book);

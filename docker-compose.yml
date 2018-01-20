@@ -7,13 +7,19 @@ services:
       - POSTGRES_PASSWORD=dbuser
       - POSTGRES_DB=library
     volumes:
-      - ./create_tables.sql:/docker-entrypoint-initdb.d/1-tables.sql
-      - ./add_entities.sql:/docker-entrypoint-initdb.d/2-data.sql
-  web:
+      - "./project_4_web_service/create_tables.sql:/docker-entrypoint-initdb.d/1-tables.sql"
+      - "./project_4_web_service/add_entities.sql:/docker-entrypoint-initdb.d/2-data.sql"
+  library-web-service:
     build: ./project_4_web_service
     environment:
       - VAR_SLEEP=10 # gives time for the database to boot before the application
-      - VAR_HOST=db # set the adress host for the postgres service (without docker-compose, default is localhost)
+      - VAR_DB_HOST=db # set the adress host for the postgres service (without docker-compose, default is localhost)
     ports:
       - "8080:8080"
+  library-web-app:
+    build: ./project_4_web_app
+    environment:
+      - VAR_SERVICE_HOST=library-web-service # set the adress host for the postgres service (without docker-compose, default is localhost)
+    ports:
+      - "8081:8081"
   

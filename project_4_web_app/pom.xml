@@ -13,6 +13,14 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<log4j2.version>2.10.0</log4j2.version>
+		
+		<!-- webapp properties -->
+		<library.app.port>8081</library.app.port>
+		<library.app.context-path>/library</library.app.context-path>
+		
+		<!-- webservice properties -->
+		<library.service.host>localhost</library.service.host>
+		<library.service.port>8080</library.service.port>
 	</properties>
 
 	<dependencies>
@@ -42,8 +50,8 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<port>8081</port>
-					<path>/library</path>
+					<port>${library.app.port}</port>
+					<path>${library.app.context-path}</path>
 					<source>1.8</source>
 					<target>1.8</target>
 					<uriEncoding>UTF-8</uriEncoding>
@@ -87,7 +95,7 @@
 							<generateDirectory>${project.basedir}/generated/</generateDirectory>
 							<schemas>
 								<schema>
-									<url>http://localhost:8080/soap/library.wsdl</url>
+									<url>http://${library.service.host}:${library.service.port}/soap/library.wsdl</url>
 								</schema>
 							</schemas>
 						</configuration>

@@ -30,9 +30,7 @@ public class BookClientSoap extends AbstractClientSoap implements BookClient {
 		this.objectFactory = new ObjectFactory();
 
 		GetAllBooksResponse response = (GetAllBooksResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						objectFactory.createGetAllBooksRequest(null),
-						null);
+				.marshalSendAndReceive(objectFactory.createGetAllBooksRequest(null));
 		return response.getBooks();
 	}
 
@@ -43,9 +41,7 @@ public class BookClientSoap extends AbstractClientSoap implements BookClient {
 		searchRequest.setSearch(search);
 		
 		SearchBooksResponse response = (SearchBooksResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						searchRequest,
-						null);
+				.marshalSendAndReceive(searchRequest);
 		return response.getBooks();
 	}
 
@@ -56,9 +52,7 @@ public class BookClientSoap extends AbstractClientSoap implements BookClient {
 		searchRequest.setSearch(search);
 		
 		SearchBooksResponse response = (SearchBooksResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						searchRequest,
-						null);
+				.marshalSendAndReceive(searchRequest);
 		return response.getBooks();
 	}
 
@@ -69,9 +63,7 @@ public class BookClientSoap extends AbstractClientSoap implements BookClient {
 		searchRequest.setSearch(search);
 		
 		SearchBooksResponse response = (SearchBooksResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						searchRequest,
-						null);
+				.marshalSendAndReceive(searchRequest);
 		return response.getBooks();
 	}
 
@@ -82,9 +74,7 @@ public class BookClientSoap extends AbstractClientSoap implements BookClient {
 		searchRequest.setSearch(search);
 		
 		SearchBooksResponse response = (SearchBooksResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						searchRequest,
-						null);
+				.marshalSendAndReceive(searchRequest);
 		return response.getBooks();
 	}
 

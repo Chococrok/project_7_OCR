@@ -1,5 +1,6 @@
 package io.ab.library;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection;
 @EnableWs
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
+	
 	@Bean
 	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
