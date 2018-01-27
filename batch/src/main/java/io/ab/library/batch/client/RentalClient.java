@@ -24,7 +24,7 @@ public class RentalClient extends WebServiceGatewaySupport {
 	public RentalClient(Jaxb2Marshaller marshaller, ObjectFactory objectFactory) {
 		super();
 		this.objectFactory = objectFactory;
-		this.setDefaultUri("http://localhost:8080/soap");
+		this.setDefaultUri("http://localhost:8000/soap");
 		this.setMarshaller(marshaller);
 		this.setUnmarshaller(marshaller);
 	}
@@ -33,9 +33,7 @@ public class RentalClient extends WebServiceGatewaySupport {
 		log.info("performing GetAllRentalsRequest");
 
 		GetAllRentalsResponse response = (GetAllRentalsResponse) getWebServiceTemplate()
-				.marshalSendAndReceive("http://localhost:8080/soap",
-						this.objectFactory.createGetAllRentalsRequest(null),
-						null);
+				.marshalSendAndReceive(this.objectFactory.createGetAllRentalsRequest(null));
 
 		return response.getRentals();
 	}

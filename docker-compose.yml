@@ -3,9 +3,9 @@ services:
   db:
     image: "postgres:9"
     environment:
-      - POSTGRES_USER=dbuser
-      - POSTGRES_PASSWORD=dbuser
-      - POSTGRES_DB=library
+      - POSTGRES_USER=${ENV_DB_USER_NAME}
+      - POSTGRES_PASSWORD=${ENV_DB_USER_PASSWORD}
+      - POSTGRES_DB=${ENV_DB_NAME}
     volumes:
       - "./project_4_web_service/create_tables.sql:/docker-entrypoint-initdb.d/1-tables.sql"
       - "./project_4_web_service/add_entities.sql:/docker-entrypoint-initdb.d/2-data.sql"
@@ -13,13 +13,18 @@ services:
     build: ./project_4_web_service
     environment:
       - VAR_SLEEP=10 # gives time for the database to boot before the application
-      - VAR_DB_HOST=db # set the adress host for the postgres service (without docker-compose, default is localhost)
+      - VAR_POSTGRES_SERVICE=db # set the postgres service name (without docker-compose, default is localhost)
+      - VAR_DB_USER_NAME=${ENV_DB_USER_NAME} # set the user name for db from .env
+      - VAR_DB_USER_PASSWORD=${ENV_DB_USER_PASSWORD} # set the user password for db from .env
+      - VAR_WEB_SERVICE_PORT=${ENV_WEB_SERVICE_PORT}
     ports:
-      - "8080:8080"
+      - "${ENV_WEB_SERVICE_PORT}:${ENV_WEB_SERVICE_PORT}"
   library-web-app:
     build: ./project_4_web_app
     environment:
-      - VAR_SERVICE_HOST=library-web-service # set the adress host for the postgres service (without docker-compose, default is localhost)
+      - VAR_WEB_SERVICE=library-web-service # set the adress host for the postgres service (without docker-compose, default is localhost)
+      - VAR_WEB_SERVICE_PORT=${ENV_WEB_SERVICE_PORT}
+      - VAR_WEB_APP_PORT=${ENV_WEB_APP_PORT}
     ports:
-      - "8081:8081"
+      - "${ENV_WEB_APP_PORT}:${ENV_WEB_APP_PORT}"
   
