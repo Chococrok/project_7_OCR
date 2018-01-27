@@ -32,9 +32,9 @@ INSERT INTO book_tag (book_id, tag_id)
 
 INSERT INTO account (first_name, last_name, email, password) 
 	VALUES
-	('bruno', 'zilio', 'bruno.zilio@g.com', 'bruno'),
-	('yoann', 'dubois', 'yoann.dubois@g.com', 'yoann'),
-	('arnaud', 'barbaria', 'arnaud.barbaria@gmail.com', 'arnaud');
+	('bruno', 'zilio', 'bruno@g.com', 'bruno'),
+	('yoann', 'dubois', 'yoann@g.com', 'yoann'),
+	('arnaud', 'barbaria', 'arnaud@g.com', 'arnaud');
 	
 INSERT INTO rental (account_id, book_id, dead_line) 
 	VALUES 

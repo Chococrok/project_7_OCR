@@ -39,7 +39,9 @@ public class ReminderService {
 								+ rental.getBook().getAuthor().getLastName()));
 				try {
 					this.mailSender.send(mailMsg);
+					System.out.println("### email sent to: " + mailMsg.getTo()[0] + " ###");
 				} catch (MailException ex) {
+					System.err.println("### an error occured while sending email !! ###");
 					System.err.println(ex.getMessage());
 				}
 			}
