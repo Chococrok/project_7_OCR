@@ -7,9 +7,7 @@ services:
       - POSTGRES_PASSWORD=${ENV_DB_USER_PASSWORD}
       - POSTGRES_DB=${ENV_DB_NAME}
     volumes:
-      - "./project_4_web_service/data_base/create_tables.sql:/docker-entrypoint-initdb.d/0-tables.sql"
-      - "./project_4_web_service/data_base/add_entities.sql:/docker-entrypoint-initdb.d/9999-data.sql"
-      - "./project_4_web_service/data_base/migration/*.sql:/docker-entrypoint-initdb.d"
+      - "./data_base/script:/docker-entrypoint-initdb.d:ro"
   library-web-service:
     build: ./project_4_web_service
     environment:
