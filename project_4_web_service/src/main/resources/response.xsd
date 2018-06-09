@@ -75,5 +75,22 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="getLastReservationResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="reservation" type="tns:reservation" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="addReservationResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="reservation" type="tns:reservation" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
 
 </xs:schema>

@@ -65,7 +65,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:element name="getRentalByIdRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -74,11 +74,28 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:element name="updateRentalRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="rental" type="tns:rental" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getLastReservationRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="book" type="tns:book" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addReservationRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accountId" type="xs:int" />
+				<xs:element name="bookId" type="xs:int" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

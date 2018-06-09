@@ -46,6 +46,11 @@ public class Book implements Serializable {
 
 	public Book() {
 	}
+	
+	public Book(Integer id) {
+		this.id = id;
+	}
+	
 
 	public Integer getId() {
 		return this.id;
