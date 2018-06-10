@@ -24,8 +24,8 @@ services:
     build: ./project_4_web_app
     environment:
       - VAR_WEB_SERVICE=library-web-service # set the adress host for the postgres service (without docker-compose, default is localhost)
-      - VAR_WEB_SERVICE_PORT=${ENV_WEB_SERVICE_PORT}
-      - VAR_WEB_APP_PORT=${ENV_WEB_APP_PORT}
+      - ENV_WEB_SERVICE_PORT
+      - ENV_WEB_APP_PORT
     ports:
       - "${ENV_WEB_APP_PORT}:${ENV_WEB_APP_PORT}"
   
