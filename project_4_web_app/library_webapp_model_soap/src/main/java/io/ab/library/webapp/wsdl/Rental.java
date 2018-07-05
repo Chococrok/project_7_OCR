@@ -36,8 +36,9 @@ import com.google.gson.Gson;
  *         &lt;element name="account" type="{http://ab.io/library}account" minOccurs="0"/&gt;
  *         &lt;element name="book" type="{http://ab.io/library}book" minOccurs="0"/&gt;
  *         &lt;element name="deadLine" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="extended" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://ab.io/library}rentalPK" minOccurs="0"/&gt;
- *         &lt;element name="isExtended" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="rentalOver" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -52,7 +53,8 @@ import com.google.gson.Gson;
     "book",
     "deadLine",
     "id",
-    "extended"
+    "extended",
+    "rentalOver"
 })
 public class Rental {
 
@@ -62,6 +64,7 @@ public class Rental {
     protected XMLGregorianCalendar deadLine;
     protected RentalPK id;
     protected Boolean extended;
+    protected Boolean rentalOver;
 
     /**
      * Obtient la valeur de la propriété account.
@@ -201,6 +204,18 @@ public class Rental {
 	public void setExtended(Boolean extended) {
 		this.extended = extended;
 	}
+	
+	public Boolean getRentalOver() {
+        return rentalOver;
+    }
+
+    public Boolean isRentalOver() {
+        return rentalOver;
+    }
+
+    public void setRentalOver(Boolean value) {
+        this.rentalOver = value;
+    }
     
     public String toJson() {
     	Gson gson = new Gson();

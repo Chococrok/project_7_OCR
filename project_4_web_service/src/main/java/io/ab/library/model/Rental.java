@@ -4,8 +4,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.Date;
 
 /**
@@ -26,6 +24,9 @@ public class Rental implements Serializable {
 
 	@Column(name = "is_extended")
 	private Boolean extended;
+	
+	@Transient
+	private Boolean rentalOver;
 
 	// bi-directional many-to-one association to Account
 	@ManyToOne
@@ -78,6 +79,14 @@ public class Rental implements Serializable {
 
 	public void setBook(Book book) {
 		this.book = book;
+	}
+
+	public Boolean getRentalOver() {
+		return rentalOver;
+	}
+
+	public void setRentalOver(Boolean rentalOver) {
+		this.rentalOver = rentalOver;
 	}
 
 }
