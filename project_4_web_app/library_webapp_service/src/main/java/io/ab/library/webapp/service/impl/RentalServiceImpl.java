@@ -24,6 +24,11 @@ public class RentalServiceImpl extends AbstractService implements RentalService 
 			return rental;
 		}
 		
+		if(rental.isRentalOver()) {
+			logger.debug("rentalOver = " + rental.isRentalOver() + " returning");
+			return rental;
+		}
+		
 		GregorianCalendar calendar = rental.getDeadLine().toGregorianCalendar();
 		calendar.add(Calendar.WEEK_OF_MONTH, durationInWeek);
 		rental.setDeadLine(calendar);
