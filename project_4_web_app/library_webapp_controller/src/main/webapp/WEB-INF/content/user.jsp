@@ -44,11 +44,25 @@
 							<input type="hidden" name="rental.id.bookId"
 								value="${ rental.id.bookId }" />
 							<div class="d-flex flex-column">
-								<label for="durationInput">${ rental.extended ? 'Vous avez déjà augmenter la durée de votre prêt' : 'Nombre de semaine à ajouter:' }</label>
+								<c:choose>
+									<c:when test="${rental.extended}">
+										<label for="durationInput">Vous avez déjà augmenter la
+											durée de votre prêt</label>
+									</c:when>
+									<c:when test="${rental.rentalOver}">
+										<label for="durationInput">Oups ! Vous auriez déjà du
+											rendre ce livre !</label>
+									</c:when>
+									<c:otherwise>
+										<label for="durationInput">Nombre de semaine à
+											ajouter:</label>
+									</c:otherwise>
+								</c:choose>
 								<input id="durationInput" type="number" name="durationInWeek"
-									min="1" max="4" ${ rental.extended ? 'disabled' : '' }>
+									min="1" max="4" ${ rental.extended || rental.rentalOver ? 'disabled' : '' }>
 								<button class="btn btn-primary"
-									${ rental.extended ? 'disabled' : '' }>Allonger mon prêt</button>
+									${ rental.extended || rental.rentalOver ? 'disabled' : '' }>Allonger mon
+									prêt</button>
 							</div>
 						</form>
 					</li>

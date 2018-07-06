@@ -1,6 +1,7 @@
 package io.ab.library.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,10 @@ import io.ab.library.service.RentalService;
 
 @Service
 public class RentalServiceImpl implements RentalService {
-	
+
 	@Autowired
 	private RentalRepository rentalRepository;
-	
+
 	public Iterable<Book> addRentalsToBooks(Iterable<Book> books) {
 		books.forEach(book -> {
 			try {
@@ -30,26 +31,28 @@ public class RentalServiceImpl implements RentalService {
 		});
 		return books;
 	}
-	
+
 	public Iterable<Rental> findByUser(int id) {
 		Account account = new Account();
 		account.setId(id);
+		Iterable<Rental> rentals = new ArrayList<Rental>();
+		
 		try {
-			return this.rentalRepository.findAllByAccount(account);
+			rentals = this.rentalRepository.findAllByAccount(account);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new ArrayList<Rental>();
 		}
+		return this.checkDeadLine(rentals);
 	}
-	
+
 	public Rental update(Rental rental) {
 		return this.rentalRepository.save(rental);
 	}
 
 	@Override
 	public Iterable<Rental> findAll() {
-		return this.rentalRepository.findAll();
+		return this.checkDeadLine(this.rentalRepository.findAll());
 	}
 
 	@Override
@@ -57,7 +60,25 @@ public class RentalServiceImpl implements RentalService {
 		RentalPK key = new RentalPK();
 		key.setAccountId(accountId);
 		key.setBookId(bookId);
-		return this.rentalRepository.findOne(key);
+		return this.checkDeadLine(this.rentalRepository.findOne(key));
+	}
+	
+	private Iterable<Rental> checkDeadLine(Iterable<Rental> rentals) {		
+		rentals.forEach(rental -> {
+			boolean over = rental.getDeadLine().before(new Date());
+			rental.setRentalOver(over);		
+		});
+		
+		return rentals;
+	}
+	
+	private Rental checkDeadLine(Rental rental) {
+		if(rental != null) {
+			boolean over = rental.getDeadLine().before(new Date());
+			rental.setRentalOver(over);			
+		}
+		
+		return rental;
 	}
 
 }
