@@ -1,5 +1,6 @@
 package io.ab.library.service.impl;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -37,9 +38,16 @@ public class ReservationServiceImpl implements ReservationService {
 		boolean reservationExists = this.reservationRepository.exists(new ReservationPK(accountId, bookId));
 		boolean otherReservation = this.reservationRepository.findAllByBook(new Book(bookId)).size() > 0;
 		
+		// If there is no other reservation it means that the user is the first one.
+		// Therefore the deadline is set.
+		
 		if (!reservationExists && !otherReservation) {
 			//TODO set date at d+2
-			return this.reservationRepository.save(new Reservation(accountId, bookId, new Date()));			
+			int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+			Calendar deadLine = Calendar.getInstance();
+			deadLine.set(Calendar.DAY_OF_MONTH, currentDay + 2);
+			
+			return this.reservationRepository.save(new Reservation(accountId, bookId, deadLine.getTime()));			
 		} else if (!reservationExists) {
 			return this.reservationRepository.save(new Reservation(accountId, bookId));
 		}else {
