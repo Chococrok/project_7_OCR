@@ -60,6 +60,7 @@
       <xs:element minOccurs="0" name="deadLine" type="xs:dateTime"/>
       <xs:element minOccurs="0" name="extended" type="xs:boolean"/>
       <xs:element minOccurs="0" name="id" type="tns:rentalPK"/>
+      <xs:element minOccurs="0" name="rentalOver" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
 
