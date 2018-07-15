@@ -4,9 +4,11 @@
 
 	<xs:include schemaLocation="dto.xsd" />
 	<xs:include schemaLocation="model.xsd" />
+	<xs:include schemaLocation="request-schema/book-request.xsd" />
+	<xs:include schemaLocation="request-schema/rental-request.xsd" />
+	
 
 	<xs:element name="getAllAuthorsRequest" />
-	<xs:element name="getAllBooksRequest" />
 	<xs:element name="getAllTagsRequest" />
 	<xs:element name="getAllRentalsRequest" />
 
@@ -22,63 +24,6 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="signUpForm" type="tns:SignUpForm" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="searchBooksByBookRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="search" type="xs:string" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="searchBooksByAuthorRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="search" type="xs:string" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="searchBooksByPublisherRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="search" type="xs:string" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="searchBooksByTagRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="search" type="xs:string" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="getRentalsByUserRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="id" type="xs:integer" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="getRentalByIdRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="accountId" type="xs:integer" />
-				<xs:element name="bookId" type="xs:integer" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="updateRentalRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="rental" type="tns:rental" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

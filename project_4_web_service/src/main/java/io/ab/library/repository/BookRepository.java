@@ -22,5 +22,8 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 	
 	@Query("SELECT book FROM Book book WHERE (SELECT tag.id FROM Tag tag WHERE tag.value LIKE LOWER(CONCAT('%', ?1,'%'))) MEMBER OF book.tags")
 	List<Book> findByTagValueContaining(String value) throws Exception;
+	
+	@Query("SELECT b.copy > COUNT(r) FROM Rental r JOIN r.book b WHERE b.id = ?1 GROUP BY b.id")
+	boolean isAvailable(Integer bookId);
 
 }

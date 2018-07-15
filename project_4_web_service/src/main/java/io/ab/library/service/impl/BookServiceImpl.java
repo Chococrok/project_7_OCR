@@ -18,25 +18,29 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	private BookRepository bookRepository;
 	@Autowired
-	private RentalService rentalRepository;
+	private RentalService rentalService;
 
+	@Override
 	public Iterable<Book> getAll() {
 		return this.bookRepository.findAll();
 	}
-
+	
+	@Override
 	public Iterable<Book> getAllWithRentals() {
-		return this.rentalRepository.addRentalsToBooks(this.bookRepository.findAll());
+		return this.rentalService.addRentalsToBooks(this.bookRepository.findAll());
 	}
 
+	@Override
 	public List<Book> findByNameContaining(String name) {
-		return (List<Book>) this.rentalRepository
+		return (List<Book>) this.rentalService
 				.addRentalsToBooks(this.bookRepository.findByNameContainingIgnoreCase(name));
 	}
 
+	@Override
 	public List<Book> findByAuthorFirstNameOrLastNameContaining(String name) {
 		List<Book> books = null;
 		try {
-			books = (List<Book>) this.rentalRepository
+			books = (List<Book>) this.rentalService
 					.addRentalsToBooks(this.bookRepository.findByAuthorFirstNameOrLastNameContaining(name));
 			this.bookRepository.findByAuthorFirstNameOrLastNameContaining(name);
 		} catch (Exception e) {
@@ -50,7 +54,7 @@ public class BookServiceImpl implements BookService {
 	public List<Book> findByPublisherNameContaining(String name) {
 		List<Book> books = null;
 		try {
-			books = (List<Book>) this.rentalRepository
+			books = (List<Book>) this.rentalService
 					.addRentalsToBooks(this.bookRepository.findByPublisherNameContaining(name));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -63,13 +67,18 @@ public class BookServiceImpl implements BookService {
 	public List<Book> findByTagValueContaining(String value) {
 		List<Book> books = null;
 		try {
-			books = (List<Book>) this.rentalRepository
+			books = (List<Book>) this.rentalService
 					.addRentalsToBooks(this.bookRepository.findByTagValueContaining(value));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return books;
+	}
+	
+	@Override
+	public boolean isAvailable(Integer bookId) {
+		return this.bookRepository.isAvailable(bookId);
 	}
 
 }

@@ -1,0 +1,23 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ab.io/library" targetNamespace="http://ab.io/library"
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="../model.xsd"/>
+	
+	<xs:element name="getAllBooksResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="books" type="tns:book" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="searchBooksResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="books" type="tns:book" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+
+</xs:schema>

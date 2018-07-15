@@ -8,10 +8,13 @@ import javax.xml.ws.soap.SOAPFaultException;
 
 import org.springframework.stereotype.Service;
 
-@Service
-public class FaultService {
+import io.ab.library.service.FaultService;
 
-	void sendNewClientSoapFault(String msg) throws SOAPException, SOAPFaultException {
+@Service
+public class FaultServiceImpl implements FaultService {
+
+	@Override
+	public void sendNewClientSoapFault(String msg) throws SOAPException, SOAPFaultException {
 		SOAPFactory soapFactory = SOAPFactory.newInstance();
 		SOAPFault soapFault = soapFactory.createFault(msg,
 				new QName("http://schemas.xmlsoap.org/soap/envelope/", "Client"));

@@ -1,0 +1,39 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ab.io/library" targetNamespace="http://ab.io/library"
+	elementFormDefault="qualified">
+	
+	<xs:element name="getAllBooksRequest" />
+	
+	<xs:element name="searchBooksByBookRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="search" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="searchBooksByAuthorRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="search" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="searchBooksByPublisherRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="search" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="searchBooksByTagRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="search" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>	

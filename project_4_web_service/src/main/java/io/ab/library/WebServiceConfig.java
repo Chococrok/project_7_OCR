@@ -1,6 +1,6 @@
 package io.ab.library;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.apache.ws.commons.schema.resolver.DefaultURIResolver;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -40,6 +40,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	@Bean
 	public CommonsXsdSchemaCollection librarySchema() {
 		CommonsXsdSchemaCollection librarySchema = new CommonsXsdSchemaCollection();
+		librarySchema.setUriResolver(new DefaultURIResolver());
 		Resource[] xsdResources = {
 				new ClassPathResource("model.xsd"),
 				new ClassPathResource("request.xsd"),

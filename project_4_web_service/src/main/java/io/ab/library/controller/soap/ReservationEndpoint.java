@@ -1,5 +1,7 @@
 package io.ab.library.controller.soap;
 
+import javax.xml.soap.SOAPException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -22,7 +24,7 @@ public class ReservationEndpoint {
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "addReservationRequest")
 	@ResponsePayload
 	public AddReservationResponse addReservation(@RequestPayload AddReservationRequest request)
-			throws AlreadyExistsException {
+			throws AlreadyExistsException, SOAPException {
 		AddReservationResponse response = new AddReservationResponse();
 		System.out.println("processing addReservationRequest");
 

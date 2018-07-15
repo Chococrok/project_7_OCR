@@ -14,4 +14,5 @@ public interface BookService {
 	List<Book> findByAuthorFirstNameOrLastNameContaining(String name);
 	List<Book> findByPublisherNameContaining(String name);
 	List<Book> findByTagValueContaining(String value);
+	boolean isAvailable(Integer bookId);
 }

@@ -1,0 +1,32 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ab.io/library" targetNamespace="http://ab.io/library"
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="../model.xsd" />
+	
+	<xs:element name="getRentalsByUserRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getRentalByIdRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accountId" type="xs:integer" />
+				<xs:element name="bookId" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateRentalRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rental" type="tns:rental" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

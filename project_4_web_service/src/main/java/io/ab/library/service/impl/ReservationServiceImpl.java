@@ -1,7 +1,9 @@
 package io.ab.library.service.impl;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
+
+import javax.xml.soap.SOAPException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,9 @@ import io.ab.library.model.Book;
 import io.ab.library.model.Reservation;
 import io.ab.library.model.ReservationPK;
 import io.ab.library.repository.ReservationRepository;
+import io.ab.library.service.BookService;
+import io.ab.library.service.FaultService;
+import io.ab.library.service.RentalService;
 import io.ab.library.service.ReservationService;
 import io.ab.library.util.exception.AlreadyExistsException;
 
@@ -22,10 +27,20 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	@Autowired
 	private ReservationRepository reservationRepository;
+	
+	@Autowired 
+	private BookService bookService;
+	
+	@Autowired 
+	private RentalService rentalService;
+	
+	@Autowired 
+	private FaultService faultService;
 
 	@Override
-	public Reservation findLastReservation(Book book) {
+	public Reservation findLastReservation(int bookId) {
 		try {
+			Book book = new Book(bookId);
 			return reservationRepository.findFirstByBookOrderByAccountIdAsc(book);			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -34,27 +49,59 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public Reservation insertNewReservation(int accountId, int bookId) throws AlreadyExistsException {
+	public Reservation insertNewReservation(int accountId, int bookId) throws AlreadyExistsException, SOAPException {
+		
+		
 		boolean reservationExists = this.reservationRepository.exists(new ReservationPK(accountId, bookId));
-		boolean otherReservation = this.reservationRepository.findAllByBook(new Book(bookId)).size() > 0;
+		boolean userIsAlreadyRenting = this.rentalService.exists(accountId, bookId);
+		boolean otherReservation = this.reservationRepository.findAllByBook(bookId).size() > 0;
+		boolean maxResrvationReached = 
+		boolean available = this.bookService.isAvailable(bookId);
+		
+		Reservation newReservation;
+		
+		if (available) {
+			String faultMessage = "trying to book an an available ressource";
+			log.error(faultMessage);
+			this.faultService.sendNewClientSoapFault(faultMessage);
+		}
+		
+		if (reservationExists || userIsAlreadyRenting) {
+			String faultMessage = "User already booked or is already renting this book";
+			log.error(faultMessage);
+			this.faultService.sendNewClientSoapFault(faultMessage);
+		}
 		
 		// If there is no other reservation it means that the user is the first one.
 		// Therefore the deadline is set.
 		
-		if (!reservationExists && !otherReservation) {
+		if (!otherReservation) {
 			//TODO set date at d+2
 			int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 			Calendar deadLine = Calendar.getInstance();
 			deadLine.set(Calendar.DAY_OF_MONTH, currentDay + 2);
 			
-			return this.reservationRepository.save(new Reservation(accountId, bookId, deadLine.getTime()));			
-		} else if (!reservationExists) {
-			return this.reservationRepository.save(new Reservation(accountId, bookId));
-		}else {
-			AlreadyExistsException e = new AlreadyExistsException("reservation");
-			log.warn(e.getMessage() + " accountId: " + accountId + " bookId: " + bookId);
-			throw e;
+			newReservation = new Reservation(accountId, bookId, deadLine.getTime());			
+		} else {
+			newReservation = new Reservation(accountId, bookId);
 		}
+		
+		return this.reservationRepository.save(newReservation);
+	}
+
+	@Override
+	public List<Reservation> findAllByAccount(int accountId) {
+		return this.reservationRepository.findAllByAccount(accountId);
+	}
+	
+	@Override
+	public List<Reservation> findAllByBook(int bookId) {
+		return this.reservationRepository.findAllByBook(bookId);
+	}
+
+	@Override
+	public Reservation findOneByAccountAndByBook(int accountId, int bookId) {
+		return this.reservationRepository.findOneByAccountAndByBook(accountId, bookId);
 	}
 
 

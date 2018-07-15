@@ -3,19 +3,15 @@
 	elementFormDefault="qualified">
 	
 	<xs:include schemaLocation="model.xsd"/>
+	<xs:include schemaLocation="response-schema/rental-response.xsd"/>
+	<xs:include schemaLocation="response-schema/reservation-response.xsd"/>
+	<xs:include schemaLocation="response-schema/book-response.xsd"/>
+	
 
 	<xs:element name="getAllAuthorsResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="authors" type="tns:author" maxOccurs="unbounded" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="getAllBooksResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="books" type="tns:book" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -26,23 +22,7 @@
 				<xs:element name="tags" type="tns:tag" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="getAllRentalsResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="rentals" type="tns:rental" maxOccurs="unbounded" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="searchBooksResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="books" type="tns:book" minOccurs="0" maxOccurs="unbounded" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+	</xs:element>	
 	
 	<xs:element name="signInResponse">
 		<xs:complexType>
@@ -50,47 +30,6 @@
 				<xs:element name="account" type="tns:account"/>
 			</xs:sequence>
 		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="getRentalsByUserResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="rentals" type="tns:rental" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="getRentalByIdResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="rental" type="tns:rental"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="updateRentalResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="rental" type="tns:rental" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="getLastReservationResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="reservation" type="tns:reservation" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="addReservationResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="reservation" type="tns:reservation" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
+	</xs:element>	
 
 </xs:schema>
