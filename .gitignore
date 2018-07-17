@@ -1,5 +1,7 @@
 *.mdj
 *.architect
 *.architect~
+*.idea
+*.iml
 target/
 generated/

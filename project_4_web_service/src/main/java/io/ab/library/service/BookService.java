@@ -8,7 +8,8 @@ import io.ab.library.model.Book;
 
 public interface BookService {
 
-	Iterable<Book> getAll();
+    Book findOne(Integer bookId);
+    Iterable<Book> getAll();
 	Iterable<Book> getAllWithRentals();
 	List<Book> findByNameContaining(String name);
 	List<Book> findByAuthorFirstNameOrLastNameContaining(String name);

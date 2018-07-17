@@ -10,7 +10,7 @@ import io.ab.library.model.Book;
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
 
-public interface BookRepository extends CrudRepository<Book, Long> {
+public interface BookRepository extends CrudRepository<Book, Integer> {
 
 	List<Book> findByNameContainingIgnoreCase(String name);
 

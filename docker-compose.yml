@@ -10,6 +10,7 @@ services:
       - "./data_base/script:/docker-entrypoint-initdb.d:ro"
     ports:
       - 5432:5432
+
   library-web-service:
     build: ./project_4_web_service
     environment:
@@ -20,6 +21,7 @@ services:
       - ENV_WEB_SERVICE_PORT
     ports:
       - "${ENV_WEB_SERVICE_PORT}:${ENV_WEB_SERVICE_PORT}"
+      
   library-web-app:
     build: ./project_4_web_app
     environment:

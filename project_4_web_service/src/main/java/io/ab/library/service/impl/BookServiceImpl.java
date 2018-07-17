@@ -21,6 +21,11 @@ public class BookServiceImpl implements BookService {
 	private RentalService rentalService;
 
 	@Override
+	public Book findOne(Integer bookId) {
+		return this.bookRepository.findOne(bookId);
+	}
+
+	@Override
 	public Iterable<Book> getAll() {
 		return this.bookRepository.findAll();
 	}

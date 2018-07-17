@@ -50,18 +50,24 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	public Reservation insertNewReservation(int accountId, int bookId) throws AlreadyExistsException, SOAPException {
-		
-		
+		List<Reservation> currentBookReservations = this.reservationRepository.findAllByBook(bookId);
+		Book involvedBook = this.bookService.findOne(bookId);
+		Reservation newReservation;
+
 		boolean reservationExists = this.reservationRepository.exists(new ReservationPK(accountId, bookId));
 		boolean userIsAlreadyRenting = this.rentalService.exists(accountId, bookId);
 		boolean otherReservation = this.reservationRepository.findAllByBook(bookId).size() > 0;
-		boolean maxResrvationReached = 
+		boolean maxReservationReached = currentBookReservations.size() * 2 >= involvedBook.getCopy();
 		boolean available = this.bookService.isAvailable(bookId);
-		
-		Reservation newReservation;
-		
+
+		if (maxReservationReached) {
+			String faultMessage = "max reservation reached";
+			log.error(faultMessage);
+			this.faultService.sendNewClientSoapFault(faultMessage);
+		}
+
 		if (available) {
-			String faultMessage = "trying to book an an available ressource";
+			String faultMessage = "trying to book an an available resource";
 			log.error(faultMessage);
 			this.faultService.sendNewClientSoapFault(faultMessage);
 		}
@@ -71,12 +77,11 @@ public class ReservationServiceImpl implements ReservationService {
 			log.error(faultMessage);
 			this.faultService.sendNewClientSoapFault(faultMessage);
 		}
-		
+
 		// If there is no other reservation it means that the user is the first one.
 		// Therefore the deadline is set.
 		
 		if (!otherReservation) {
-			//TODO set date at d+2
 			int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 			Calendar deadLine = Calendar.getInstance();
 			deadLine.set(Calendar.DAY_OF_MONTH, currentDay + 2);
