@@ -2,8 +2,6 @@ package io.ab.library.service;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
-
 import io.ab.library.model.Book;
 
 public interface BookService {

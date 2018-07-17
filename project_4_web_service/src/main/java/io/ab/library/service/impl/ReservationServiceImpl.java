@@ -8,6 +8,7 @@ import javax.xml.soap.SOAPException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Service;
 
 import io.ab.library.model.Book;
@@ -24,25 +25,28 @@ import io.ab.library.util.exception.AlreadyExistsException;
 public class ReservationServiceImpl implements ReservationService {
 
 	private static final Logger log = LoggerFactory.getLogger(AccountServiceImpl.class);
-	
+
 	@Autowired
 	private ReservationRepository reservationRepository;
-	
-	@Autowired 
+
+	@Autowired
 	private BookService bookService;
-	
-	@Autowired 
+
+	@Autowired
 	private RentalService rentalService;
-	
-	@Autowired 
+
+	@Autowired
 	private FaultService faultService;
 
+	@Autowired
+	private ThreadPoolTaskScheduler threadPoolTaskScheduler;
+
 	@Override
-	public Reservation findLastReservation(int bookId) {
+	public Reservation findFirstReservation(int bookId) {
 		try {
 			Book book = new Book(bookId);
-			return reservationRepository.findFirstByBookOrderByAccountIdAsc(book);			
-		} catch(Exception e) {
+			return reservationRepository.findFirstByBookOrderByAccountIdAsc(book);
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -57,11 +61,11 @@ public class ReservationServiceImpl implements ReservationService {
 		boolean reservationExists = this.reservationRepository.exists(new ReservationPK(accountId, bookId));
 		boolean userIsAlreadyRenting = this.rentalService.exists(accountId, bookId);
 		boolean otherReservation = this.reservationRepository.findAllByBook(bookId).size() > 0;
-		boolean maxReservationReached = currentBookReservations.size() * 2 >= involvedBook.getCopy();
+		boolean maxReservationReached = currentBookReservations.size() >= involvedBook.getCopy() * 2;
 		boolean available = this.bookService.isAvailable(bookId);
 
-		if (maxReservationReached) {
-			String faultMessage = "max reservation reached";
+		if (reservationExists || userIsAlreadyRenting) {
+			String faultMessage = "User already booked or is already renting this book";
 			log.error(faultMessage);
 			this.faultService.sendNewClientSoapFault(faultMessage);
 		}
@@ -71,26 +75,28 @@ public class ReservationServiceImpl implements ReservationService {
 			log.error(faultMessage);
 			this.faultService.sendNewClientSoapFault(faultMessage);
 		}
-		
-		if (reservationExists || userIsAlreadyRenting) {
-			String faultMessage = "User already booked or is already renting this book";
+
+		if (maxReservationReached) {
+			String faultMessage = "max reservation reached";
 			log.error(faultMessage);
 			this.faultService.sendNewClientSoapFault(faultMessage);
 		}
 
 		// If there is no other reservation it means that the user is the first one.
 		// Therefore the deadline is set.
-		
+
 		if (!otherReservation) {
-			int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+			int currentDay = Calendar.getInstance().get(Calendar.MINUTE);
 			Calendar deadLine = Calendar.getInstance();
-			deadLine.set(Calendar.DAY_OF_MONTH, currentDay + 2);
-			
-			newReservation = new Reservation(accountId, bookId, deadLine.getTime());			
+			deadLine.set(Calendar.MINUTE, currentDay + 1);
+
+			newReservation = new Reservation(accountId, bookId, deadLine.getTime());
+
+			threadPoolTaskScheduler.schedule(new ReservationUpdater(this, newReservation), deadLine.getTime());
 		} else {
 			newReservation = new Reservation(accountId, bookId);
 		}
-		
+
 		return this.reservationRepository.save(newReservation);
 	}
 
@@ -98,7 +104,7 @@ public class ReservationServiceImpl implements ReservationService {
 	public List<Reservation> findAllByAccount(int accountId) {
 		return this.reservationRepository.findAllByAccount(accountId);
 	}
-	
+
 	@Override
 	public List<Reservation> findAllByBook(int bookId) {
 		return this.reservationRepository.findAllByBook(bookId);
@@ -109,5 +115,39 @@ public class ReservationServiceImpl implements ReservationService {
 		return this.reservationRepository.findOneByAccountAndByBook(accountId, bookId);
 	}
 
+	@Override
+	public Reservation updateOne(Reservation reservation) {
+		return this.reservationRepository.save(reservation);
+	}
 
+	@Override
+	public void deleteOne(ReservationPK id) {
+		this.reservationRepository.delete(id);
+	}
+
+	private class ReservationUpdater implements Runnable {
+
+		private ReservationService reservationService;
+		private Reservation previousFirstReservation;
+
+		public ReservationUpdater(ReservationService reservationService, Reservation reservation) {
+			this.reservationService = reservationService;
+			this.previousFirstReservation = reservation;
+		}
+
+		@Override
+		public void run() {
+			this.reservationService.deleteOne(this.previousFirstReservation.getId());
+
+			int bookId = this.previousFirstReservation.getId().getBookId();
+			Reservation currentFirstResrvation = this.reservationService.findFirstReservation(bookId);
+
+			int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+			Calendar deadLine = Calendar.getInstance();
+			deadLine.set(Calendar.DAY_OF_MONTH, currentDay + 2);
+
+			currentFirstResrvation.setReservationEnd(deadLine.getTime());
+			this.reservationService.updateOne(currentFirstResrvation);
+		}
+	}
 }
