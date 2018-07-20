@@ -5,6 +5,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -16,6 +17,7 @@ import org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection;
 
 @EnableWs
 @Configuration
+@PropertySource("classpath:bootstrap.properties")
 public class WebServiceConfig extends WsConfigurerAdapter {
 	
 	@Bean

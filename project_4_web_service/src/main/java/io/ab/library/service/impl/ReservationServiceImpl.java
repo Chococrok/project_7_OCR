@@ -8,6 +8,7 @@ import javax.xml.soap.SOAPException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,9 @@ import io.ab.library.util.exception.AlreadyExistsException;
 public class ReservationServiceImpl implements ReservationService {
 
 	private static final Logger log = LoggerFactory.getLogger(AccountServiceImpl.class);
+	
+	@Value("${application.reservation-duration}")
+	private int reservationDuration;
 
 	@Autowired
 	private ReservationRepository reservationRepository;
@@ -40,6 +44,11 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
 	private ThreadPoolTaskScheduler threadPoolTaskScheduler;
+	
+	@Override
+	public int getReservationDuration() {
+		return this.reservationDuration;
+	}
 
 	@Override
 	public Reservation findFirstReservation(int bookId) {
@@ -86,13 +95,13 @@ public class ReservationServiceImpl implements ReservationService {
 		// Therefore the deadline is set.
 
 		if (!otherReservation) {
-			int currentDay = Calendar.getInstance().get(Calendar.MINUTE);
+			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 			Calendar deadLine = Calendar.getInstance();
-			deadLine.set(Calendar.MINUTE, currentDay + 1);
+			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
 
 			newReservation = new Reservation(accountId, bookId, deadLine.getTime());
 
-			threadPoolTaskScheduler.schedule(new ReservationUpdater(this, newReservation), deadLine.getTime());
+			this.scheduleFirstReservationUpdate(newReservation, deadLine);
 		} else {
 			newReservation = new Reservation(accountId, bookId);
 		}
@@ -124,6 +133,11 @@ public class ReservationServiceImpl implements ReservationService {
 	public void deleteOne(ReservationPK id) {
 		this.reservationRepository.delete(id);
 	}
+	
+	@Override
+	public void scheduleFirstReservationUpdate(Reservation reservation, Calendar deadLine) {
+		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());
+	}
 
 	private class ReservationUpdater implements Runnable {
 
@@ -141,13 +155,18 @@ public class ReservationServiceImpl implements ReservationService {
 
 			int bookId = this.previousFirstReservation.getId().getBookId();
 			Reservation currentFirstResrvation = this.reservationService.findFirstReservation(bookId);
+			
+			if (currentFirstResrvation != null) {
+				int currentDay = Calendar.getInstance().get(Calendar.MINUTE);
+				Calendar deadLine = Calendar.getInstance();
+				deadLine.set(Calendar.MINUTE, currentDay + this.reservationService.getReservationDuration());
+				
+				currentFirstResrvation.setReservationEnd(deadLine.getTime());
+				this.reservationService.updateOne(currentFirstResrvation);
+				
+				this.reservationService.scheduleFirstReservationUpdate(currentFirstResrvation, deadLine);
+			}
 
-			int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-			Calendar deadLine = Calendar.getInstance();
-			deadLine.set(Calendar.DAY_OF_MONTH, currentDay + 2);
-
-			currentFirstResrvation.setReservationEnd(deadLine.getTime());
-			this.reservationService.updateOne(currentFirstResrvation);
 		}
 	}
 }

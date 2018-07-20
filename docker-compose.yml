@@ -9,7 +9,7 @@ services:
     volumes:
       - "./data_base/script:/docker-entrypoint-initdb.d:ro"
     ports:
-      - 5432:5432
+      - ${ENV_DB_PORT}:5432
 
   library-web-service:
     build: ./project_4_web_service
@@ -18,7 +18,11 @@ services:
       - VAR_POSTGRES_SERVICE=db # set the postgres service name (without docker-compose, default is localhost)
       - ENV_DB_USER_NAME # set the user name for db from .env
       - ENV_DB_USER_PASSWORD # set the user password for db from .env
-      - ENV_WEB_SERVICE_PORT
+      - ENV_DB_NAME # set from .env
+      - ENV_DB_PORT # set from .env
+      - ENV_WEB_SERVICE_PORT # default=8000
+      - ENV_WEB_SERVICE_CONTEXT_PATH # default=/
+      - ENV_RESERVATION_DURATION # duration of a reservation in hours default=48
     ports:
       - "${ENV_WEB_SERVICE_PORT}:${ENV_WEB_SERVICE_PORT}"
       
