@@ -4,6 +4,22 @@
 	
 	<xs:include schemaLocation="../model.xsd"/>
 	
+	<xs:element name="getAllReservationByBookResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="reservations" type="tns:reservation" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="getAllReservationByAccountResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="reservations" type="tns:reservation" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	
 	<xs:element name="getLastReservationResponse">
 		<xs:complexType>
 			<xs:sequence>
