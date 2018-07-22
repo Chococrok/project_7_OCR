@@ -8,6 +8,8 @@
 
 package io.ab.library.webapp.wsdl;
 
+import java.text.SimpleDateFormat;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
@@ -148,6 +150,12 @@ public class Reservation {
      */
     public void setReservationEnd(XMLGregorianCalendar value) {
         this.reservationEnd = value;
+    }
+    
+    // Not generated methods
+    public String getReservationEndFormated() {
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+    	return dateFormat.format(this.reservationEnd.toGregorianCalendar().getTime());
     }
 
 }

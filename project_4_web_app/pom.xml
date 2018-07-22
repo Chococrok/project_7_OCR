@@ -108,5 +108,6 @@
 		<module>library_webapp_controller</module>
 		<module>library_webapp_model_soap</module>
 		<module>library_webapp_client_soap</module>
+		<module>library_webapp_utils</module>
 	</modules>
 </project>

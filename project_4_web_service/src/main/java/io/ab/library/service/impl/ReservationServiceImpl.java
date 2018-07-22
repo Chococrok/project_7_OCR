@@ -66,6 +66,10 @@ public class ReservationServiceImpl implements ReservationService {
 	public Reservation insertNewReservation(int accountId, int bookId) throws AlreadyExistsException, SOAPException {
 		List<Reservation> currentBookReservations = this.reservationRepository.findAllByBook(bookId);
 		Book involvedBook = this.bookService.findOne(bookId);
+		
+		if (involvedBook == null) {
+			this.faultService.sendNewClientSoapFault("book with id: " + bookId + " doesn't exist");
+		}
 		Reservation newReservation;
 
 		boolean reservationExists = this.reservationRepository.exists(new ReservationPK(accountId, bookId));
