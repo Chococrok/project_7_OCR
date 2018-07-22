@@ -19,4 +19,9 @@ public class ReservationServiceImpl extends AbstractService implements Reservati
 	public List<Reservation> findAllReservationByAccount(int accountId) {
 		return this.reservationClient.getAllReservationByAccount(accountId);
 	}
+	
+	@Override
+	public void deleteReservation(int accountId, int bookId) {
+		this.reservationClient.deleteReservation(accountId, bookId);
+	}
 }

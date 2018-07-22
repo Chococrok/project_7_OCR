@@ -70,6 +70,7 @@ public class ReservationServiceImpl implements ReservationService {
 		if (involvedBook == null) {
 			this.faultService.sendNewClientSoapFault("book with id: " + bookId + " doesn't exist");
 		}
+		
 		Reservation newReservation;
 
 		boolean reservationExists = this.reservationRepository.exists(new ReservationPK(accountId, bookId));
@@ -106,7 +107,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 			newReservation = new Reservation(accountId, bookId, deadLine.getTime());
 
-			this.scheduleFirstReservationUpdate(newReservation, deadLine);
+			this.scheduleFirstReservationUpdate(newReservation);
 		} else {
 			newReservation = new Reservation(accountId, bookId);
 		}
@@ -135,15 +136,46 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
+	public void deleteOne(int accountId, int bookId) {
+		this.reservationRepository.delete(new ReservationPK(accountId, bookId));
+
+		this.scheduleFirstReservationUpdate(bookId);
+	}
+	
+	@Override
 	public void deleteOne(ReservationPK id) {
 		this.reservationRepository.delete(id);
+		
+		this.scheduleFirstReservationUpdate(id.getBookId());
+	}
+	
+	@Override
+	public void scheduleFirstReservationUpdate(int bookId) {
+		Reservation reservation = this.findFirstReservation(bookId);
+		
+		if (reservation != null) {
+			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+			Calendar deadLine = Calendar.getInstance();
+			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
+			
+			threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());			
+		}
+	}
+
+	@Override
+	public void scheduleFirstReservationUpdate(Reservation reservation) {
+		int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+		Calendar deadLine = Calendar.getInstance();
+		deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
+		
+		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());
 	}
 
 	@Override
 	public void scheduleFirstReservationUpdate(Reservation reservation, Calendar deadLine) {
 		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());
 	}
-
+	
 	@Override
 	public List<Book> addReservationsToBooks(Iterable<Book> iterable) {
 		List<Book> books = new ArrayList<Book>();

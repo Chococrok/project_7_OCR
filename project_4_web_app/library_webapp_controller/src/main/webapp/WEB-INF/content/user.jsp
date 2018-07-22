@@ -89,7 +89,7 @@
 						</div>
 						<form class="d-flex m-auto" action="/library/reservation/delete"
 							method="POST">
-							<input type="hidden" name="rental.id.bookId"
+							<input type="hidden" name="bookId"
 								value="${ reservation.id.bookId }" />
 								<button class="btn btn-primary"
 									>Annuler</button>

@@ -10,6 +10,7 @@ import io.ab.library.webapp.wsdl.GetAllReservationByAccountRequest;
 import io.ab.library.webapp.wsdl.GetAllReservationByAccountResponse;
 import io.ab.library.webapp.wsdl.AddReservationRequest;
 import io.ab.library.webapp.wsdl.AddReservationResponse;
+import io.ab.library.webapp.wsdl.DeleteReservationRequest;
 import io.ab.library.webapp.wsdl.ObjectFactory;
 import io.ab.library.webapp.wsdl.Reservation;
 
@@ -43,6 +44,17 @@ public class ReservationClientSoap extends AbstractClientSoap implements Reserva
 		AddReservationResponse response = (AddReservationResponse) this.getWebServiceTemplate().marshalSendAndReceive(request);
 		
 		return response.getReservation();
+	}
+	
+	@Override
+	public Object deleteReservation(int accountId, int bookId) {
+		this.logger.debug("performing deleteReservation with parameters: " + " accountId= " + accountId +  " bookId= " + bookId);
+		
+		DeleteReservationRequest request = new DeleteReservationRequest();
+		request.setAccountId(accountId);
+		request.setBookId(bookId);
+		
+		return this.getWebServiceTemplate().marshalSendAndReceive(request);
 	}
 
 }

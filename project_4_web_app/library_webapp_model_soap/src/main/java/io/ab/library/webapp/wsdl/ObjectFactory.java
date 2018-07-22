@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.07.22 à 03:03:27 PM CEST 
+// Généré le : 2018.07.22 à 11:22:06 PM CEST 
 //
 
 
@@ -38,6 +38,7 @@ public class ObjectFactory {
     private final static QName _GetAllTagsRequest_QNAME = new QName("http://ab.io/library", "getAllTagsRequest");
     private final static QName _GetAllRentalsRequest_QNAME = new QName("http://ab.io/library", "getAllRentalsRequest");
     private final static QName _GetAllBooksRequest_QNAME = new QName("http://ab.io/library", "getAllBooksRequest");
+    private final static QName _DeleteReservationResponse_QNAME = new QName("http://ab.io/library", "deleteReservationResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: io.ab.library.webapp.wsdl
@@ -180,6 +181,14 @@ public class ObjectFactory {
      */
     public AddReservationRequest createAddReservationRequest() {
         return new AddReservationRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteReservationRequest }
+     * 
+     */
+    public DeleteReservationRequest createDeleteReservationRequest() {
+        return new DeleteReservationRequest();
     }
 
     /**
@@ -376,6 +385,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllBooksRequest")
     public JAXBElement<Object> createGetAllBooksRequest(Object value) {
         return new JAXBElement<Object>(_GetAllBooksRequest_QNAME, Object.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ab.io/library", name = "deleteReservationResponse")
+    public JAXBElement<Object> createDeleteReservationResponse(Object value) {
+        return new JAXBElement<Object>(_DeleteReservationResponse_QNAME, Object.class, null, value);
     }
 
 }

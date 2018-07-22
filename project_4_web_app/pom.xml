@@ -17,6 +17,10 @@
 		<!-- webapp properties -->
 		<library.app.port>9000</library.app.port>
 		<library.app.context-path>/library</library.app.context-path>
+		
+		<!-- webservice properties -->
+		<library.service.host>localhost</library.service.host>
+		<library.service.port>8000</library.service.port>
 	</properties>
 
 	<dependencies>

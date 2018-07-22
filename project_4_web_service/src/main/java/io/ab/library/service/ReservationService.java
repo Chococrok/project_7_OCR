@@ -20,6 +20,9 @@ public interface ReservationService {
 	Reservation findOneByAccountAndByBook(int accountId, int bookId);
 	List<Reservation> findAllByBook(int bookId);
 	Reservation updateOne(Reservation reservation);
+	void deleteOne(int accountId, int bookId);
 	void deleteOne(ReservationPK id);
 	void scheduleFirstReservationUpdate(Reservation reservation, Calendar deadLine);
+	void scheduleFirstReservationUpdate(Reservation reservation);
+	void scheduleFirstReservationUpdate(int bookId);
 }

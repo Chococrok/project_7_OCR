@@ -8,4 +8,5 @@ public interface ReservationService  {
 	
 	Reservation addReservation(int accountId, int bookId);
 	List<Reservation> findAllReservationByAccount(int accountId);
+	void deleteReservation(int accountId, int bookId);
 }

@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
+// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.01.05 à 03:45:40 PM CET 
+// Généré le : 2018.07.22 à 10:48:36 PM CEST 
 //
 
 
@@ -13,9 +13,8 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import io.ab.library.controller.soap.dto.SignInForm;
-import io.ab.library.controller.soap.dto.SignUpForm;
 import io.ab.library.model.*;
+import io.ab.library.controller.soap.dto.*;
 
 
 /**
@@ -35,8 +34,8 @@ import io.ab.library.model.*;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetAllAuthorsRequest_QNAME = new QName("http://ab.io/library", "getAllAuthorsRequest");
     private final static QName _GetAllBooksRequest_QNAME = new QName("http://ab.io/library", "getAllBooksRequest");
+    private final static QName _GetAllAuthorsRequest_QNAME = new QName("http://ab.io/library", "getAllAuthorsRequest");
     private final static QName _GetAllTagsRequest_QNAME = new QName("http://ab.io/library", "getAllTagsRequest");
     private final static QName _GetAllRentalsRequest_QNAME = new QName("http://ab.io/library", "getAllRentalsRequest");
 
@@ -45,38 +44,6 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link SignInRequest }
-     * 
-     */
-    public SignInRequest createSignInRequest() {
-        return new SignInRequest();
-    }
-
-    /**
-     * Create an instance of {@link SignInForm }
-     * 
-     */
-    public SignInForm createSignInForm() {
-        return new SignInForm();
-    }
-
-    /**
-     * Create an instance of {@link SignUpRequest }
-     * 
-     */
-    public SignUpRequest createSignUpRequest() {
-        return new SignUpRequest();
-    }
-
-    /**
-     * Create an instance of {@link SignUpForm }
-     * 
-     */
-    public SignUpForm createSignUpForm() {
-        return new SignUpForm();
     }
 
     /**
@@ -123,7 +90,7 @@ public class ObjectFactory {
      * Create an instance of {@link GetRentalByIdRequest }
      * 
      */
-    public GetRentalByIdRequest createGetRentalsByIdRequest() {
+    public GetRentalByIdRequest createGetRentalByIdRequest() {
         return new GetRentalByIdRequest();
     }
 
@@ -144,6 +111,86 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAllReservationByBookRequest }
+     * 
+     */
+    public GetAllReservationByBookRequest createGetAllReservationByBookRequest() {
+        return new GetAllReservationByBookRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAllReservationByAccountRequest }
+     * 
+     */
+    public GetAllReservationByAccountRequest createGetAllReservationByAccountRequest() {
+        return new GetAllReservationByAccountRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetLastReservationRequest }
+     * 
+     */
+    public GetLastReservationRequest createGetLastReservationRequest() {
+        return new GetLastReservationRequest();
+    }
+
+    /**
+     * Create an instance of {@link Book }
+     * 
+     */
+    public Book createBook() {
+        return new Book();
+    }
+
+    /**
+     * Create an instance of {@link AddReservationRequest }
+     * 
+     */
+    public AddReservationRequest createAddReservationRequest() {
+        return new AddReservationRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteReservationRequest }
+     * 
+     */
+    public DeleteReservationRequest createDeleteReservationRequest() {
+        return new DeleteReservationRequest();
+    }
+
+    /**
+     * Create an instance of {@link SignInRequest }
+     * 
+     */
+    public SignInRequest createSignInRequest() {
+        return new SignInRequest();
+    }
+
+    /**
+     * Create an instance of {@link SignInForm }
+     * 
+     */
+    public SignInForm createSignInForm() {
+        return new SignInForm();
+    }
+
+    /**
+     * Create an instance of {@link SignUpRequest }
+     * 
+     */
+    public SignUpRequest createSignUpRequest() {
+        return new SignUpRequest();
+    }
+
+    /**
+     * Create an instance of {@link SignUpForm }
+     * 
+     */
+    public SignUpForm createSignUpForm() {
+        return new SignUpForm();
+    }
+
+    /**
      * Create an instance of {@link Account }
      * 
      */
@@ -157,14 +204,6 @@ public class ObjectFactory {
      */
     public Author createAuthor() {
         return new Author();
-    }
-
-    /**
-     * Create an instance of {@link Book }
-     * 
-     */
-    public Book createBook() {
-        return new Book();
     }
 
     /**
@@ -192,17 +231,28 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * Create an instance of {@link Reservation }
      * 
      */
-    @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllAuthorsRequest")
-    public JAXBElement<Object> createGetAllAuthorsRequest(Object value) {
-        return new JAXBElement<Object>(_GetAllAuthorsRequest_QNAME, Object.class, null, value);
+    public Reservation createReservation() {
+        return new Reservation();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * Create an instance of {@link ReservationPK }
      * 
+     */
+    public ReservationPK createReservationPK() {
+        return new ReservationPK();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
      */
     @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllBooksRequest")
     public JAXBElement<Object> createGetAllBooksRequest(Object value) {
@@ -210,8 +260,25 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllAuthorsRequest")
+    public JAXBElement<Object> createGetAllAuthorsRequest(Object value) {
+        return new JAXBElement<Object>(_GetAllAuthorsRequest_QNAME, Object.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
      */
     @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllTagsRequest")
     public JAXBElement<Object> createGetAllTagsRequest(Object value) {
@@ -219,8 +286,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Object }{@code >}
      */
     @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllRentalsRequest")
     public JAXBElement<Object> createGetAllRentalsRequest(Object value) {

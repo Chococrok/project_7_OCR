@@ -2,6 +2,7 @@ package io.ab.library.controller.soap;
 
 import java.util.List;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.soap.SOAPException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import io.ab.library.controller.soap.request.AddReservationRequest;
+import io.ab.library.controller.soap.request.DeleteReservationRequest;
 import io.ab.library.controller.soap.request.GetAllReservationByAccountRequest;
 import io.ab.library.controller.soap.request.GetAllReservationByBookRequest;
 import io.ab.library.controller.soap.response.GetAllReservationByAccountResponse;
@@ -26,6 +28,8 @@ public class ReservationEndpoint {
 
 	@Autowired
 	private ReservationService reservationService;
+	@Autowired
+	private io.ab.library.controller.soap.response.ObjectFactory responseFactory;
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "addReservationRequest")
 	@ResponsePayload
@@ -64,5 +68,14 @@ public class ReservationEndpoint {
 		response.setReservations(reservations);
 
 		return response;
+	}
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteReservationRequest")
+	@ResponsePayload
+	public JAXBElement<Object> deleteReservation(@RequestPayload DeleteReservationRequest request) {
+		System.out.println("processing deleteReservation");
+		this.reservationService.deleteOne(request.getAccountId(), request.getBookId());
+
+		return responseFactory.createDeleteReservationResponse(null);
 	}
 }

@@ -31,6 +31,7 @@ public class ReservationAction extends LibraryActionSupport implements SessionAw
 	
 	@Action("reservation/delete")
 	public String deleteReservation() {
+		this.reservationService.deleteReservation(((Account) session.get("account")).getId(), bookId);
 		return SUCCESS;
 	}
 

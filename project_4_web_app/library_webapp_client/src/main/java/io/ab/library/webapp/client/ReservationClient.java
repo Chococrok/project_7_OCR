@@ -9,5 +9,6 @@ public interface ReservationClient {
 	List<Reservation> getAllReservationByAccount(int accountId);
 
 	Reservation addReservation(int accountId, int bookId);
+	Object deleteReservation(int accountId, int bookId);
 
 }
