@@ -23,7 +23,7 @@ public class BookDTO extends Book {
 		this.availableCopy = this.copy - this.rentals.size();
 	}
 	
-	public static List<BookDTO> listConverter(List<Book> books) {
+	public static List<BookDTO> toDtos(List<Book> books) {
 		List<BookDTO> bookDTOs = new ArrayList<BookDTO>();
 		for (Book book : books) {
 			bookDTOs.add(new BookDTO(book));

@@ -1,5 +1,6 @@
 package io.ab.library.service.impl;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import io.ab.library.util.exception.AlreadyExistsException;
 public class ReservationServiceImpl implements ReservationService {
 
 	private static final Logger log = LoggerFactory.getLogger(AccountServiceImpl.class);
-	
+
 	@Value("${application.reservation-duration}")
 	private int reservationDuration;
 
@@ -44,7 +45,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
 	private ThreadPoolTaskScheduler threadPoolTaskScheduler;
-	
+
 	@Override
 	public int getReservationDuration() {
 		return this.reservationDuration;
@@ -133,12 +134,24 @@ public class ReservationServiceImpl implements ReservationService {
 	public void deleteOne(ReservationPK id) {
 		this.reservationRepository.delete(id);
 	}
-	
+
 	@Override
 	public void scheduleFirstReservationUpdate(Reservation reservation, Calendar deadLine) {
 		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());
 	}
 
+	@Override
+	public List<Book> addReservationsToBooks(Iterable<Book> iterable) {
+		List<Book> books = new ArrayList<Book>();
+
+		for (Book book : iterable) {
+			book.setReservations(this.findAllByBook(book.getId()));
+			books.add(book);
+		}
+		return books;
+	}
+
+	// internal class to schedule reservation update
 	private class ReservationUpdater implements Runnable {
 
 		private ReservationService reservationService;
@@ -155,15 +168,15 @@ public class ReservationServiceImpl implements ReservationService {
 
 			int bookId = this.previousFirstReservation.getId().getBookId();
 			Reservation currentFirstResrvation = this.reservationService.findFirstReservation(bookId);
-			
+
 			if (currentFirstResrvation != null) {
 				int currentDay = Calendar.getInstance().get(Calendar.MINUTE);
 				Calendar deadLine = Calendar.getInstance();
 				deadLine.set(Calendar.MINUTE, currentDay + this.reservationService.getReservationDuration());
-				
+
 				currentFirstResrvation.setReservationEnd(deadLine.getTime());
 				this.reservationService.updateOne(currentFirstResrvation);
-				
+
 				this.reservationService.scheduleFirstReservationUpdate(currentFirstResrvation, deadLine);
 			}
 

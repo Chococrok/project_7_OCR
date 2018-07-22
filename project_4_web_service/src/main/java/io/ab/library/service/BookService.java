@@ -9,6 +9,8 @@ public interface BookService {
     Book findOne(Integer bookId);
     Iterable<Book> getAll();
 	Iterable<Book> getAllWithRentals();
+	Iterable<Book> getAllWithReservations();
+	Iterable<Book> getAllWithRentalsAndReservations();
 	List<Book> findByNameContaining(String name);
 	List<Book> findByAuthorFirstNameOrLastNameContaining(String name);
 	List<Book> findByPublisherNameContaining(String name);

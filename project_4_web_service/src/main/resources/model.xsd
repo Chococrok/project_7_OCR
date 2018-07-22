@@ -36,6 +36,7 @@
       <xs:element minOccurs="0" name="name" type="xs:string"/>
       <xs:element minOccurs="0" name="publisher" type="tns:publisher"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="rentals" nillable="true" type="tns:rental"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="reservations" nillable="true" type="tns:reservation"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="tags" nillable="true" type="tns:tag"/>
     </xs:sequence>
   </xs:complexType>

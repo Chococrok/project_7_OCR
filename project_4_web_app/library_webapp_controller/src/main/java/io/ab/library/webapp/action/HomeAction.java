@@ -9,7 +9,7 @@ public class HomeAction extends LibraryActionSupport {
 			
 	@Override
 	public String execute() throws Exception {
-		this.books = BookDTO.listConverter(this.bookService.getAllBooks());
+		this.books = BookDTO.toDtos(this.bookService.getAllBooks());
 		this.page = "home";
 		return SUCCESS;
 	}

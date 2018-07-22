@@ -37,7 +37,7 @@ public class BookEndpoint {
 		
 		log.info("################## \n ###" + datasourceUrl);
 
-		this.bookService.getAllWithRentals().forEach(book -> {
+		this.bookService.getAllWithRentalsAndReservations().forEach(book -> {
 			response.getBooks().add(book);
 		});
 

@@ -11,6 +11,7 @@ import io.ab.library.repository.BookRepository;
 import io.ab.library.repository.RentalRepository;
 import io.ab.library.service.BookService;
 import io.ab.library.service.RentalService;
+import io.ab.library.service.ReservationService;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -19,6 +20,8 @@ public class BookServiceImpl implements BookService {
 	private BookRepository bookRepository;
 	@Autowired
 	private RentalService rentalService;
+	@Autowired
+	private ReservationService reservationService;
 
 	@Override
 	public Book findOne(Integer bookId) {
@@ -33,6 +36,21 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public Iterable<Book> getAllWithRentals() {
 		return this.rentalService.addRentalsToBooks(this.bookRepository.findAll());
+	}
+	
+	@Override
+	public Iterable<Book> getAllWithReservations() {
+		return this.reservationService.addReservationsToBooks(this.bookRepository.findAll());
+	}
+	
+	@Override
+	public Iterable<Book> getAllWithRentalsAndReservations() {
+		Iterable<Book> books = this.bookRepository.findAll();
+		
+		books = this.rentalService.addRentalsToBooks(books);
+		books = this.reservationService.addReservationsToBooks(books);
+	
+		return books;
 	}
 
 	@Override
