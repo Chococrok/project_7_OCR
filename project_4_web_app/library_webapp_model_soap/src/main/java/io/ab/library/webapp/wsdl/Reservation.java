@@ -154,7 +154,7 @@ public class Reservation {
     
     // Not generated methods
     public String getReservationEndFormated() {
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm");
     	return dateFormat.format(this.reservationEnd.toGregorianCalendar().getTime());
     }
 

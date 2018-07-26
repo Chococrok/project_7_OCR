@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.xml.soap.SOAPException;
 
 import org.slf4j.Logger;
@@ -45,6 +46,15 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
 	private ThreadPoolTaskScheduler threadPoolTaskScheduler;
+
+	@PostConstruct
+	private void scheduleAllReservation() {
+		this.reservationRepository.findAll().forEach(reservation -> {
+			if (reservation.getReservationEnd() != null) {
+				this.scheduleFirstReservationUpdate(reservation);
+			}
+		});
+	}
 
 	@Override
 	public int getReservationDuration() {
@@ -164,16 +174,15 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	public void scheduleFirstReservationUpdate(Reservation reservation) {
-		int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-		Calendar deadLine = Calendar.getInstance();
-		deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
-		
-		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());
-	}
+		if (reservation.getReservationEnd() == null) {
+			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+			Calendar deadLine = Calendar.getInstance();
+			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
 
-	@Override
-	public void scheduleFirstReservationUpdate(Reservation reservation, Calendar deadLine) {
-		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());
+			reservation.setReservationEnd(deadLine.getTime());
+		}
+
+		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), reservation.getReservationEnd());
 	}
 	
 	@Override
@@ -206,14 +215,14 @@ public class ReservationServiceImpl implements ReservationService {
 			Reservation currentFirstResrvation = this.reservationService.findFirstReservation(bookId);
 
 			if (currentFirstResrvation != null) {
-				int currentDay = Calendar.getInstance().get(Calendar.MINUTE);
+				int currentDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 				Calendar deadLine = Calendar.getInstance();
-				deadLine.set(Calendar.MINUTE, currentDay + this.reservationService.getReservationDuration());
+				deadLine.set(Calendar.HOUR_OF_DAY, currentDay + this.reservationService.getReservationDuration());
 
 				currentFirstResrvation.setReservationEnd(deadLine.getTime());
 				this.reservationService.updateOne(currentFirstResrvation);
 
-				this.reservationService.scheduleFirstReservationUpdate(currentFirstResrvation, deadLine);
+				this.reservationService.scheduleFirstReservationUpdate(currentFirstResrvation);
 			}
 
 		}

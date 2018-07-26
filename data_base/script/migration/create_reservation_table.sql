@@ -4,7 +4,7 @@ CREATE SEQUENCE public.reservation_traker;
 CREATE TABLE public.reservation (
                 account_id INTEGER NOT NULL,
                 book_id INTEGER NOT NULL,
-                reservation_end DATE,
+                reservation_end TIMESTAMP,
                 reservation_number INTEGER NOT NULL DEFAULT nextval('public.reservation_traker'),
                 CONSTRAINT reservation_pk PRIMARY KEY (account_id, book_id)
 );

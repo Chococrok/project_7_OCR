@@ -18,7 +18,7 @@ public class Rental implements Serializable {
 	@EmbeddedId
 	private RentalPK id;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "dead_line")
 	private Date deadLine;
 

@@ -72,7 +72,7 @@ CREATE TABLE public.rental (
                 account_id INTEGER NOT NULL,
                 book_id INTEGER NOT NULL,
                 is_extended BOOLEAN DEFAULT false,
-                dead_line DATE NOT NULL,
+                dead_line TIMESTAMP NOT NULL,
                 CONSTRAINT rental_pk PRIMARY KEY (account_id, book_id)
 );
 

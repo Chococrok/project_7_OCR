@@ -18,7 +18,7 @@ public class Reservation implements Serializable {
 	@EmbeddedId
 	private ReservationPK id;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "reservation_end")
 	private Date reservationEnd;
 
