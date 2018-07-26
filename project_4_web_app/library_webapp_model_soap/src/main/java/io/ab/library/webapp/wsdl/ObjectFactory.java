@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.01.05 à 07:15:00 PM CET 
+// Généré le : 2018.07.22 à 11:22:06 PM CEST 
 //
 
 
@@ -35,9 +35,10 @@ import org.springframework.stereotype.Component;
 public class ObjectFactory {
 
     private final static QName _GetAllAuthorsRequest_QNAME = new QName("http://ab.io/library", "getAllAuthorsRequest");
-    private final static QName _GetAllBooksRequest_QNAME = new QName("http://ab.io/library", "getAllBooksRequest");
     private final static QName _GetAllTagsRequest_QNAME = new QName("http://ab.io/library", "getAllTagsRequest");
     private final static QName _GetAllRentalsRequest_QNAME = new QName("http://ab.io/library", "getAllRentalsRequest");
+    private final static QName _GetAllBooksRequest_QNAME = new QName("http://ab.io/library", "getAllBooksRequest");
+    private final static QName _DeleteReservationResponse_QNAME = new QName("http://ab.io/library", "deleteReservationResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: io.ab.library.webapp.wsdl
@@ -143,6 +144,54 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAllReservationByBookRequest }
+     * 
+     */
+    public GetAllReservationByBookRequest createGetAllReservationByBookRequest() {
+        return new GetAllReservationByBookRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAllReservationByAccountRequest }
+     * 
+     */
+    public GetAllReservationByAccountRequest createGetAllReservationByAccountRequest() {
+        return new GetAllReservationByAccountRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetLastReservationRequest }
+     * 
+     */
+    public GetLastReservationRequest createGetLastReservationRequest() {
+        return new GetLastReservationRequest();
+    }
+
+    /**
+     * Create an instance of {@link Book }
+     * 
+     */
+    public Book createBook() {
+        return new Book();
+    }
+
+    /**
+     * Create an instance of {@link AddReservationRequest }
+     * 
+     */
+    public AddReservationRequest createAddReservationRequest() {
+        return new AddReservationRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteReservationRequest }
+     * 
+     */
+    public DeleteReservationRequest createDeleteReservationRequest() {
+        return new DeleteReservationRequest();
+    }
+
+    /**
      * Create an instance of {@link GetAllAuthorsResponse }
      * 
      */
@@ -156,22 +205,6 @@ public class ObjectFactory {
      */
     public Author createAuthor() {
         return new Author();
-    }
-
-    /**
-     * Create an instance of {@link GetAllBooksResponse }
-     * 
-     */
-    public GetAllBooksResponse createGetAllBooksResponse() {
-        return new GetAllBooksResponse();
-    }
-
-    /**
-     * Create an instance of {@link Book }
-     * 
-     */
-    public Book createBook() {
-        return new Book();
     }
 
     /**
@@ -191,22 +224,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllRentalsResponse }
-     * 
-     */
-    public GetAllRentalsResponse createGetAllRentalsResponse() {
-        return new GetAllRentalsResponse();
-    }
-
-    /**
-     * Create an instance of {@link SearchBooksResponse }
-     * 
-     */
-    public SearchBooksResponse createSearchBooksResponse() {
-        return new SearchBooksResponse();
-    }
-
-    /**
      * Create an instance of {@link SignInResponse }
      * 
      */
@@ -220,6 +237,14 @@ public class ObjectFactory {
      */
     public Account createAccount() {
         return new Account();
+    }
+
+    /**
+     * Create an instance of {@link GetAllRentalsResponse }
+     * 
+     */
+    public GetAllRentalsResponse createGetAllRentalsResponse() {
+        return new GetAllRentalsResponse();
     }
 
     /**
@@ -247,6 +272,62 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAllReservationByBookResponse }
+     * 
+     */
+    public GetAllReservationByBookResponse createGetAllReservationByBookResponse() {
+        return new GetAllReservationByBookResponse();
+    }
+
+    /**
+     * Create an instance of {@link Reservation }
+     * 
+     */
+    public Reservation createReservation() {
+        return new Reservation();
+    }
+
+    /**
+     * Create an instance of {@link GetAllReservationByAccountResponse }
+     * 
+     */
+    public GetAllReservationByAccountResponse createGetAllReservationByAccountResponse() {
+        return new GetAllReservationByAccountResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLastReservationResponse }
+     * 
+     */
+    public GetLastReservationResponse createGetLastReservationResponse() {
+        return new GetLastReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddReservationResponse }
+     * 
+     */
+    public AddReservationResponse createAddReservationResponse() {
+        return new AddReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllBooksResponse }
+     * 
+     */
+    public GetAllBooksResponse createGetAllBooksResponse() {
+        return new GetAllBooksResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchBooksResponse }
+     * 
+     */
+    public SearchBooksResponse createSearchBooksResponse() {
+        return new SearchBooksResponse();
+    }
+
+    /**
      * Create an instance of {@link Publisher }
      * 
      */
@@ -263,21 +344,20 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * Create an instance of {@link ReservationPK }
      * 
      */
-    @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllAuthorsRequest")
-    public JAXBElement<Object> createGetAllAuthorsRequest(Object value) {
-        return new JAXBElement<Object>(_GetAllAuthorsRequest_QNAME, Object.class, null, value);
+    public ReservationPK createReservationPK() {
+        return new ReservationPK();
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllBooksRequest")
-    public JAXBElement<Object> createGetAllBooksRequest(Object value) {
-        return new JAXBElement<Object>(_GetAllBooksRequest_QNAME, Object.class, null, value);
+    @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllAuthorsRequest")
+    public JAXBElement<Object> createGetAllAuthorsRequest(Object value) {
+        return new JAXBElement<Object>(_GetAllAuthorsRequest_QNAME, Object.class, null, value);
     }
 
     /**
@@ -296,6 +376,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllRentalsRequest")
     public JAXBElement<Object> createGetAllRentalsRequest(Object value) {
         return new JAXBElement<Object>(_GetAllRentalsRequest_QNAME, Object.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ab.io/library", name = "getAllBooksRequest")
+    public JAXBElement<Object> createGetAllBooksRequest(Object value) {
+        return new JAXBElement<Object>(_GetAllBooksRequest_QNAME, Object.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ab.io/library", name = "deleteReservationResponse")
+    public JAXBElement<Object> createDeleteReservationResponse(Object value) {
+        return new JAXBElement<Object>(_DeleteReservationResponse_QNAME, Object.class, null, value);
     }
 
 }

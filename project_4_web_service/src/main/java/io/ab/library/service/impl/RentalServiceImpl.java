@@ -19,7 +19,9 @@ public class RentalServiceImpl implements RentalService {
 
 	@Autowired
 	private RentalRepository rentalRepository;
-
+	
+	
+	@Override
 	public Iterable<Book> addRentalsToBooks(Iterable<Book> books) {
 		books.forEach(book -> {
 			try {
@@ -57,10 +59,14 @@ public class RentalServiceImpl implements RentalService {
 
 	@Override
 	public Rental findOne(int accountId, int bookId) {
-		RentalPK key = new RentalPK();
-		key.setAccountId(accountId);
-		key.setBookId(bookId);
+		RentalPK key = new RentalPK(accountId, bookId);
 		return this.checkDeadLine(this.rentalRepository.findOne(key));
+	}
+	
+	@Override
+	public boolean exists(int accountId, int bookId) {
+		RentalPK key = new RentalPK(accountId, bookId);
+		return this.rentalRepository.exists(key);
 	}
 	
 	private Iterable<Rental> checkDeadLine(Iterable<Rental> rentals) {		

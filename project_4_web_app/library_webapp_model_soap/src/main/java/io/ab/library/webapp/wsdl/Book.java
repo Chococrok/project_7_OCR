@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.24 à 12:14:58 AM CET 
+// Généré le : 2018.07.22 à 03:03:27 PM CEST 
 //
 
 
@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="publisher" type="{http://ab.io/library}publisher" minOccurs="0"/&gt;
  *         &lt;element name="rentals" type="{http://ab.io/library}rental" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="reservations" type="{http://ab.io/library}reservation" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="tags" type="{http://ab.io/library}tag" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -51,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
     "name",
     "publisher",
     "rentals",
+    "reservations",
     "tags"
 })
 public class Book {
@@ -62,6 +64,8 @@ public class Book {
     protected Publisher publisher;
     @XmlElement(nillable = true)
     protected List<Rental> rentals;
+    @XmlElement(nillable = true)
+    protected List<Reservation> reservations;
     @XmlElement(nillable = true)
     protected List<Tag> tags;
 
@@ -212,6 +216,35 @@ public class Book {
             rentals = new ArrayList<Rental>();
         }
         return this.rentals;
+    }
+
+    /**
+     * Gets the value of the reservations property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the reservations property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getReservations().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Reservation }
+     * 
+     * 
+     */
+    public List<Reservation> getReservations() {
+        if (reservations == null) {
+            reservations = new ArrayList<Reservation>();
+        }
+        return this.reservations;
     }
 
     /**

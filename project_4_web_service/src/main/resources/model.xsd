@@ -36,6 +36,7 @@
       <xs:element minOccurs="0" name="name" type="xs:string"/>
       <xs:element minOccurs="0" name="publisher" type="tns:publisher"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="rentals" nillable="true" type="tns:rental"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="reservations" nillable="true" type="tns:reservation"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="tags" nillable="true" type="tns:tag"/>
     </xs:sequence>
   </xs:complexType>
@@ -81,6 +82,28 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="id" type="xs:int"/>
       <xs:element minOccurs="0" name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reservation">
+    <xs:annotation>
+      <xs:documentation><![CDATA[The persistent class for the rental database table.]]></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="account" type="tns:account"/>
+      <xs:element minOccurs="0" name="book" type="tns:book"/>
+      <xs:element minOccurs="0" name="id" type="tns:reservationPK"/>
+      <xs:element minOccurs="0" name="reservationEnd" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reservationPK">
+    <xs:annotation>
+      <xs:documentation><![CDATA[The primary key class for the rental database table.]]></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:int"/>
+      <xs:element minOccurs="0" name="bookId" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

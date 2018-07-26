@@ -1,5 +1,11 @@
 *.mdj
 *.architect
 *.architect~
+*.idea
+*.iml
+*.settings
+*.project
+*.classpath
+*.mvn
 target/
 generated/

@@ -1,12 +1,14 @@
 package io.ab.library;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.apache.ws.commons.schema.resolver.DefaultURIResolver;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
@@ -15,6 +17,7 @@ import org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection;
 
 @EnableWs
 @Configuration
+@PropertySource("classpath:bootstrap.properties")
 public class WebServiceConfig extends WsConfigurerAdapter {
 	
 	@Bean
@@ -40,6 +43,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	@Bean
 	public CommonsXsdSchemaCollection librarySchema() {
 		CommonsXsdSchemaCollection librarySchema = new CommonsXsdSchemaCollection();
+		librarySchema.setUriResolver(new DefaultURIResolver());
 		Resource[] xsdResources = {
 				new ClassPathResource("model.xsd"),
 				new ClassPathResource("request.xsd"),
@@ -49,4 +53,14 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		librarySchema.setInline(true);
 		return librarySchema;
 	}
+	
+	@Bean
+    public ThreadPoolTaskScheduler threadPoolTaskScheduler(){
+        ThreadPoolTaskScheduler threadPoolTaskScheduler
+          = new ThreadPoolTaskScheduler();
+        threadPoolTaskScheduler.setPoolSize(5);
+        threadPoolTaskScheduler.setThreadNamePrefix(
+          "ThreadPoolTaskScheduler");
+        return threadPoolTaskScheduler;
+    }
 }

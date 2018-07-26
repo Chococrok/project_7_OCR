@@ -23,7 +23,7 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private AccountRepository accountRepository;
 	@Autowired
-	private FaultService faultService;
+	private FaultServiceImpl faultService;
 
 	@Override
 	public Account signIn(SignInForm form) throws SOAPException, SOAPFaultException {

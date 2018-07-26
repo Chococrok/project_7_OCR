@@ -22,6 +22,12 @@ public class RentalPK implements Serializable {
 
 	public RentalPK() {
 	}
+	
+	public RentalPK(Integer accountId, Integer bookId) {
+		this.accountId = accountId;
+		this.bookId = bookId;
+	}
+	
 	public Integer getAccountId() {
 		return this.accountId;
 	}

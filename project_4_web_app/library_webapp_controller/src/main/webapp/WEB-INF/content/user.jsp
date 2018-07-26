@@ -19,10 +19,11 @@
 				Bienvenue ${ sessionScope.account.firstName } ${
 				sessionScope.account.lastName },
 				ici vous pouvez vérifier vos emprunts et les rallonger si vous
-				n'avez pas encore fini votre lecture.</a>
+				n'avez pas encore fini votre lecture. Vous pouvez également consulter vos réservations.</a>
 			</p>
 		</div>
 		<div class="card-body">
+			<h5>Emprunts</h5>
 			<ul class="list-group list-group-flush">
 				<c:forEach items="${ requestScope.rentals }" var="rental">
 					<li class="list-group-item d-flex">
@@ -64,6 +65,34 @@
 									${ rental.extended || rental.rentalOver ? 'disabled' : '' }>Allonger mon
 									prêt</button>
 							</div>
+						</form>
+					</li>
+				</c:forEach>
+			</ul>
+			
+			<h5>Réservations</h5>
+			<ul class="list-group list-group-flush">
+				<c:forEach items="${ requestScope.reservations }" var="reservation">
+					<li class="list-group-item d-flex">
+						<div>
+							<p>
+								<span>
+									<strong>${ reservation.book.name }</strong> de ${ reservation.book.author.firstName }
+									${ reservation.book.author.lastName } (Editon ${ reservation.book.publisher.name })
+								</span>
+							</p>
+							<c:if test="${ reservation.reservationEnd != null }">
+								<p>
+									<span>Reservé jusqu'au ${ reservation.getReservationEndFormated() }</span>
+								</p>
+							</c:if>
+						</div>
+						<form class="d-flex m-auto" action="/library/reservation/delete"
+							method="POST">
+							<input type="hidden" name="bookId"
+								value="${ reservation.id.bookId }" />
+								<button class="btn btn-primary"
+									>Annuler</button>
 						</form>
 					</li>
 				</c:forEach>

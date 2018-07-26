@@ -43,9 +43,16 @@ public class Book implements Serializable {
 	//@OneToMany(mappedBy="book")
 	@Transient
 	private List<Rental> rentals;
+	@Transient
+	private List<Reservation> reservations;
 
 	public Book() {
 	}
+	
+	public Book(Integer id) {
+		this.id = id;
+	}
+	
 
 	public Integer getId() {
 		return this.id;
@@ -101,6 +108,14 @@ public class Book implements Serializable {
 
 	public void setRentals(List<Rental> rentals) {
 		this.rentals = rentals;
+	}
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
 	public Rental addRental(Rental rental) {

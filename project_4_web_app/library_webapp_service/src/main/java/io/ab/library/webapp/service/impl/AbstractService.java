@@ -8,6 +8,7 @@ import io.ab.library.webapp.client.AccountClient;
 import io.ab.library.webapp.client.AuthorClient;
 import io.ab.library.webapp.client.BookClient;
 import io.ab.library.webapp.client.RentalClient;
+import io.ab.library.webapp.client.ReservationClient;
 import io.ab.library.webapp.client.TagClient;
 
 public class AbstractService {
@@ -24,5 +25,6 @@ public class AbstractService {
 	protected AccountClient accountClient;
 	@Autowired
 	protected RentalClient rentalClient;
-	
+	@Autowired
+	protected ReservationClient reservationClient;
 }

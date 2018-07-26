@@ -15,12 +15,12 @@
 		<log4j2.version>2.10.0</log4j2.version>
 		
 		<!-- webapp properties -->
-		<library.app.port>8081</library.app.port>
+		<library.app.port>9000</library.app.port>
 		<library.app.context-path>/library</library.app.context-path>
 		
 		<!-- webservice properties -->
 		<library.service.host>localhost</library.service.host>
-		<library.service.port>8080</library.service.port>
+		<library.service.port>8000</library.service.port>
 	</properties>
 
 	<dependencies>
@@ -112,5 +112,6 @@
 		<module>library_webapp_controller</module>
 		<module>library_webapp_model_soap</module>
 		<module>library_webapp_client_soap</module>
+		<module>library_webapp_utils</module>
 	</modules>
 </project>
