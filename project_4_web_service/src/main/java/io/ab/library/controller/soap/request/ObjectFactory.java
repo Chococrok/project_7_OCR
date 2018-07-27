@@ -189,6 +189,14 @@ public class ObjectFactory {
     public SignUpForm createSignUpForm() {
         return new SignUpForm();
     }
+    
+    /**
+     * Create an instance of {@link UpdateAccountRequest }
+     * 
+     */
+    public UpdateAccountRequest createUpdateAccountRequest() {
+        return new UpdateAccountRequest();
+    }
 
     /**
      * Create an instance of {@link Account }

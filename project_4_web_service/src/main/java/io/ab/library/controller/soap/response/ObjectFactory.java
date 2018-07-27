@@ -181,13 +181,13 @@ public class ObjectFactory {
     public Tag createTag() {
         return new Tag();
     }
-
+    
     /**
-     * Create an instance of {@link SignInResponse }
+     * Create an instance of {@link AccountResponse }
      * 
      */
-    public SignInResponse createSignInResponse() {
-        return new SignInResponse();
+    public AccountResponse createAccountResponse() {
+        return new AccountResponse();
     }
 
     /**

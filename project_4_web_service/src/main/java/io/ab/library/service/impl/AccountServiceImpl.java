@@ -23,21 +23,19 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private AccountRepository accountRepository;
-	@Autowired
-	private FaultThrower faultService;
 
 	@Override
 	public Account signIn(SignInForm form) throws SOAPException, SOAPFaultException {
 		Account account = this.accountRepository.findByEmailIs(form.getEmail());
 		if (account == null) {
-			this.faultService.sendNewClientSoapFault("Aucun utilisateur avec cette email");
+			FaultThrower.sendNewClientSoapFault("Aucun utilisateur avec cette email");
 		}
 
 		if (this.accountRepository.checkPassword(form.getEmail(), form.getPassword())) {
 			return account;
 		}
 		
-		this.faultService.sendNewClientSoapFault("Mauvais mot de passe");
+		FaultThrower.sendNewClientSoapFault("Mauvais mot de passe");
 		return null;
 	}
 
@@ -48,15 +46,15 @@ public class AccountServiceImpl implements AccountService {
 				|| form.getLastName() == null
 				|| form.getPassword() == null
 				|| form.getCheckPassword() == null) {
-			this.faultService.sendNewClientSoapFault("Complétez tout les champs.");
+			FaultThrower.sendNewClientSoapFault("Complétez tout les champs.");
 		}
 		
 		if(!form.getPassword().equals(form.getCheckPassword())) {
-			this.faultService.sendNewClientSoapFault("Le deux mot de passe ne correspondent pas.");
+			FaultThrower.sendNewClientSoapFault("Le deux mot de passe ne correspondent pas.");
 		}
 		
 		if(this.accountRepository.findByEmailIs(form.getEmail()) != null) {
-			this.faultService.sendNewClientSoapFault("Un utilisateur avec cette email existe déjà.");
+			FaultThrower.sendNewClientSoapFault("Un utilisateur avec cette email existe déjà.");
 		}
 		
 		Account account = new Account();
@@ -69,8 +67,15 @@ public class AccountServiceImpl implements AccountService {
 		return this.accountRepository.save(account);
 	}
 	
-	public Account update(Account account) {
+	@Override
+	public Account update(Account account) throws SOAPFaultException, SOAPException {
 		Account existingAccount = this.accountRepository.findOne(account.getId());
+		
+		if(existingAccount == null) {
+			FaultThrower.sendNewClientSoapFault("Trying to update a new user. please sign up first");
+		}
+		
+		account.setPassword(existingAccount.getPassword());
 		
 		return this.accountRepository.save(account);
 	}

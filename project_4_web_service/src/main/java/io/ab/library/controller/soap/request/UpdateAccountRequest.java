@@ -1,12 +1,12 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
+// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.27 à 12:22:30 AM CET 
+// Généré le : 2018.07.27 à 01:45:27 PM CEST 
 //
 
 
-package io.ab.library.controller.soap.response;
+package io.ab.library.controller.soap.request;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -40,8 +40,8 @@ import io.ab.library.model.Account;
 @XmlType(name = "", propOrder = {
     "account"
 })
-@XmlRootElement(name = "signInResponse")
-public class SignInResponse {
+@XmlRootElement(name = "updateAccountRequest")
+public class UpdateAccountRequest {
 
     @XmlElement(required = true)
     protected Account account;

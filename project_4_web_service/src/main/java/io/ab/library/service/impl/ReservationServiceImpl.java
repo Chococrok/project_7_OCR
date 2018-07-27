@@ -48,7 +48,7 @@ public class ReservationServiceImpl implements ReservationService {
 	@PostConstruct
 	private void scheduleAllReservation() {
 		this.reservationRepository.findAll().forEach(reservation -> {
-			if (reservation.getReservationEnd() != null) {
+			if (reservation != null && reservation.getReservationEnd() != null) {
 				this.scheduleFirstReservationUpdate(reservation);
 			}
 		});
