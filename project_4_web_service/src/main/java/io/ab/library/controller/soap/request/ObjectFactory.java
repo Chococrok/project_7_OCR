@@ -191,6 +191,14 @@ public class ObjectFactory {
     }
     
     /**
+     * Create an instance of {@link FindOneAccountRequest }
+     * 
+     */
+    public FindOneAccountRequest createFindOneAccountRequest() {
+        return new FindOneAccountRequest();
+    }
+    
+    /**
      * Create an instance of {@link UpdateAccountRequest }
      * 
      */

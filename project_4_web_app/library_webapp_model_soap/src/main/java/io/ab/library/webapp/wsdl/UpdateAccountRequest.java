@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.27 à 12:32:56 AM CET 
+// Généré le : 2018.07.27 à 02:49:52 PM CEST 
 //
 
 
@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "account"
 })
-@XmlRootElement(name = "signInResponse")
-public class SignInResponse {
+@XmlRootElement(name = "updateAccountRequest")
+public class UpdateAccountRequest {
 
     @XmlElement(required = true)
     protected Account account;

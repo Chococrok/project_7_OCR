@@ -78,6 +78,30 @@ public class ObjectFactory {
     public SignUpForm createSignUpForm() {
         return new SignUpForm();
     }
+    
+    /**
+     * Create an instance of {@link FindOneAccountRequest }
+     * 
+     */
+    public FindOneAccountRequest createFindOneAccountRequest() {
+        return new FindOneAccountRequest();
+    }
+    
+    /**
+     * Create an instance of {@link UpdateAccountRequest }
+     * 
+     */
+    public UpdateAccountRequest createUpdateAccountRequest() {
+        return new UpdateAccountRequest();
+    }
+    
+    /**
+     * Create an instance of {@link AccountResponse }
+     * 
+     */
+    public AccountResponse createAccountResponse() {
+        return new AccountResponse();
+    }
 
     /**
      * Create an instance of {@link SearchBooksByBookRequest }
@@ -221,14 +245,6 @@ public class ObjectFactory {
      */
     public Tag createTag() {
         return new Tag();
-    }
-
-    /**
-     * Create an instance of {@link SignInResponse }
-     * 
-     */
-    public SignInResponse createSignInResponse() {
-        return new SignInResponse();
     }
 
     /**

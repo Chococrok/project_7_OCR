@@ -19,8 +19,15 @@
 				Bienvenue ${ sessionScope.account.firstName } ${
 				sessionScope.account.lastName },
 				ici vous pouvez vérifier vos emprunts et les rallonger si vous
-				n'avez pas encore fini votre lecture. Vous pouvez également consulter vos réservations.</a>
+				n'avez pas encore fini votre lecture. Vous pouvez également
+				consulter vos réservations.</a>
 			</p>
+			<form class="d-flex" id="reminderForm" action="user/update" methode="POST">
+				<input class="my-auto" type="checkbox" ${ sessionScope.account.reminder ? "checked" : "" }
+					id="reminderInput" name="accountValues.reminder">
+				<label class="my-auto pl-2" for="reminderInput" ${ sessionScope.account.reminder ? "" : "style=\"color: grey;\"" }>
+					Me rappeller quand un de mes emprunts arrive à expiration dans 5 jours </label>
+			</form>
 		</div>
 		<div class="card-body">
 			<h5>Emprunts</h5>
@@ -60,16 +67,17 @@
 									</c:otherwise>
 								</c:choose>
 								<input id="durationInput" type="number" name="durationInWeek"
-									min="1" max="4" ${ rental.extended || rental.rentalOver ? 'disabled' : '' }>
+									min="1" max="4"
+									${ rental.extended || rental.rentalOver ? 'disabled' : '' }>
 								<button class="btn btn-primary"
-									${ rental.extended || rental.rentalOver ? 'disabled' : '' }>Allonger mon
-									prêt</button>
+									${ rental.extended || rental.rentalOver ? 'disabled' : '' }>Allonger
+									mon prêt</button>
 							</div>
 						</form>
 					</li>
 				</c:forEach>
 			</ul>
-			
+
 			<h5>Réservations</h5>
 			<ul class="list-group list-group-flush">
 				<c:forEach items="${ requestScope.reservations }" var="reservation">
@@ -91,13 +99,13 @@
 							method="POST">
 							<input type="hidden" name="bookId"
 								value="${ reservation.id.bookId }" />
-								<button class="btn btn-primary"
-									>Annuler</button>
+							<button class="btn btn-primary">Annuler</button>
 						</form>
 					</li>
 				</c:forEach>
 			</ul>
 		</div>
 	</div>
+	<%@ include file="/WEB-INF/javascript/update-reminder.js.jsp"%>
 </body>
 </html>

@@ -23,6 +23,11 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private AccountRepository accountRepository;
+	
+	@Override
+	public Account findOne(int id) {
+		return this.accountRepository.findOne(id);
+	}
 
 	@Override
 	public Account signIn(SignInForm form) throws SOAPException, SOAPFaultException {

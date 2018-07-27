@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 public interface AccountService {
 	
-	public Account signIn(SignInForm form);
-	public Account signUp(SignUpForm form);
+	Account findOne(int id);
+	Account signIn(SignInForm form);
+	Account signUp(SignUpForm form);
+	Account update(Account account);
 
 }
