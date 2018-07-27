@@ -2,6 +2,7 @@ package io.ab.library.service.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -160,7 +161,7 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	@Override
-	public void scheduleFirstReservationUpdate(int bookId) {
+	public Date scheduleFirstReservationUpdate(int bookId) {
 		Reservation reservation = this.findFirstReservation(bookId);
 		
 		if (reservation != null) {
@@ -168,21 +169,29 @@ public class ReservationServiceImpl implements ReservationService {
 			Calendar deadLine = Calendar.getInstance();
 			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
 			
+			reservation.setReservationEnd(deadLine.getTime());
+			this.updateOne(reservation);
+			
 			threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());			
 		}
+		
+		return reservation.getReservationEnd();
 	}
 
 	@Override
-	public void scheduleFirstReservationUpdate(Reservation reservation) {
+	public Date scheduleFirstReservationUpdate(Reservation reservation) {
 		if (reservation.getReservationEnd() == null) {
 			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 			Calendar deadLine = Calendar.getInstance();
 			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
 
 			reservation.setReservationEnd(deadLine.getTime());
+			this.updateOne(reservation);
 		}
 
 		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), reservation.getReservationEnd());
+	
+		return reservation.getReservationEnd();
 	}
 	
 	@Override
@@ -212,19 +221,8 @@ public class ReservationServiceImpl implements ReservationService {
 			this.reservationService.deleteOne(this.previousFirstReservation.getId());
 
 			int bookId = this.previousFirstReservation.getId().getBookId();
-			Reservation currentFirstResrvation = this.reservationService.findFirstReservation(bookId);
-
-			if (currentFirstResrvation != null) {
-				int currentDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-				Calendar deadLine = Calendar.getInstance();
-				deadLine.set(Calendar.HOUR_OF_DAY, currentDay + this.reservationService.getReservationDuration());
-
-				currentFirstResrvation.setReservationEnd(deadLine.getTime());
-				this.reservationService.updateOne(currentFirstResrvation);
-
-				this.reservationService.scheduleFirstReservationUpdate(currentFirstResrvation);
-			}
-
+			
+			this.reservationService.scheduleFirstReservationUpdate(bookId);
 		}
 	}
 }
