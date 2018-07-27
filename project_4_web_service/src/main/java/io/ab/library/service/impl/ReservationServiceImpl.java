@@ -20,9 +20,9 @@ import io.ab.library.model.Reservation;
 import io.ab.library.model.ReservationPK;
 import io.ab.library.repository.ReservationRepository;
 import io.ab.library.service.BookService;
-import io.ab.library.service.FaultService;
 import io.ab.library.service.RentalService;
 import io.ab.library.service.ReservationService;
+import io.ab.library.util.FaultThrower;
 import io.ab.library.util.exception.AlreadyExistsException;
 
 @Service
@@ -41,9 +41,6 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
 	private RentalService rentalService;
-
-	@Autowired
-	private FaultService faultService;
 
 	@Autowired
 	private ThreadPoolTaskScheduler threadPoolTaskScheduler;
@@ -79,7 +76,7 @@ public class ReservationServiceImpl implements ReservationService {
 		Book involvedBook = this.bookService.findOne(bookId);
 		
 		if (involvedBook == null) {
-			this.faultService.sendNewClientSoapFault("book with id: " + bookId + " doesn't exist");
+			FaultThrower.sendNewClientSoapFault("book with id: " + bookId + " doesn't exist");
 		}
 		
 		Reservation newReservation;
@@ -93,19 +90,19 @@ public class ReservationServiceImpl implements ReservationService {
 		if (reservationExists || userIsAlreadyRenting) {
 			String faultMessage = "User already booked or is already renting this book";
 			log.error(faultMessage);
-			this.faultService.sendNewClientSoapFault(faultMessage);
+			FaultThrower.sendNewClientSoapFault(faultMessage);
 		}
 
 		if (available) {
 			String faultMessage = "trying to book an an available resource";
 			log.error(faultMessage);
-			this.faultService.sendNewClientSoapFault(faultMessage);
+			FaultThrower.sendNewClientSoapFault(faultMessage);
 		}
 
 		if (maxReservationReached) {
 			String faultMessage = "max reservation reached";
 			log.error(faultMessage);
-			this.faultService.sendNewClientSoapFault(faultMessage);
+			FaultThrower.sendNewClientSoapFault(faultMessage);
 		}
 
 		// If there is no other reservation it means that the user is the first one.

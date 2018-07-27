@@ -11,6 +11,7 @@
       <xs:element minOccurs="0" name="firstName" type="xs:string"/>
       <xs:element minOccurs="0" name="lastName" type="xs:string"/>
       <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="reminder" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
 

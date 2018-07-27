@@ -14,6 +14,7 @@ import io.ab.library.controller.soap.dto.SignUpForm;
 import io.ab.library.model.Account;
 import io.ab.library.repository.AccountRepository;
 import io.ab.library.service.AccountService;
+import io.ab.library.util.FaultThrower;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -23,7 +24,7 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private AccountRepository accountRepository;
 	@Autowired
-	private FaultServiceImpl faultService;
+	private FaultThrower faultService;
 
 	@Override
 	public Account signIn(SignInForm form) throws SOAPException, SOAPFaultException {
@@ -64,6 +65,12 @@ public class AccountServiceImpl implements AccountService {
 		account.setLastName(form.getLastName());
 		account.setPassword(form.getPassword());
 		account.setPhoneNumber(form.getPhone());		
+		
+		return this.accountRepository.save(account);
+	}
+	
+	public Account update(Account account) {
+		Account existingAccount = this.accountRepository.findOne(account.getId());
 		
 		return this.accountRepository.save(account);
 	}

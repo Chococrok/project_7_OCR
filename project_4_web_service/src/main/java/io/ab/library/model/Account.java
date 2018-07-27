@@ -39,6 +39,9 @@ public class Account implements Serializable {
 
 	@Column(name="phone_number")
 	private String phoneNumber;
+	
+	@Column(name="reminder")
+	private Boolean reminder;
 
 	/*//bi-directional many-to-one association to Rental
 	@JsonIgnore
@@ -98,6 +101,14 @@ public class Account implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public Boolean getReminder() {
+		return reminder;
+	}
+
+	public void setReminder(Boolean reminder) {
+		this.reminder = reminder;
 	}
 
 	/*public List<Rental> getRentals() {
