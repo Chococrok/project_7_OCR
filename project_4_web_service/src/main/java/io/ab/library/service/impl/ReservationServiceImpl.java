@@ -158,12 +158,13 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	@Override
-	public Date scheduleFirstReservationUpdate(int bookId) {
+	public Calendar scheduleFirstReservationUpdate(int bookId) {
 		Reservation reservation = this.findFirstReservation(bookId);
+		Calendar deadLine = null;
 		
 		if (reservation != null) {
 			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-			Calendar deadLine = Calendar.getInstance();
+			deadLine = Calendar.getInstance();
 			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
 			
 			reservation.setReservationEnd(deadLine.getTime());
@@ -172,14 +173,16 @@ public class ReservationServiceImpl implements ReservationService {
 			threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());			
 		}
 		
-		return reservation.getReservationEnd();
+		return deadLine;
 	}
 
 	@Override
-	public Date scheduleFirstReservationUpdate(Reservation reservation) {
+	public Calendar scheduleFirstReservationUpdate(Reservation reservation) {
+		Calendar deadLine = null;
+		
 		if (reservation.getReservationEnd() == null) {
 			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-			Calendar deadLine = Calendar.getInstance();
+			deadLine = Calendar.getInstance();
 			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
 
 			reservation.setReservationEnd(deadLine.getTime());
@@ -188,7 +191,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), reservation.getReservationEnd());
 	
-		return reservation.getReservationEnd();
+		return deadLine;
 	}
 	
 	@Override
