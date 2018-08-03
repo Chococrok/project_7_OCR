@@ -9,10 +9,13 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import io.ab.library.controller.soap.request.FindOneAccountRequest;
 import io.ab.library.controller.soap.request.SignInRequest;
 import io.ab.library.controller.soap.request.SignUpRequest;
+import io.ab.library.controller.soap.request.UpdateAccountRequest;
 import io.ab.library.controller.soap.response.GetAllAuthorsResponse;
-import io.ab.library.controller.soap.response.SignInResponse;
+import io.ab.library.model.Account;
+import io.ab.library.controller.soap.response.AccountResponse;
 import io.ab.library.service.AccountService;
 
 @Endpoint
@@ -22,23 +25,22 @@ public class AccountEndpoint {
 	@Autowired
 	private AccountService accountService;
 
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllAccountsRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "findOneAccountRequest")
 	@ResponsePayload
-	public GetAllAuthorsResponse getAllAuthors() {
-		GetAllAuthorsResponse response = new GetAllAuthorsResponse();
-		System.out.println("processing author request");
+	public AccountResponse findOneAccount(@RequestPayload FindOneAccountRequest request) {
+		AccountResponse response = new AccountResponse();
+		System.out.println("processing findOneAccountRequest");
 
-		// this.authorService.getAllAuthors().forEach(author -> {
-		// response.getAuthors().add(author);
-		// });
+		Account account = this.accountService.findOne(request.getAccountId());
+		response.setAccount(account);
 
 		return response;
 	}
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "signInRequest")
 	@ResponsePayload
-	public SignInResponse signIn(@RequestPayload SignInRequest request) throws SOAPException, SOAPFaultException {
-		SignInResponse response = new SignInResponse();
+	public AccountResponse signIn(@RequestPayload SignInRequest request) throws SOAPException, SOAPFaultException {
+		AccountResponse response = new AccountResponse();
 		System.out.println("processing signInRequest");
 
 		response.setAccount(this.accountService.signIn(request.getSignInForm()));
@@ -47,11 +49,22 @@ public class AccountEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "signUpRequest")
 	@ResponsePayload
-	public SignInResponse signUp(@RequestPayload SignUpRequest request) throws SOAPFaultException, SOAPException {
-		SignInResponse response = new SignInResponse();
+	public AccountResponse signUp(@RequestPayload SignUpRequest request) throws SOAPFaultException, SOAPException {
+		AccountResponse response = new AccountResponse();
 		System.out.println("processing signUpRequest");
 
 		response.setAccount(this.accountService.signUp(request.getSignUpForm()));
+		return response;
+	}
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateAccountRequest")
+	@ResponsePayload
+	public AccountResponse signUp(@RequestPayload UpdateAccountRequest
+			request) throws SOAPFaultException, SOAPException {
+		AccountResponse response = new AccountResponse();
+		System.out.println("processing AccountUpdate for user: " + request.getAccount().getEmail());
+
+		response.setAccount(this.accountService.update(request.getAccount()));
 		return response;
 	}
 }

@@ -1,0 +1,40 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ab.io/library" targetNamespace="http://ab.io/library"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="../dto.xsd" />
+	<xs:include schemaLocation="../model.xsd" />
+
+	<xs:element name="signInRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="signInForm" type="tns:SignInForm" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="signUpRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="signUpForm" type="tns:SignUpForm" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="findOneAccountRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accountId" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="updateAccountRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="account" type="tns:account" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

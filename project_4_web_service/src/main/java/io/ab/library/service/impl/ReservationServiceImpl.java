@@ -2,6 +2,7 @@ package io.ab.library.service.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -19,9 +20,9 @@ import io.ab.library.model.Reservation;
 import io.ab.library.model.ReservationPK;
 import io.ab.library.repository.ReservationRepository;
 import io.ab.library.service.BookService;
-import io.ab.library.service.FaultService;
 import io.ab.library.service.RentalService;
 import io.ab.library.service.ReservationService;
+import io.ab.library.util.FaultThrower;
 import io.ab.library.util.exception.AlreadyExistsException;
 
 @Service
@@ -42,15 +43,12 @@ public class ReservationServiceImpl implements ReservationService {
 	private RentalService rentalService;
 
 	@Autowired
-	private FaultService faultService;
-
-	@Autowired
 	private ThreadPoolTaskScheduler threadPoolTaskScheduler;
 
 	@PostConstruct
 	private void scheduleAllReservation() {
 		this.reservationRepository.findAll().forEach(reservation -> {
-			if (reservation.getReservationEnd() != null) {
+			if (reservation != null && reservation.getReservationEnd() != null) {
 				this.scheduleFirstReservationUpdate(reservation);
 			}
 		});
@@ -78,7 +76,7 @@ public class ReservationServiceImpl implements ReservationService {
 		Book involvedBook = this.bookService.findOne(bookId);
 		
 		if (involvedBook == null) {
-			this.faultService.sendNewClientSoapFault("book with id: " + bookId + " doesn't exist");
+			FaultThrower.sendNewClientSoapFault("book with id: " + bookId + " doesn't exist");
 		}
 		
 		Reservation newReservation;
@@ -92,19 +90,19 @@ public class ReservationServiceImpl implements ReservationService {
 		if (reservationExists || userIsAlreadyRenting) {
 			String faultMessage = "User already booked or is already renting this book";
 			log.error(faultMessage);
-			this.faultService.sendNewClientSoapFault(faultMessage);
+			FaultThrower.sendNewClientSoapFault(faultMessage);
 		}
 
 		if (available) {
 			String faultMessage = "trying to book an an available resource";
 			log.error(faultMessage);
-			this.faultService.sendNewClientSoapFault(faultMessage);
+			FaultThrower.sendNewClientSoapFault(faultMessage);
 		}
 
 		if (maxReservationReached) {
 			String faultMessage = "max reservation reached";
 			log.error(faultMessage);
-			this.faultService.sendNewClientSoapFault(faultMessage);
+			FaultThrower.sendNewClientSoapFault(faultMessage);
 		}
 
 		// If there is no other reservation it means that the user is the first one.
@@ -160,7 +158,7 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	@Override
-	public void scheduleFirstReservationUpdate(int bookId) {
+	public Date scheduleFirstReservationUpdate(int bookId) {
 		Reservation reservation = this.findFirstReservation(bookId);
 		
 		if (reservation != null) {
@@ -168,21 +166,29 @@ public class ReservationServiceImpl implements ReservationService {
 			Calendar deadLine = Calendar.getInstance();
 			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
 			
+			reservation.setReservationEnd(deadLine.getTime());
+			this.updateOne(reservation);
+			
 			threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());			
 		}
+		
+		return reservation.getReservationEnd();
 	}
 
 	@Override
-	public void scheduleFirstReservationUpdate(Reservation reservation) {
+	public Date scheduleFirstReservationUpdate(Reservation reservation) {
 		if (reservation.getReservationEnd() == null) {
 			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 			Calendar deadLine = Calendar.getInstance();
 			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
 
 			reservation.setReservationEnd(deadLine.getTime());
+			this.updateOne(reservation);
 		}
 
 		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), reservation.getReservationEnd());
+	
+		return reservation.getReservationEnd();
 	}
 	
 	@Override
@@ -212,19 +218,8 @@ public class ReservationServiceImpl implements ReservationService {
 			this.reservationService.deleteOne(this.previousFirstReservation.getId());
 
 			int bookId = this.previousFirstReservation.getId().getBookId();
-			Reservation currentFirstResrvation = this.reservationService.findFirstReservation(bookId);
-
-			if (currentFirstResrvation != null) {
-				int currentDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-				Calendar deadLine = Calendar.getInstance();
-				deadLine.set(Calendar.HOUR_OF_DAY, currentDay + this.reservationService.getReservationDuration());
-
-				currentFirstResrvation.setReservationEnd(deadLine.getTime());
-				this.reservationService.updateOne(currentFirstResrvation);
-
-				this.reservationService.scheduleFirstReservationUpdate(currentFirstResrvation);
-			}
-
+			
+			this.reservationService.scheduleFirstReservationUpdate(bookId);
 		}
 	}
 }

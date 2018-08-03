@@ -9,7 +9,9 @@ import io.ab.library.model.Account;
 
 public interface AccountService {
 	
+	Account findOne(int id);
 	Account signIn(SignInForm form) throws SOAPException, SOAPFaultException;
 	Account signUp(SignUpForm form) throws SOAPFaultException, SOAPException;
+	Account update(Account account) throws SOAPFaultException, SOAPException;
 
 }

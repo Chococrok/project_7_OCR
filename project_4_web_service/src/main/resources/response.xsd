@@ -6,6 +6,7 @@
 	<xs:include schemaLocation="response-schema/rental-response.xsd"/>
 	<xs:include schemaLocation="response-schema/reservation-response.xsd"/>
 	<xs:include schemaLocation="response-schema/book-response.xsd"/>
+	<xs:include schemaLocation="response-schema/account-response.xsd"/>
 	
 
 	<xs:element name="getAllAuthorsResponse">
@@ -22,14 +23,6 @@
 				<xs:element name="tags" type="tns:tag" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
-	</xs:element>	
-	
-	<xs:element name="signInResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="account" type="tns:account"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>	
+	</xs:element>
 
 </xs:schema>

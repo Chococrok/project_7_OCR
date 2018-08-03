@@ -2,15 +2,14 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.12.27 à 12:32:56 AM CET 
+// Généré le : 2018.07.30 à 10:08:22 PM CEST 
 //
 
 
-package io.ab.library.webapp.wsdl;
+package io.ab.library.reminder.batch.wsdl;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="account" type="{http://ab.io/library}account"/&gt;
+ *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="bookId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,45 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "account"
+    "accountId",
+    "bookId"
 })
-@XmlRootElement(name = "signInResponse")
-public class SignInResponse {
+@XmlRootElement(name = "deleteReservationRequest")
+public class DeleteReservationRequest {
 
-    @XmlElement(required = true)
-    protected Account account;
+    protected int accountId;
+    protected int bookId;
 
     /**
-     * Obtient la valeur de la propriété account.
+     * Obtient la valeur de la propriété accountId.
      * 
-     * @return
-     *     possible object is
-     *     {@link Account }
-     *     
      */
-    public Account getAccount() {
-        return account;
+    public int getAccountId() {
+        return accountId;
     }
 
     /**
-     * Définit la valeur de la propriété account.
+     * Définit la valeur de la propriété accountId.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Account }
-     *     
      */
-    public void setAccount(Account value) {
-        this.account = value;
+    public void setAccountId(int value) {
+        this.accountId = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété bookId.
+     * 
+     */
+    public int getBookId() {
+        return bookId;
+    }
+
+    /**
+     * Définit la valeur de la propriété bookId.
+     * 
+     */
+    public void setBookId(int value) {
+        this.bookId = value;
     }
 
 }
