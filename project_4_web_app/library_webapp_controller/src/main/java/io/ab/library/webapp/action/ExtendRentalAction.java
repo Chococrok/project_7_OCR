@@ -12,7 +12,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.stereotype.Controller;
 
-import io.ab.library.webapp.dto.BookDTO;
+import io.ab.library.webapp.service.pojo.BookPOJO;
 import io.ab.library.webapp.wsdl.Account;
 import io.ab.library.webapp.wsdl.Rental;
 

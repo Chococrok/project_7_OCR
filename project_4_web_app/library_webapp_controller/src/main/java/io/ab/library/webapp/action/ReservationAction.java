@@ -11,9 +11,10 @@ import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.stereotype.Controller;
 
-import io.ab.library.webapp.dto.BookDTO;
+import io.ab.library.webapp.service.pojo.BookPOJO;
 import io.ab.library.webapp.wsdl.Account;
 import io.ab.library.webapp.wsdl.Rental;
+import io.ab.library.webapp.wsdl.Reservation;
 
 @Controller
 @InterceptorRef("loginStack")
@@ -25,13 +26,17 @@ public class ReservationAction extends LibraryActionSupport implements SessionAw
 			
 	@Override
 	public String execute() throws Exception {
-		this.reservationService.addReservation(((Account) session.get("account")).getId(), bookId);
+		int accountId = ((Account) session.get("account")).getId();
+		this.reservationService.addReservation(accountId, bookId);
+		
 		return SUCCESS;
 	}
 	
 	@Action("reservation/delete")
 	public String deleteReservation() {
-		this.reservationService.deleteReservation(((Account) session.get("account")).getId(), bookId);
+		int accountId = ((Account) session.get("account")).getId();
+		this.reservationService.deleteReservation(accountId, bookId);
+		
 		return SUCCESS;
 	}
 

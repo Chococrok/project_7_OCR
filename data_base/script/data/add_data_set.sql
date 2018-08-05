@@ -35,7 +35,8 @@ INSERT INTO account (first_name, last_name, email, password)
 	VALUES
 	('bruno', 'zilio', 'bruno@g.com', 'bruno'),
 	('yoann', 'dubois', 'yoann@g.com', 'yoann'),
-	('arnaud', 'barbaria', 'arnaud@g.com', 'arnaud');
+	('arnaud', 'barbaria', 'arnaud@g.com', 'arnaud')
+	('laure', 'ferras', 'laure@g.com', 'laure');
 	
 INSERT INTO rental (account_id, book_id, dead_line) 
 	VALUES 

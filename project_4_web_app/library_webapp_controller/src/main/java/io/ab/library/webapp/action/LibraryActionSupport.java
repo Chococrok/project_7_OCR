@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import io.ab.library.webapp.dto.BookDTO;
 import io.ab.library.webapp.service.*;
+import io.ab.library.webapp.service.pojo.BookPOJO;
 import io.ab.library.webapp.utils.DateUtils;
 import io.ab.library.webapp.wsdl.Author;
 import io.ab.library.webapp.wsdl.Book;
@@ -16,9 +16,11 @@ import io.ab.library.webapp.wsdl.Rental;
 import io.ab.library.webapp.wsdl.Reservation;
 
 public abstract class LibraryActionSupport extends ActionSupport {
+	
+	public static final String ACCOUNT = "account";
 		
 	protected List<Author> authors;
-	protected List<BookDTO> books;
+	protected List<BookPOJO> books;
 	protected List<Rental> rentals;
 	protected List<Reservation> reservations;
 	
@@ -43,11 +45,11 @@ public abstract class LibraryActionSupport extends ActionSupport {
 		this.authors = authors;
 	}
 
-	public List<BookDTO> getBooks() {
+	public List<BookPOJO> getBooks() {
 		return books;
 	}
 
-	public void setBooks(List<BookDTO> books) {
+	public void setBooks(List<BookPOJO> books) {
 		this.books = books;
 	}
 

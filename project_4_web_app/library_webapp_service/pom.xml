@@ -27,6 +27,12 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>io.ab</groupId>
+			<artifactId>library_webapp_utils</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 
 		<!-- if need to change soap to rest just change this dependency -->
 		<dependency>

@@ -1,4 +1,4 @@
-package io.ab.library.webapp.dto;
+package io.ab.library.webapp.service.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,14 +8,16 @@ import io.ab.library.webapp.utils.DateUtils;
 import io.ab.library.webapp.wsdl.Book;
 import io.ab.library.webapp.wsdl.Rental;
 
-public class BookDTO extends Book {
+public class BookPOJO extends Book {
 	
 	private boolean available;
 	private int availableCopy;
 	private Date backDate;
 	private boolean maxReservationReached;
+	private boolean rentedByCurrentUser;
+	private boolean bookedByCurrentUser;
 	
-	public BookDTO(Book book) {
+	public BookPOJO(Book book) {
 		this.id = book.getId();
 		this.name = book.getName();
 		this.copy = book.getCopy();
@@ -41,14 +43,6 @@ public class BookDTO extends Book {
 		}
 		
 	}
-	
-	public static List<BookDTO> toDtos(List<Book> books) {
-		List<BookDTO> bookDTOs = new ArrayList<BookDTO>();
-		for (Book book : books) {
-			bookDTOs.add(new BookDTO(book));
-		}
-		return bookDTOs;
-	}
 
 	public boolean getAvailable() {
 		return available;
@@ -69,4 +63,22 @@ public class BookDTO extends Book {
 	public boolean getmaxReservationReached() {
 		return this.maxReservationReached;
 	}
+
+	public boolean getRentedByCurrentUser() {
+		return rentedByCurrentUser;
+	}
+
+	public void setRentedByCurrentUser(boolean rentedByCurrentUser) {
+		this.rentedByCurrentUser = rentedByCurrentUser;
+	}
+
+	public boolean getBookedByCurrentUser() {
+		return bookedByCurrentUser;
+	}
+
+	public void setBookedByCurrentUser(boolean bookedByCurrentUser) {
+		this.bookedByCurrentUser = bookedByCurrentUser;
+	}
+	
+	
 }

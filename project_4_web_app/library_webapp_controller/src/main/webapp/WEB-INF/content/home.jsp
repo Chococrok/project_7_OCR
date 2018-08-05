@@ -39,22 +39,34 @@
 								</c:if>
 							</div>
 
-							<form class="col d-flex" method="POST" action="reservation" id="reservationForm${ book.id }">
-								<input hidden value="${ book.id }" name="bookId" form="reservationForm${ book.id }"></input>
-								<c:choose>
-									<c:when
-										test="${ !book.available && !book.maxReservationReached}">
-										<button type="submit" class="btn btn-primary mx-auto mb-auto">Reserver</button>
+							<form class="col d-flex" method="POST" action="reservation"
+								id="reservationForm${ book.id }">
+								<input hidden value="${ book.id }" name="bookId"
+									form="reservationForm${ book.id }"></input>
+								<c:choose>									
+									<c:when test="${ book.rentedByCurrentUser}">
+										<button type="submit" class="btn btn-primary mx-auto mb-auto"
+											disabled>Vous avez déjà emprunté ce livre</button>
+									</c:when>
+									
+									<c:when test="${ book.bookedByCurrentUser}">
+										<button type="submit" class="btn btn-primary mx-auto mb-auto"
+											disabled>Vous avez déjà réservé ce livre</button>
 									</c:when>
 
 									<c:when
-										test="${ !book.available && book.maxReservationReached}">
-										<button type="submit"
-											class="btn btn-primary mx-auto mb-auto" disabled>Reserver</button>
+										test="${ book.maxReservationReached}">
+										<button type="submit" class="btn btn-primary mx-auto mb-auto"
+											disabled>Trop de réservation !</button>
+									</c:when>
+									
+									<c:when
+										test="${ book.available }">
 									</c:when>
 
 									<c:otherwise>
-         					</c:otherwise>
+										<button type="submit" class="btn btn-primary mx-auto mb-auto">Reserver</button>
+									</c:otherwise>
 								</c:choose>
 							</form>
 						</div>

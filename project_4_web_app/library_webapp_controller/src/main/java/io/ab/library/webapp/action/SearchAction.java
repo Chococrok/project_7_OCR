@@ -8,7 +8,7 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.stereotype.Controller;
 
-import io.ab.library.webapp.dto.BookDTO;
+import io.ab.library.webapp.service.pojo.BookPOJO;
 import io.ab.library.webapp.wsdl.Tag;
 
 @Controller
@@ -40,7 +40,7 @@ public class SearchAction extends LibraryActionSupport {
 	
 	@Action(value = SEARCH + "/" + BOOK, results = { @Result(location = SEARCH + ".jsp") })
 	public String searchBook() throws Exception {
-		this.books = BookDTO.toDtos(this.bookService.searchBooksByBookName(search));
+		this.books = this.bookService.modelsToPOJOs(this.bookService.searchBooksByBookName(search));
 		this.lastSearchType = BOOK;
 		this.lastSearchTypeFR = BOOK_FR;
 		this.page = SEARCH;
@@ -49,7 +49,7 @@ public class SearchAction extends LibraryActionSupport {
 	
 	@Action(value = SEARCH + "/" + AUTHOR, results = { @Result(location = SEARCH + ".jsp") })
 	public String searchAuthor() throws Exception {
-		this.books = BookDTO.toDtos(this.bookService.searchBooksByAuthorName(search));
+		this.books = this.bookService.modelsToPOJOs(this.bookService.searchBooksByAuthorName(search));
 		this.lastSearchType = AUTHOR;
 		this.lastSearchTypeFR = AUTHOR_FR;
 		this.page = SEARCH;
@@ -58,7 +58,7 @@ public class SearchAction extends LibraryActionSupport {
 	
 	@Action(value = SEARCH + "/" + PUBLISHER, results = { @Result(location = SEARCH + ".jsp") })
 	public String searchPublisher() throws Exception {
-		this.books = BookDTO.toDtos(this.bookService.searchBooksByPublisherName(search));
+		this.books = this.bookService.modelsToPOJOs(this.bookService.searchBooksByPublisherName(search));
 		this.lastSearchType = PUBLISHER;
 		this.lastSearchTypeFR = PUBLISHER_FR;
 		this.page = SEARCH;
@@ -67,7 +67,7 @@ public class SearchAction extends LibraryActionSupport {
 	
 	@Action(value = SEARCH + "/" + TAG, results = { @Result(location = SEARCH + ".jsp") })
 	public String searchTag() throws Exception {
-		this.books = BookDTO.toDtos(this.bookService.searchBooksByTagName(search));
+		this.books = this.bookService.modelsToPOJOs(this.bookService.searchBooksByTagName(search));
 		this.lastSearchType = TAG;
 		this.lastSearchTypeFR = TAG_FR;
 		this.page = SEARCH;

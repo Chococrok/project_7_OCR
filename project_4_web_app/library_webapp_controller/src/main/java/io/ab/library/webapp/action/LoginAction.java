@@ -11,9 +11,7 @@ import io.ab.library.webapp.wsdl.Account;
 import io.ab.library.webapp.wsdl.SignInForm;
 
 public class LoginAction extends LibraryActionSupport implements SessionAware {
-	
-	private static final String ACCOUNT = "account";
-		
+			
 	private SignInForm signInForm;
 	private Map<String, Object> session;
 
@@ -25,6 +23,7 @@ public class LoginAction extends LibraryActionSupport implements SessionAware {
 	@Action(value="login/submit", results= {@Result(name="success", location="user", type="redirect")})
 	public String login() throws Exception {
 		Account account = this.accountService.signIn(signInForm);
+		
 		this.session.put(ACCOUNT, account);
 		return SUCCESS;
 	}
