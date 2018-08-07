@@ -6,6 +6,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.ws.soap.client.SoapFaultClientException;
 
 import io.ab.library.webapp.wsdl.Account;
 import io.ab.library.webapp.wsdl.SignInForm;
@@ -20,11 +21,20 @@ public class LoginAction extends LibraryActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 	
-	@Action(value="login/submit", results= {@Result(name="success", location="user", type="redirect")})
+	@Action(value="login/submit", results= {
+			@Result(name = LibraryActionSupport.SUCCESS, location = "user", type = "redirect"),
+			@Result(name = LibraryActionSupport.ERROR, location = "login.jsp")
+	})
 	public String login() throws Exception {
-		Account account = this.accountService.signIn(signInForm);
+		try {
+			Account account = this.accountService.signIn(signInForm);			
+			this.session.put(ACCOUNT, account);
+		} catch (SoapFaultClientException e) {
+			System.out.println(e);
+			this.error = e.getFaultStringOrReason();
+			return ERROR;
+		}
 		
-		this.session.put(ACCOUNT, account);
 		return SUCCESS;
 	}
 

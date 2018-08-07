@@ -18,11 +18,14 @@ import io.ab.library.webapp.wsdl.Reservation;
 public abstract class LibraryActionSupport extends ActionSupport {
 	
 	public static final String ACCOUNT = "account";
+	public static final String ERROR = "error";
 		
 	protected List<Author> authors;
 	protected List<BookPOJO> books;
 	protected List<Rental> rentals;
 	protected List<Reservation> reservations;
+	
+	protected String error;
 	
 	protected String page;
 	
@@ -77,6 +80,10 @@ public abstract class LibraryActionSupport extends ActionSupport {
 		this.page = page;
 	}
 	
+	public String getError() {
+		return error;
+	}
+
 	// Utils methodes
 	public String formatDate(Date date) {
 		return DateUtils.format(date);
