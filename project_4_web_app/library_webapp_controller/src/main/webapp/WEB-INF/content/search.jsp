@@ -48,14 +48,7 @@
 						</div>
 					</form>
 				</li>
-				<c:forEach items="${ requestScope.books }" var="book">
-					<li class="list-group-item d-flex"><span>
-							<strong>${ book.name }</strong> de ${ book.author.firstName } ${ book.author.lastName }
-							(Editon ${ book.publisher.name })
-						</span> <span class="ml-auto ${ book.available ? '' : 'text-danger' }">
-							${ book.available ? 'disponible' : 'indisponible' } (${ book.availableCopy }/${ book.copy })
-						</span></li>
-				</c:forEach>
+				<%@ include file="/WEB-INF/content/books-component.jsp"%>
 			</ul>
 		</div>
 	</div>
