@@ -1,7 +1,6 @@
 package io.ab.library.service;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.xml.soap.SOAPException;
@@ -23,6 +22,6 @@ public interface ReservationService {
 	Reservation updateOne(Reservation reservation);
 	void deleteOne(int accountId, int bookId);
 	void deleteOne(ReservationPK id);
-	Date scheduleFirstReservationUpdate(Reservation reservation);
-	Date scheduleFirstReservationUpdate(int bookId);
+	Calendar scheduleFirstReservationUpdate(Reservation reservation);
+	Calendar scheduleFirstReservationUpdate(int bookId);
 }

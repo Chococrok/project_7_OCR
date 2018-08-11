@@ -45,6 +45,7 @@
 			<page-encoding>UTF-8</page-encoding>
 			<include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
 			<include-prelude>/WEB-INF/layout/header.jsp</include-prelude>
+			<include-prelude>/WEB-INF/layout/error-ribbon.jsp</include-prelude>
 			<include-coda>/WEB-INF/javascript/nav.js.jsp</include-coda>
 		</jsp-property-group>
 	</jsp-config>
