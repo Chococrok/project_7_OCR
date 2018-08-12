@@ -2,8 +2,10 @@ package io.ab.library.service.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ScheduledFuture;
 
 import javax.annotation.PostConstruct;
 import javax.xml.soap.SOAPException;
@@ -20,6 +22,7 @@ import io.ab.library.model.Reservation;
 import io.ab.library.model.ReservationPK;
 import io.ab.library.repository.ReservationRepository;
 import io.ab.library.service.BookService;
+import io.ab.library.service.MailService;
 import io.ab.library.service.RentalService;
 import io.ab.library.service.ReservationService;
 import io.ab.library.util.FaultThrower;
@@ -43,7 +46,12 @@ public class ReservationServiceImpl implements ReservationService {
 	private RentalService rentalService;
 
 	@Autowired
+	private MailService mailService;
+
+	@Autowired
 	private ThreadPoolTaskScheduler threadPoolTaskScheduler;
+
+	private Map<ReservationPK, ScheduledFuture<?>> scheduledFutureMap = new HashMap<>();;
 
 	@PostConstruct
 	private void scheduleAllReservation() {
@@ -74,11 +82,11 @@ public class ReservationServiceImpl implements ReservationService {
 	public Reservation insertNewReservation(int accountId, int bookId) throws AlreadyExistsException, SOAPException {
 		List<Reservation> currentBookReservations = this.reservationRepository.findAllByBook(bookId);
 		Book involvedBook = this.bookService.findOne(bookId);
-		
+
 		if (involvedBook == null) {
 			FaultThrower.sendNewClientSoapFault("book with id: " + bookId + " doesn't exist");
 		}
-		
+
 		Reservation newReservation;
 
 		boolean reservationExists = this.reservationRepository.exists(new ReservationPK(accountId, bookId));
@@ -149,37 +157,41 @@ public class ReservationServiceImpl implements ReservationService {
 
 		this.scheduleFirstReservationUpdate(bookId);
 	}
-	
+
 	@Override
 	public void deleteOne(ReservationPK id) {
 		this.reservationRepository.delete(id);
-		
+		this.scheduledFutureMap.get(id).cancel(true);
 		this.scheduleFirstReservationUpdate(id.getBookId());
 	}
-	
+
 	@Override
 	public Calendar scheduleFirstReservationUpdate(int bookId) {
 		Reservation reservation = this.findFirstReservation(bookId);
 		Calendar deadLine = null;
-		
+
 		if (reservation != null) {
 			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 			deadLine = Calendar.getInstance();
 			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
-			
+
 			reservation.setReservationEnd(deadLine.getTime());
 			this.updateOne(reservation);
-			
-			threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());			
+
+			ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler
+					.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());
+			scheduledFutureMap.put(reservation.getId(), scheduledFuture);
+
+			this.mailService.sendBookAvailable(reservation.getAccount(), reservation.getBook());
 		}
-		
+
 		return deadLine;
 	}
 
 	@Override
 	public Calendar scheduleFirstReservationUpdate(Reservation reservation) {
 		Calendar deadLine = null;
-		
+
 		if (reservation.getReservationEnd() == null) {
 			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 			deadLine = Calendar.getInstance();
@@ -189,11 +201,15 @@ public class ReservationServiceImpl implements ReservationService {
 			this.updateOne(reservation);
 		}
 
-		threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation), reservation.getReservationEnd());
-	
+		ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation),
+				reservation.getReservationEnd());
+		scheduledFutureMap.put(reservation.getId(), scheduledFuture);
+		
+		this.mailService.sendBookAvailable(reservation.getAccount(), reservation.getBook());
+
 		return deadLine;
 	}
-	
+
 	@Override
 	public List<Book> addReservationsToBooks(Iterable<Book> iterable) {
 		List<Book> books = new ArrayList<Book>();
@@ -221,7 +237,7 @@ public class ReservationServiceImpl implements ReservationService {
 			this.reservationService.deleteOne(this.previousFirstReservation.getId());
 
 			int bookId = this.previousFirstReservation.getId().getBookId();
-			
+
 			this.reservationService.scheduleFirstReservationUpdate(bookId);
 		}
 	}

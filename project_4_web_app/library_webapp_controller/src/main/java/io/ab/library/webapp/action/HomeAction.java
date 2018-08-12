@@ -1,23 +1,17 @@
 package io.ab.library.webapp.action;
 
-import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.stereotype.Controller;
 
 import io.ab.library.webapp.wsdl.Account;
 
-import java.util.Map;
-
 @Controller
-public class HomeAction extends LibraryActionSupport implements SessionAware {
-	
-	private Map<String, Object> session;
-	public Map<Integer, Boolean> bookedByUser; 
-			
+public class HomeAction extends LibraryActionSupport {
+				
 	@Override
 	public String execute() throws Exception {
 		this.books = this.bookService.modelsToPOJOs(this.bookService.getAllBooks());
 
-		Account account = (Account) session.get("account");
+		Account account = (Account) super.session.get("account");
 		
 		if (account != null) {
 			this.rentals = this.rentalService.getRentalsByUser(account.getId());
@@ -27,9 +21,5 @@ public class HomeAction extends LibraryActionSupport implements SessionAware {
 		
 		this.page = "home";
 		return SUCCESS;
-	}
-
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
 	}
 }
