@@ -13,12 +13,16 @@ import io.ab.library.model.Rental;
 import io.ab.library.model.RentalPK;
 import io.ab.library.repository.RentalRepository;
 import io.ab.library.service.RentalService;
+import io.ab.library.service.ReservationService;
 
 @Service
 public class RentalServiceImpl implements RentalService {
 
 	@Autowired
 	private RentalRepository rentalRepository;
+	
+	@Autowired
+	private ReservationService reservationService;
 	
 	
 	@Override
@@ -67,6 +71,12 @@ public class RentalServiceImpl implements RentalService {
 	public boolean exists(int accountId, int bookId) {
 		RentalPK key = new RentalPK(accountId, bookId);
 		return this.rentalRepository.exists(key);
+	}
+	
+	@Override
+	public void deleteOne(int accountId, int bookId) {
+		RentalPK key = new RentalPK(accountId, bookId);
+		this.rentalRepository.delete(key);
 	}
 	
 	private Iterable<Rental> checkDeadLine(Iterable<Rental> rentals) {		

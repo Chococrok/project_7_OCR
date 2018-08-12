@@ -11,4 +11,5 @@ public interface RentalService {
 	public Iterable<Rental> findByUser(int id);
 	public Rental update(Rental rental);
 	boolean exists(int accountId, int bookId);
+	void deleteOne(int accountId, int bookId);
 }

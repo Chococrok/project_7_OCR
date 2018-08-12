@@ -87,11 +87,8 @@ public class ReservationServiceImpl implements ReservationService {
 			FaultThrower.sendNewClientSoapFault("book with id: " + bookId + " doesn't exist");
 		}
 
-		Reservation newReservation;
-
 		boolean reservationExists = this.reservationRepository.exists(new ReservationPK(accountId, bookId));
 		boolean userIsAlreadyRenting = this.rentalService.exists(accountId, bookId);
-		boolean otherReservation = this.reservationRepository.findAllByBook(bookId).size() > 0;
 		boolean maxReservationReached = currentBookReservations.size() >= involvedBook.getCopy() * 2;
 		boolean available = this.bookService.isAvailable(bookId);
 
@@ -112,23 +109,8 @@ public class ReservationServiceImpl implements ReservationService {
 			log.error(faultMessage);
 			FaultThrower.sendNewClientSoapFault(faultMessage);
 		}
-
-		// If there is no other reservation it means that the user is the first one.
-		// Therefore the deadline is set.
-
-		if (!otherReservation) {
-			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-			Calendar deadLine = Calendar.getInstance();
-			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
-
-			newReservation = new Reservation(accountId, bookId, deadLine.getTime());
-
-			this.scheduleFirstReservationUpdate(newReservation);
-		} else {
-			newReservation = new Reservation(accountId, bookId);
-		}
-
-		return this.reservationRepository.save(newReservation);
+		
+		return this.reservationRepository.save(new Reservation(accountId, bookId));
 	}
 
 	@Override
