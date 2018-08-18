@@ -35,7 +35,7 @@ INSERT INTO account (first_name, last_name, email, password)
 	VALUES
 	('bruno', 'zilio', 'bruno@g.com', 'bruno'),
 	('yoann', 'dubois', 'yoann@g.com', 'yoann'),
-	('arnaud', 'barbaria', 'arnaud@g.com', 'arnaud')
+	('arnaud', 'barbaria', 'arnaud@g.com', 'arnaud'),
 	('laure', 'ferras', 'laure@g.com', 'laure');
 	
 INSERT INTO rental (account_id, book_id, dead_line) 
@@ -44,6 +44,8 @@ INSERT INTO rental (account_id, book_id, dead_line)
 	(1, 1, CURRENT_DATE + INTERVAL '1 months'),
 	(1, 4, CURRENT_DATE + INTERVAL '1 month'),
 	(2, 1, CURRENT_DATE + INTERVAL '1 week'),
+	(2, 2, CURRENT_DATE + INTERVAL '1 week'),
+	(2, 3, CURRENT_DATE + INTERVAL '1 week'),
 	(3, 3, CURRENT_DATE - INTERVAL '1 week');
 
 INSERT INTO reservation (account_id, book_id, reservation_end)

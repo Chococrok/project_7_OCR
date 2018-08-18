@@ -51,20 +51,33 @@ public class ReservationServiceImpl implements ReservationService {
 	@Autowired
 	private ThreadPoolTaskScheduler threadPoolTaskScheduler;
 
-	private Map<ReservationPK, ScheduledFuture<?>> scheduledFutureMap = new HashMap<>();;
+	// Map containing the sheduledFuture by book
+	private Map<Integer, ScheduledFuture<?>> scheduledFutureMap = new HashMap<>();
 
 	@PostConstruct
-	private void scheduleAllReservation() {
-		this.reservationRepository.findAll().forEach(reservation -> {
+	private void loadReservationUpdate() {
+		this.bookService.getAll().forEach(book -> {
+			Reservation reservation = this.findFirstReservation(book.getId());
+
 			if (reservation != null && reservation.getReservationEnd() != null) {
-				this.scheduleFirstReservationUpdate(reservation);
+				ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.scheduleAtFixedRate(
+						new ReservationUpdater(this, this.mailService, book.getId()),
+						reservation.getReservationEnd(),
+						this.getReservationDurationInMillis());
+				
+				scheduledFutureMap.put(book.getId(), scheduledFuture);
 			}
 		});
 	}
-
+	
 	@Override
 	public int getReservationDuration() {
 		return this.reservationDuration;
+	}
+
+	@Override
+	public int getReservationDurationInMillis() {
+		return this.reservationDuration * 60 * 60 * 1000;
 	}
 
 	@Override
@@ -87,11 +100,8 @@ public class ReservationServiceImpl implements ReservationService {
 			FaultThrower.sendNewClientSoapFault("book with id: " + bookId + " doesn't exist");
 		}
 
-		Reservation newReservation;
-
 		boolean reservationExists = this.reservationRepository.exists(new ReservationPK(accountId, bookId));
 		boolean userIsAlreadyRenting = this.rentalService.exists(accountId, bookId);
-		boolean otherReservation = this.reservationRepository.findAllByBook(bookId).size() > 0;
 		boolean maxReservationReached = currentBookReservations.size() >= involvedBook.getCopy() * 2;
 		boolean available = this.bookService.isAvailable(bookId);
 
@@ -113,22 +123,7 @@ public class ReservationServiceImpl implements ReservationService {
 			FaultThrower.sendNewClientSoapFault(faultMessage);
 		}
 
-		// If there is no other reservation it means that the user is the first one.
-		// Therefore the deadline is set.
-
-		if (!otherReservation) {
-			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-			Calendar deadLine = Calendar.getInstance();
-			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
-
-			newReservation = new Reservation(accountId, bookId, deadLine.getTime());
-
-			this.scheduleFirstReservationUpdate(newReservation);
-		} else {
-			newReservation = new Reservation(accountId, bookId);
-		}
-
-		return this.reservationRepository.save(newReservation);
+		return this.reservationRepository.save(new Reservation(accountId, bookId));
 	}
 
 	@Override
@@ -153,16 +148,12 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	public void deleteOne(int accountId, int bookId) {
-		this.reservationRepository.delete(new ReservationPK(accountId, bookId));
-
-		this.scheduleFirstReservationUpdate(bookId);
+		this.deleteOne(new ReservationPK(accountId, bookId));
 	}
 
 	@Override
 	public void deleteOne(ReservationPK id) {
 		this.reservationRepository.delete(id);
-		this.scheduledFutureMap.get(id).cancel(true);
-		this.scheduleFirstReservationUpdate(id.getBookId());
 	}
 
 	@Override
@@ -178,36 +169,26 @@ public class ReservationServiceImpl implements ReservationService {
 			reservation.setReservationEnd(deadLine.getTime());
 			this.updateOne(reservation);
 
-			ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler
-					.schedule(new ReservationUpdater(this, reservation), deadLine.getTime());
-			scheduledFutureMap.put(reservation.getId(), scheduledFuture);
+			ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.scheduleAtFixedRate(
+					new ReservationUpdater(this, this.mailService, bookId), 
+					reservation.getReservationEnd(),
+					this.getReservationDurationInMillis());
+			
+			scheduledFutureMap.put(bookId, scheduledFuture);
 
 			this.mailService.sendBookAvailable(reservation.getAccount(), reservation.getBook());
 		}
 
 		return deadLine;
 	}
-
+	
 	@Override
-	public Calendar scheduleFirstReservationUpdate(Reservation reservation) {
-		Calendar deadLine = null;
-
-		if (reservation.getReservationEnd() == null) {
-			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-			deadLine = Calendar.getInstance();
-			deadLine.set(Calendar.HOUR_OF_DAY, currentHour + this.reservationDuration);
-
-			reservation.setReservationEnd(deadLine.getTime());
-			this.updateOne(reservation);
-		}
-
-		ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.schedule(new ReservationUpdater(this, reservation),
-				reservation.getReservationEnd());
-		scheduledFutureMap.put(reservation.getId(), scheduledFuture);
+	public void cancelReservationUpdate(int bookId) {
+		ScheduledFuture<?> future = this.scheduledFutureMap.get(bookId);
 		
-		this.mailService.sendBookAvailable(reservation.getAccount(), reservation.getBook());
-
-		return deadLine;
+		if (future != null) {
+			future.cancel(false);
+		}
 	}
 
 	@Override
@@ -225,20 +206,39 @@ public class ReservationServiceImpl implements ReservationService {
 	private class ReservationUpdater implements Runnable {
 
 		private ReservationService reservationService;
-		private Reservation previousFirstReservation;
+		private MailService mailService;
+		private int bookId;
 
-		public ReservationUpdater(ReservationService reservationService, Reservation reservation) {
+		public ReservationUpdater(ReservationService reservationService, MailService mailService, int bookId) {
 			this.reservationService = reservationService;
-			this.previousFirstReservation = reservation;
+			this.mailService = mailService;
+			this.bookId = bookId;
 		}
 
 		@Override
 		public void run() {
-			this.reservationService.deleteOne(this.previousFirstReservation.getId());
+			Reservation reservation = this.reservationService.findFirstReservation(bookId);
 
-			int bookId = this.previousFirstReservation.getId().getBookId();
+			if (reservation != null) {
+				this.reservationService.deleteOne(reservation.getId());
 
-			this.reservationService.scheduleFirstReservationUpdate(bookId);
+				reservation = this.reservationService.findFirstReservation(bookId);
+
+				if (reservation != null) {
+					int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+					Calendar deadLine = Calendar.getInstance();
+					deadLine.set(Calendar.HOUR_OF_DAY, currentHour + reservationService.getReservationDuration());
+
+					reservation.setReservationEnd(deadLine.getTime());
+					reservationService.updateOne(reservation);
+					
+					this.mailService.sendBookAvailable(reservation.getAccount(), reservation.getBook());
+				} else {
+					this.reservationService.cancelReservationUpdate(bookId);
+				}
+			} else {
+				this.reservationService.cancelReservationUpdate(bookId);
+			}
 		}
 	}
 }

@@ -13,6 +13,7 @@ import io.ab.library.util.exception.AlreadyExistsException;
 public interface ReservationService {
 
 	int getReservationDuration();
+	int getReservationDurationInMillis();
 	Reservation findFirstReservation(int bookId);
 	Reservation insertNewReservation(int accountId, int bookId) throws AlreadyExistsException, SOAPException;
 	List<Reservation> findAllByAccount(int accountId);
@@ -22,6 +23,6 @@ public interface ReservationService {
 	Reservation updateOne(Reservation reservation);
 	void deleteOne(int accountId, int bookId);
 	void deleteOne(ReservationPK id);
-	Calendar scheduleFirstReservationUpdate(Reservation reservation);
 	Calendar scheduleFirstReservationUpdate(int bookId);
+	void cancelReservationUpdate(int bookId);
 }
