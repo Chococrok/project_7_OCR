@@ -12,12 +12,16 @@ import io.ab.library.model.Book;
 import io.ab.library.model.Rental;
 import io.ab.library.model.RentalPK;
 import io.ab.library.repository.RentalRepository;
+import io.ab.library.service.BookService;
 import io.ab.library.service.RentalService;
 import io.ab.library.service.ReservationService;
 
 @Service
 public class RentalServiceImpl implements RentalService {
 
+	@Autowired
+	private BookService bookService;
+	
 	@Autowired
 	private RentalRepository rentalRepository;
 	
@@ -75,8 +79,16 @@ public class RentalServiceImpl implements RentalService {
 	
 	@Override
 	public void deleteOne(int accountId, int bookId) {
+		boolean wasAvailable = this.bookService.isAvailable(bookId);
+
 		RentalPK key = new RentalPK(accountId, bookId);
 		this.rentalRepository.delete(key);
+		
+		// If the book was not available, now that it is back on the schelves
+		// reservationUpdate should be triggered.
+		if (!wasAvailable) {
+			this.reservationService.scheduleFirstReservationUpdate(bookId);			
+		}
 	}
 	
 	private Iterable<Rental> checkDeadLine(Iterable<Rental> rentals) {		

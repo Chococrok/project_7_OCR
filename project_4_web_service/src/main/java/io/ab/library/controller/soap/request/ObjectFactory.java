@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.07.22 à 10:48:36 PM CEST 
+// Généré le : 2018.08.18 à 10:18:22 AM CEST 
 //
 
 
@@ -13,8 +13,10 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import io.ab.library.model.*;
+import org.springframework.stereotype.Component;
+
 import io.ab.library.controller.soap.dto.*;
+import io.ab.library.model.*;
 
 
 /**
@@ -111,6 +113,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteOneRequest }
+     * 
+     */
+    public DeleteOneRentalRequest createDeleteOneRequest() {
+        return new DeleteOneRentalRequest();
+    }
+
+    /**
      * Create an instance of {@link GetAllReservationByBookRequest }
      * 
      */
@@ -189,7 +199,7 @@ public class ObjectFactory {
     public SignUpForm createSignUpForm() {
         return new SignUpForm();
     }
-    
+
     /**
      * Create an instance of {@link FindOneAccountRequest }
      * 
@@ -197,7 +207,7 @@ public class ObjectFactory {
     public FindOneAccountRequest createFindOneAccountRequest() {
         return new FindOneAccountRequest();
     }
-    
+
     /**
      * Create an instance of {@link UpdateAccountRequest }
      * 
