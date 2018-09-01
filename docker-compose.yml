@@ -22,7 +22,7 @@ services:
       - ENV_DB_PORT # set from .env
       - ENV_WEB_SERVICE_PORT # default=8000
       - ENV_WEB_SERVICE_CONTEXT_PATH # default=/
-      - ENV_RESERVATION_DURATION # duration of a reservation in hours default=48
+      - ENV_RESERVATION_DURATION # duration of a reservation in hours default is 48
     ports:
       - "${ENV_WEB_SERVICE_PORT}:${ENV_WEB_SERVICE_PORT}"
       
