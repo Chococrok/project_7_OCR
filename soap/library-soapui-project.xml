@@ -172,6 +172,14 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="deleteOneRentalRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="accountId" type="xs:integer"/>
+            <xs:element name="bookId" type="xs:integer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="getAllReservationByBookRequest">
         <xs:complexType>
           <xs:sequence>
@@ -345,6 +353,9 @@
   <wsdl:message name="searchBooksByBookRequest">
     <wsdl:part element="tns:searchBooksByBookRequest" name="searchBooksByBookRequest"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="deleteOneRentalRequest">
+    <wsdl:part element="tns:deleteOneRentalRequest" name="deleteOneRentalRequest"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getAllAuthorsResponse">
     <wsdl:part element="tns:getAllAuthorsResponse" name="getAllAuthorsResponse"></wsdl:part>
   </wsdl:message>
@@ -451,6 +462,9 @@
     <wsdl:operation name="searchBooksByBook">
       <wsdl:input message="tns:searchBooksByBookRequest" name="searchBooksByBookRequest"></wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="deleteOneRental">
+      <wsdl:input message="tns:deleteOneRentalRequest" name="deleteOneRentalRequest"></wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="getAllAuthors">
       <wsdl:input message="tns:getAllAuthorsRequest" name="getAllAuthorsRequest"></wsdl:input>
       <wsdl:output message="tns:getAllAuthorsResponse" name="getAllAuthorsResponse"></wsdl:output>
@@ -547,6 +561,12 @@
     <wsdl:operation name="searchBooksByBook">
       <soap:operation soapAction=""/>
       <wsdl:input name="searchBooksByBookRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOneRental">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteOneRentalRequest">
         <soap:body use="literal"/>
       </wsdl:input>
     </wsdl:operation>
@@ -716,6 +736,16 @@
    <soapenv:Body>
       <lib:getAllAuthorsRequest>?</lib:getAllAuthorsRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllAuthorsRequest"/></con:call><con:call id="094f5c71-22f1-488c-9c71-2e1a0e2da340" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllAuthorsRequest>?</lib:getAllAuthorsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllAuthorsRequest"/></con:call><con:call id="bea153ff-ab61-4c66-b54d-dec43fe7787d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllAuthorsRequest>?</lib:getAllAuthorsRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllAuthorsRequest"/></con:call></con:operation><con:operation id="bce18efc-147d-435f-9fe8-8378761696db" isOneWay="false" action="" name="getAllBooks" bindingOperationName="getAllBooks" type="Request-Response" outputName="getAllBooksResponse" inputName="getAllBooksRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e08f1a11-bb7a-4510-b1ba-cef61c7692d4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -737,6 +767,16 @@
       <lib:getAllBooksRequest>?</lib:getAllBooksRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllBooksRequest"/></con:call><con:call id="550529cc-32eb-481a-a815-bbe0945aed3e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllBooksRequest>?</lib:getAllBooksRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllBooksRequest"/></con:call><con:call id="af36c67d-c687-4936-9e7b-36f58bd1895b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllBooksRequest>?</lib:getAllBooksRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllBooksRequest"/></con:call><con:call id="57b7e17a-7219-442c-a5ab-5c9435652eef" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:getAllBooksRequest>?</lib:getAllBooksRequest>
@@ -766,6 +806,16 @@
    <soapenv:Body>
       <lib:getAllRentalsRequest>?</lib:getAllRentalsRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllRentalsRequest"/></con:call><con:call id="05e408ca-fc0f-418e-9e2f-74e18fb169d8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllRentalsRequest>?</lib:getAllRentalsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllRentalsRequest"/></con:call><con:call id="95465925-682e-4d89-893f-af684886b6c2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllRentalsRequest>?</lib:getAllRentalsRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllRentalsRequest"/></con:call></con:operation><con:operation id="184f5533-fe21-4bf8-a473-d1f5e01c1170" isOneWay="false" action="" name="getAllTags" bindingOperationName="getAllTags" type="Request-Response" outputName="getAllTagsResponse" inputName="getAllTagsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f1d36a32-d2ea-421a-85a0-bf629235a7f6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -787,6 +837,16 @@
       <lib:getAllTagsRequest>?</lib:getAllTagsRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllTagsRequest"/></con:call><con:call id="b7edd3e0-b630-4240-81a4-09c8ce6f5437" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllTagsRequest>?</lib:getAllTagsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllTagsRequest"/></con:call><con:call id="1f31f5c1-0b82-40db-9d21-2a85890ee0af" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllTagsRequest>?</lib:getAllTagsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllTagsRequest"/></con:call><con:call id="b2857ec2-e975-4600-b727-09fe7ddf3316" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:getAllTagsRequest>?</lib:getAllTagsRequest>
@@ -831,6 +891,22 @@
          <lib:bookId>?</lib:bookId>
       </lib:getRentalByIdRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getRentalByIdRequest"/></con:call><con:call id="ce247baa-65e9-4e8c-b0c1-2b5f51102bd8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getRentalByIdRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:getRentalByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getRentalByIdRequest"/></con:call><con:call id="df14a132-5610-4945-a089-595b7666ff3d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getRentalByIdRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:getRentalByIdRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getRentalByIdRequest"/></con:call></con:operation><con:operation id="135f4e76-2511-493b-ba44-d69e4ccc278f" isOneWay="false" action="" name="getRentalsByUser" bindingOperationName="getRentalsByUser" type="Request-Response" outputName="getRentalsByUserResponse" inputName="getRentalsByUserRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b630a12c-43e5-4db3-af08-d059790478ce" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -860,6 +936,20 @@
       </lib:getRentalsByUserRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getRentalsByUserRequest"/></con:call><con:call id="92ac0494-b4ac-4f9c-95e0-fa8880f920e9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getRentalsByUserRequest>
+         <lib:id>?</lib:id>
+      </lib:getRentalsByUserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getRentalsByUserRequest"/></con:call><con:call id="98df2ccf-187b-4663-9096-9f56b2454d3a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getRentalsByUserRequest>
+         <lib:id>?</lib:id>
+      </lib:getRentalsByUserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getRentalsByUserRequest"/></con:call><con:call id="8202434d-a33b-47a2-bd68-2abf3b2267f5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:getRentalsByUserRequest>
@@ -1300,6 +1390,206 @@
          </lib:books>
       </lib:searchBooksResponse>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508"/></con:call><con:call id="f5d601a6-73d8-4b0d-b645-f468e8eccbab" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksResponse>
+         <!--Zero or more repetitions:-->
+         <lib:books>
+            <!--Optional:-->
+            <lib:author>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+            </lib:author>
+            <!--Optional:-->
+            <lib:copy>?</lib:copy>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:name>?</lib:name>
+            <!--Optional:-->
+            <lib:publisher>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+            </lib:publisher>
+            <!--Zero or more repetitions:-->
+            <lib:rentals>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:deadLine>?</lib:deadLine>
+               <!--Optional:-->
+               <lib:extended>?</lib:extended>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:rentalOver>?</lib:rentalOver>
+            </lib:rentals>
+            <!--Zero or more repetitions:-->
+            <lib:reservations>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:reservationEnd>?</lib:reservationEnd>
+            </lib:reservations>
+            <!--Zero or more repetitions:-->
+            <lib:tags>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:value>?</lib:value>
+            </lib:tags>
+         </lib:books>
+      </lib:searchBooksResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508"/></con:call><con:call id="2bc61bd6-2344-4bf2-b319-91264c8d2489" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksResponse>
+         <!--Zero or more repetitions:-->
+         <lib:books>
+            <!--Optional:-->
+            <lib:author>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+            </lib:author>
+            <!--Optional:-->
+            <lib:copy>?</lib:copy>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:name>?</lib:name>
+            <!--Optional:-->
+            <lib:publisher>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+            </lib:publisher>
+            <!--Zero or more repetitions:-->
+            <lib:rentals>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:deadLine>?</lib:deadLine>
+               <!--Optional:-->
+               <lib:extended>?</lib:extended>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:rentalOver>?</lib:rentalOver>
+            </lib:rentals>
+            <!--Zero or more repetitions:-->
+            <lib:reservations>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:reservationEnd>?</lib:reservationEnd>
+            </lib:reservations>
+            <!--Zero or more repetitions:-->
+            <lib:tags>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:value>?</lib:value>
+            </lib:tags>
+         </lib:books>
+      </lib:searchBooksResponse>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508"/></con:call></con:operation><con:operation id="49242fd4-fb65-4d02-9148-b64bdc18f436" isOneWay="false" action="" name="searchBooksByAuthor" bindingOperationName="searchBooksByAuthor" type="One-Way" inputName="searchBooksByAuthorRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a5c9560f-8fe1-4953-a4b5-1481f28b9b56" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -1329,6 +1619,20 @@
       </lib:searchBooksByAuthorRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByAuthorRequest"/></con:call><con:call id="76857caf-43c0-4f3a-982b-bafb1fb901b8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByAuthorRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByAuthorRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByAuthorRequest"/></con:call><con:call id="7425c592-be09-43b4-8bf1-6e43ece15a74" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByAuthorRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByAuthorRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByAuthorRequest"/></con:call><con:call id="7df5eea1-fd9b-498e-b66c-5b5897fcca70" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:searchBooksByAuthorRequest>
@@ -1370,6 +1674,20 @@
          <lib:search>?</lib:search>
       </lib:searchBooksByBookRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByBookRequest"/></con:call><con:call id="057c2d64-b5e8-4f9e-9374-5962f7bf8bb6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByBookRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByBookRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByBookRequest"/></con:call><con:call id="19b69806-2eb4-446d-9fa5-85f41f8b54d4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByBookRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByBookRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByBookRequest"/></con:call></con:operation><con:operation id="0ff77ac0-ba74-4bbd-afec-4d1523e8e9b0" isOneWay="false" action="" name="searchBooksByPublisher" bindingOperationName="searchBooksByPublisher" type="One-Way" inputName="searchBooksByPublisherRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f9d32d7b-9c5d-4e60-b0e9-f3e2c5aed947" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -1405,6 +1723,20 @@
          <lib:search>?</lib:search>
       </lib:searchBooksByPublisherRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByPublisherRequest"/></con:call><con:call id="28c0661f-9c80-46eb-ade0-0ab85da5b0a2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByPublisherRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByPublisherRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByPublisherRequest"/></con:call><con:call id="8829dfbc-838e-4238-96f4-50ac207bd608" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByPublisherRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByPublisherRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByPublisherRequest"/></con:call></con:operation><con:operation id="ec84f3e9-b55e-42b1-9ac2-149a4e6059d0" isOneWay="false" action="" name="searchBooksByTag" bindingOperationName="searchBooksByTag" type="One-Way" inputName="searchBooksByTagRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ac0571e2-12c5-4e99-a38c-3baf8b28ecb9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -1434,6 +1766,20 @@
       </lib:searchBooksByTagRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByTagRequest"/></con:call><con:call id="9eaa9452-cf08-4c43-b101-8c3c681e502e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByTagRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByTagRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByTagRequest"/></con:call><con:call id="66e53e82-f89b-4743-afa2-5f75e5b8ccfc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByTagRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByTagRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/searchBooksByTagRequest"/></con:call><con:call id="c2f7f23b-2d3a-4426-93c6-242fb16ba43e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:searchBooksByTagRequest>
@@ -1481,6 +1827,26 @@
       </lib:signInRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/signInRequest"/></con:call><con:call id="5ec6dc82-2900-4ead-9dde-bc3de3c777af" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:signInRequest>
+         <lib:signInForm>
+            <lib:email>?</lib:email>
+            <lib:password>?</lib:password>
+         </lib:signInForm>
+      </lib:signInRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/signInRequest"/></con:call><con:call id="ddf54454-eed2-4806-a95a-430f053a1a31" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:signInRequest>
+         <lib:signInForm>
+            <lib:email>?</lib:email>
+            <lib:password>?</lib:password>
+         </lib:signInForm>
+      </lib:signInRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/signInRequest"/></con:call><con:call id="b5b5e04b-dae6-4603-b12c-fbd85e21b04a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:signInRequest>
@@ -1551,6 +1917,36 @@
       </lib:signUpRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/signUpRequest"/></con:call><con:call id="28f4b1e2-23af-41f0-89df-06d3839a8c07" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:signUpRequest>
+         <lib:signUpForm>
+            <lib:firstName>?</lib:firstName>
+            <lib:lastName>?</lib:lastName>
+            <lib:email>?</lib:email>
+            <lib:password>?</lib:password>
+            <lib:checkPassword>?</lib:checkPassword>
+            <!--Optional:-->
+            <lib:phone>?</lib:phone>
+         </lib:signUpForm>
+      </lib:signUpRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/signUpRequest"/></con:call><con:call id="0c30be6b-486d-4b95-ac9b-252691c0c6d9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:signUpRequest>
+         <lib:signUpForm>
+            <lib:firstName>?</lib:firstName>
+            <lib:lastName>?</lib:lastName>
+            <lib:email>?</lib:email>
+            <lib:password>?</lib:password>
+            <lib:checkPassword>?</lib:checkPassword>
+            <!--Optional:-->
+            <lib:phone>?</lib:phone>
+         </lib:signUpForm>
+      </lib:signUpRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/signUpRequest"/></con:call><con:call id="f9202fd1-4d47-4b8b-93c7-a286fee61b98" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:signUpRequest>
@@ -1994,6 +2390,204 @@
          </lib:rental>
       </lib:updateRentalRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/updateRentalRequest"/></con:call><con:call id="e1fd5ab0-4ee5-4333-baee-1dc82975c68a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:updateRentalRequest>
+         <lib:rental>
+            <!--Optional:-->
+            <lib:account>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:email>?</lib:email>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+               <!--Optional:-->
+               <lib:phoneNumber>?</lib:phoneNumber>
+               <!--Optional:-->
+               <lib:reminder>?</lib:reminder>
+            </lib:account>
+            <!--Optional:-->
+            <lib:book>
+               <!--Optional:-->
+               <lib:author>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+               </lib:author>
+               <!--Optional:-->
+               <lib:copy>?</lib:copy>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+               <!--Optional:-->
+               <lib:publisher>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:name>?</lib:name>
+               </lib:publisher>
+               <!--Zero or more repetitions:-->
+               <lib:rentals/>
+               <!--Zero or more repetitions:-->
+               <lib:reservations>
+                  <!--Optional:-->
+                  <lib:account>
+                     <!--Optional:-->
+                     <lib:id>?</lib:id>
+                     <!--Optional:-->
+                     <lib:email>?</lib:email>
+                     <!--Optional:-->
+                     <lib:firstName>?</lib:firstName>
+                     <!--Optional:-->
+                     <lib:lastName>?</lib:lastName>
+                     <!--Optional:-->
+                     <lib:phoneNumber>?</lib:phoneNumber>
+                     <!--Optional:-->
+                     <lib:reminder>?</lib:reminder>
+                  </lib:account>
+                  <!--Optional:-->
+                  <lib:book/>
+                  <!--Optional:-->
+                  <lib:id>
+                     <!--Optional:-->
+                     <lib:accountId>?</lib:accountId>
+                     <!--Optional:-->
+                     <lib:bookId>?</lib:bookId>
+                  </lib:id>
+                  <!--Optional:-->
+                  <lib:reservationEnd>?</lib:reservationEnd>
+               </lib:reservations>
+               <!--Zero or more repetitions:-->
+               <lib:tags>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:value>?</lib:value>
+               </lib:tags>
+            </lib:book>
+            <!--Optional:-->
+            <lib:deadLine>?</lib:deadLine>
+            <!--Optional:-->
+            <lib:extended>?</lib:extended>
+            <!--Optional:-->
+            <lib:id>
+               <!--Optional:-->
+               <lib:accountId>?</lib:accountId>
+               <!--Optional:-->
+               <lib:bookId>?</lib:bookId>
+            </lib:id>
+            <!--Optional:-->
+            <lib:rentalOver>?</lib:rentalOver>
+         </lib:rental>
+      </lib:updateRentalRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/updateRentalRequest"/></con:call><con:call id="942278a2-01d6-42ab-b1d8-478c0d50cfef" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:updateRentalRequest>
+         <lib:rental>
+            <!--Optional:-->
+            <lib:account>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:email>?</lib:email>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+               <!--Optional:-->
+               <lib:phoneNumber>?</lib:phoneNumber>
+               <!--Optional:-->
+               <lib:reminder>?</lib:reminder>
+            </lib:account>
+            <!--Optional:-->
+            <lib:book>
+               <!--Optional:-->
+               <lib:author>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+               </lib:author>
+               <!--Optional:-->
+               <lib:copy>?</lib:copy>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+               <!--Optional:-->
+               <lib:publisher>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:name>?</lib:name>
+               </lib:publisher>
+               <!--Zero or more repetitions:-->
+               <lib:rentals/>
+               <!--Zero or more repetitions:-->
+               <lib:reservations>
+                  <!--Optional:-->
+                  <lib:account>
+                     <!--Optional:-->
+                     <lib:id>?</lib:id>
+                     <!--Optional:-->
+                     <lib:email>?</lib:email>
+                     <!--Optional:-->
+                     <lib:firstName>?</lib:firstName>
+                     <!--Optional:-->
+                     <lib:lastName>?</lib:lastName>
+                     <!--Optional:-->
+                     <lib:phoneNumber>?</lib:phoneNumber>
+                     <!--Optional:-->
+                     <lib:reminder>?</lib:reminder>
+                  </lib:account>
+                  <!--Optional:-->
+                  <lib:book/>
+                  <!--Optional:-->
+                  <lib:id>
+                     <!--Optional:-->
+                     <lib:accountId>?</lib:accountId>
+                     <!--Optional:-->
+                     <lib:bookId>?</lib:bookId>
+                  </lib:id>
+                  <!--Optional:-->
+                  <lib:reservationEnd>?</lib:reservationEnd>
+               </lib:reservations>
+               <!--Zero or more repetitions:-->
+               <lib:tags>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:value>?</lib:value>
+               </lib:tags>
+            </lib:book>
+            <!--Optional:-->
+            <lib:deadLine>?</lib:deadLine>
+            <!--Optional:-->
+            <lib:extended>?</lib:extended>
+            <!--Optional:-->
+            <lib:id>
+               <!--Optional:-->
+               <lib:accountId>?</lib:accountId>
+               <!--Optional:-->
+               <lib:bookId>?</lib:bookId>
+            </lib:id>
+            <!--Optional:-->
+            <lib:rentalOver>?</lib:rentalOver>
+         </lib:rental>
+      </lib:updateRentalRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/updateRentalRequest"/></con:call></con:operation><con:operation id="337f6fed-bae6-464a-b4f2-cb0b95476924" isOneWay="false" action="" name="addReservation" bindingOperationName="addReservation" type="Request-Response" outputName="addReservationResponse" inputName="addReservationRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="07d7d1d8-37f7-4a3b-bcd7-ab5f5569af44" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -2019,6 +2613,22 @@
       </lib:addReservationRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/addReservationRequest"/></con:call><con:call id="b59a5cac-3f98-47e6-a4fc-82268323403a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:addReservationRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:addReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/addReservationRequest"/></con:call><con:call id="4f3b90cf-4d29-4107-ac29-a52e95f624c9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:addReservationRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:addReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/addReservationRequest"/></con:call><con:call id="5fdf25c6-37fc-4aac-a2ee-bde6acae3a36" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:addReservationRequest>
@@ -2389,6 +2999,204 @@
          </lib:book>
       </lib:getLastReservationRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getLastReservationRequest"/></con:call><con:call id="6a6aff8e-6813-4a58-8c19-1116bbc51f98" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getLastReservationRequest>
+         <lib:book>
+            <!--Optional:-->
+            <lib:author>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+            </lib:author>
+            <!--Optional:-->
+            <lib:copy>?</lib:copy>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:name>?</lib:name>
+            <!--Optional:-->
+            <lib:publisher>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+            </lib:publisher>
+            <!--Zero or more repetitions:-->
+            <lib:rentals>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:deadLine>?</lib:deadLine>
+               <!--Optional:-->
+               <lib:extended>?</lib:extended>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:rentalOver>?</lib:rentalOver>
+            </lib:rentals>
+            <!--Zero or more repetitions:-->
+            <lib:reservations>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:reservationEnd>?</lib:reservationEnd>
+            </lib:reservations>
+            <!--Zero or more repetitions:-->
+            <lib:tags>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:value>?</lib:value>
+            </lib:tags>
+         </lib:book>
+      </lib:getLastReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getLastReservationRequest"/></con:call><con:call id="077c0886-1ca3-4186-9be4-47948fd2499a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getLastReservationRequest>
+         <lib:book>
+            <!--Optional:-->
+            <lib:author>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+            </lib:author>
+            <!--Optional:-->
+            <lib:copy>?</lib:copy>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:name>?</lib:name>
+            <!--Optional:-->
+            <lib:publisher>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+            </lib:publisher>
+            <!--Zero or more repetitions:-->
+            <lib:rentals>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:deadLine>?</lib:deadLine>
+               <!--Optional:-->
+               <lib:extended>?</lib:extended>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:rentalOver>?</lib:rentalOver>
+            </lib:rentals>
+            <!--Zero or more repetitions:-->
+            <lib:reservations>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:reservationEnd>?</lib:reservationEnd>
+            </lib:reservations>
+            <!--Zero or more repetitions:-->
+            <lib:tags>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:value>?</lib:value>
+            </lib:tags>
+         </lib:book>
+      </lib:getLastReservationRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getLastReservationRequest"/></con:call></con:operation><con:operation id="77fe0ab6-c22d-4dda-9f8f-8b285dfdbdc4" isOneWay="false" action="" name="account" bindingOperationName="account" type="Notification" outputName="accountResponse" inputName="" receivesAttachments="false" anonymous="optional"><con:settings/><con:call id="68843d9c-004c-48c0-97c9-005ca0b8b7f1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -2449,6 +3257,46 @@
          </lib:account>
       </lib:accountResponse>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508"/></con:call><con:call id="6decb298-f687-4d27-8dd9-60f190999260" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:accountResponse>
+         <lib:account>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:email>?</lib:email>
+            <!--Optional:-->
+            <lib:firstName>?</lib:firstName>
+            <!--Optional:-->
+            <lib:lastName>?</lib:lastName>
+            <!--Optional:-->
+            <lib:phoneNumber>?</lib:phoneNumber>
+            <!--Optional:-->
+            <lib:reminder>?</lib:reminder>
+         </lib:account>
+      </lib:accountResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508"/></con:call><con:call id="385ada4c-a239-4941-964a-e9ad6e549e33" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:accountResponse>
+         <lib:account>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:email>?</lib:email>
+            <!--Optional:-->
+            <lib:firstName>?</lib:firstName>
+            <!--Optional:-->
+            <lib:lastName>?</lib:lastName>
+            <!--Optional:-->
+            <lib:phoneNumber>?</lib:phoneNumber>
+            <!--Optional:-->
+            <lib:reminder>?</lib:reminder>
+         </lib:account>
+      </lib:accountResponse>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508"/></con:call></con:operation><con:operation id="1b57f75a-2769-4f0f-a526-ac75bb5630cd" isOneWay="false" action="" name="deleteReservation" bindingOperationName="deleteReservation" type="Request-Response" outputName="deleteReservationResponse" inputName="deleteReservationRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ee4009e4-5ae4-44f9-b6a0-98706cb4db20" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -2466,6 +3314,22 @@
       </lib:deleteReservationRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/deleteReservationRequest"/></con:call><con:call id="298f9831-eede-4d79-b9d1-0744b67353b4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:deleteReservationRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:deleteReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/deleteReservationRequest"/></con:call><con:call id="8d82e9b5-5b3b-434d-82cb-7d6aa1d5261e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:deleteReservationRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:deleteReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/deleteReservationRequest"/></con:call><con:call id="9129c2d0-6598-4711-a323-cddfa8cbb5b8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:deleteReservationRequest>
@@ -2494,6 +3358,20 @@
          <lib:accountId>?</lib:accountId>
       </lib:getAllReservationByAccountRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllReservationByAccountRequest"/></con:call><con:call id="bc3408d6-c33f-46b8-8043-a2a74db6619f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllReservationByAccountRequest>
+         <lib:accountId>?</lib:accountId>
+      </lib:getAllReservationByAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllReservationByAccountRequest"/></con:call><con:call id="9d906d57-72cc-4cb5-81ba-0e9aa8a868f6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllReservationByAccountRequest>
+         <lib:accountId>?</lib:accountId>
+      </lib:getAllReservationByAccountRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllReservationByAccountRequest"/></con:call></con:operation><con:operation id="60d634da-2311-4716-aff8-85908c88182b" isOneWay="false" action="" name="getAllReservationByBook" bindingOperationName="getAllReservationByBook" type="Request-Response" outputName="getAllReservationByBookResponse" inputName="getAllReservationByBookRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a9c05aa8-073e-4c59-8629-b246fdb009e7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -2509,6 +3387,20 @@
       </lib:getAllReservationByBookRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllReservationByBookRequest"/></con:call><con:call id="4ab5dbaa-fb2b-4cc7-a591-db2642162090" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllReservationByBookRequest>
+         <lib:bookId>?</lib:bookId>
+      </lib:getAllReservationByBookRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllReservationByBookRequest"/></con:call><con:call id="548cd6ba-597b-4dbd-9162-3c7e2b7fab06" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllReservationByBookRequest>
+         <lib:bookId>?</lib:bookId>
+      </lib:getAllReservationByBookRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/getAllReservationByBookRequest"/></con:call><con:call id="dc2c0e02-8a51-4a2a-b280-9da1f3bdbd51" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:getAllReservationByBookRequest>
@@ -2575,6 +3467,46 @@
          </lib:account>
       </lib:updateAccountRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/updateAccountRequest"/></con:call><con:call id="11c463dd-c49f-4dcf-976e-31ca7454dcb2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:updateAccountRequest>
+         <lib:account>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:email>?</lib:email>
+            <!--Optional:-->
+            <lib:firstName>?</lib:firstName>
+            <!--Optional:-->
+            <lib:lastName>?</lib:lastName>
+            <!--Optional:-->
+            <lib:phoneNumber>?</lib:phoneNumber>
+            <!--Optional:-->
+            <lib:reminder>?</lib:reminder>
+         </lib:account>
+      </lib:updateAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/updateAccountRequest"/></con:call><con:call id="9e5095f9-5884-40de-8213-35c5a9773bbd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:updateAccountRequest>
+         <lib:account>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:email>?</lib:email>
+            <!--Optional:-->
+            <lib:firstName>?</lib:firstName>
+            <!--Optional:-->
+            <lib:lastName>?</lib:lastName>
+            <!--Optional:-->
+            <lib:phoneNumber>?</lib:phoneNumber>
+            <!--Optional:-->
+            <lib:reminder>?</lib:reminder>
+         </lib:account>
+      </lib:updateAccountRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/updateAccountRequest"/></con:call></con:operation><con:operation id="e6aec9b2-4b33-441c-8231-399fb875a973" isOneWay="false" action="" name="findOneAccount" bindingOperationName="findOneAccount" type="One-Way" inputName="findOneAccountRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="83fc6372-bf7d-464d-87c5-e7b7f5a10461" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
@@ -2582,12 +3514,42 @@
          <lib:accountId>?</lib:accountId>
       </lib:findOneAccountRequest>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/findOneAccountRequest"/></con:call></con:operation></con:interface><con:testSuite id="2de32d92-077b-48df-9b49-732b2e9d34cf" name="LibraryPortSoap11 TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="a0c5d226-42e4-45f6-8220-6cb076721395" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllAuthors TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="90280682-ed75-4fa8-95bc-17cdff1850f2" name="getAllAuthors"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllAuthors</con:operation><con:request name="getAllAuthors" id="22d2299f-3ec2-43f7-ab41-7a38e73cba87"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/findOneAccountRequest"/></con:call><con:call id="db7e50f6-8692-4ad0-8d13-7e1d1e246a4f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:findOneAccountRequest>
+         <lib:accountId>?</lib:accountId>
+      </lib:findOneAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/findOneAccountRequest"/></con:call><con:call id="eb50d661-49f6-492a-81e0-0ba0943bf614" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:findOneAccountRequest>
+         <lib:accountId>?</lib:accountId>
+      </lib:findOneAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/findOneAccountRequest"/></con:call></con:operation><con:operation id="16cb969c-57d2-44b9-a27a-43a72ec645c5" isOneWay="false" action="" name="deleteOneRental" bindingOperationName="deleteOneRental" type="One-Way" inputName="deleteOneRentalRequest" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="20bd74f7-6bba-4af1-80b0-1070abcd43e6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:deleteOneRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:deleteOneRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/deleteOneRequest"/></con:call><con:call id="3c5ff426-15aa-416b-adf3-8b7003d32cc3" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:deleteOneRentalRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:deleteOneRentalRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ab.io/library/LibraryPort/deleteOneRentalRequest"/></con:call></con:operation></con:interface><con:testSuite id="2de32d92-077b-48df-9b49-732b2e9d34cf" name="LibraryPortSoap11 TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="a0c5d226-42e4-45f6-8220-6cb076721395" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllAuthors TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="90280682-ed75-4fa8-95bc-17cdff1850f2" name="getAllAuthors"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllAuthors</con:operation><con:request name="getAllAuthors" id="22d2299f-3ec2-43f7-ab41-7a38e73cba87"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:getAllAuthorsRequest>?</lib:getAllAuthorsRequest>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllAuthorsRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b7ed8494-6eb7-4484-98d4-88f36c671719" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllBooks TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="21b79968-21a7-40d3-bf06-87b991e3196d" name="getAllBooks"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllBooks</con:operation><con:request name="getAllBooks" id="a9f7a89c-dd1a-4c0e-9791-5f8aa59d47e1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllAuthorsRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b7ed8494-6eb7-4484-98d4-88f36c671719" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllBooks TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="21b79968-21a7-40d3-bf06-87b991e3196d" name="getAllBooks"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllBooks</con:operation><con:request name="getAllBooks" id="a9f7a89c-dd1a-4c0e-9791-5f8aa59d47e1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
    <soapenv:Header/>
    <soapenv:Body>
       <lib:getAllBooksRequest>?</lib:getAllBooksRequest>
@@ -3796,4 +4758,946 @@
          <lib:accountId>1</lib:accountId>
       </lib:findOneAccountRequest>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://ab.io/library/LibraryPort/findOneAccountRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://ab.io/library/LibraryPort/findOneAccountRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="1546c81b-e62a-42d7-8b41-48c3ab9daaa9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllAuthors TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="86c052cc-b0bf-4915-a6cc-2b05406b00a4" name="getAllAuthors"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllAuthors</con:operation><con:request name="getAllAuthors" id="6008142a-96c3-4961-9916-8a296440529d"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllAuthorsRequest>?</lib:getAllAuthorsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllAuthorsRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="a75b927e-5d5c-432f-ae03-5b22ce0de853" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllBooks TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="10c0b3f6-802a-4a7a-a908-0a0684bfdbd1" name="getAllBooks"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllBooks</con:operation><con:request name="getAllBooks" id="33238990-4384-4ac7-a482-b8eec14e5019"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllBooksRequest>?</lib:getAllBooksRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllBooksRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="e6848484-d394-4e9e-8573-131038e9170e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllRentals TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="64beae19-b925-48c5-b8d3-561dd424cdf9" name="getAllRentals"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllRentals</con:operation><con:request name="getAllRentals" id="77cd5e6b-b48f-4329-b4ce-99105b75061c"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllRentalsRequest>?</lib:getAllRentalsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllRentalsRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6c4c1f3b-9bc5-4b68-9b8f-57cd139a5cf6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllTags TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="2d4e9a67-582f-4b13-b664-2f89d4f89c0a" name="getAllTags"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllTags</con:operation><con:request name="getAllTags" id="a53b765d-a30d-429e-a253-b4d9c905db5b"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllTagsRequest>?</lib:getAllTagsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllTagsRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f87902ae-bb3e-4c0b-b62a-def9fcb5ebb2" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getRentalById TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="85ac8fd2-ed1a-495e-8c30-10d39a8ff937" name="getRentalById"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getRentalById</con:operation><con:request name="getRentalById" id="220ea709-7d8f-4d90-a946-d70182662cb6"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getRentalByIdRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:getRentalByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getRentalByIdRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="5f2b4183-9c10-4cc3-aea2-12ca222ee5e2" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getRentalsByUser TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="120638e9-b613-4654-84f5-8dc4d9f7b66b" name="getRentalsByUser"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getRentalsByUser</con:operation><con:request name="getRentalsByUser" id="c1eda82d-e736-42ce-bef1-faec8679362d"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getRentalsByUserRequest>
+         <lib:id>?</lib:id>
+      </lib:getRentalsByUserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getRentalsByUserRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d44c8069-7eaf-4216-8303-f8ef6da50b5c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooks TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="43fe9764-989d-44df-914d-aa08bf8ce294" name="searchBooks"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooks</con:operation><con:request name="searchBooks" id="d472a04f-207a-4f20-afe1-865b62e5d4b4"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksResponse>
+         <!--Zero or more repetitions:-->
+         <lib:books>
+            <!--Optional:-->
+            <lib:author>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+            </lib:author>
+            <!--Optional:-->
+            <lib:copy>?</lib:copy>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:name>?</lib:name>
+            <!--Optional:-->
+            <lib:publisher>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+            </lib:publisher>
+            <!--Zero or more repetitions:-->
+            <lib:rentals>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:deadLine>?</lib:deadLine>
+               <!--Optional:-->
+               <lib:extended>?</lib:extended>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:rentalOver>?</lib:rentalOver>
+            </lib:rentals>
+            <!--Zero or more repetitions:-->
+            <lib:reservations>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:reservationEnd>?</lib:reservationEnd>
+            </lib:reservations>
+            <!--Zero or more repetitions:-->
+            <lib:tags>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:value>?</lib:value>
+            </lib:tags>
+         </lib:books>
+      </lib:searchBooksResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="048d5333-0fef-4071-8415-f5755dd74a32" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooksByAuthor TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="bd51dd8f-6d67-4d81-95ec-3ae99afe648a" name="searchBooksByAuthor"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooksByAuthor</con:operation><con:request name="searchBooksByAuthor" id="dbd5b968-81d4-49f5-8b89-6c6d7d9b43d8"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByAuthorRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByAuthorRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/searchBooksByAuthorRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f5a566d1-278e-41f7-9120-dcddf88506ee" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooksByBook TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="becce6d8-1da9-47a5-8a4f-7af866d66ee7" name="searchBooksByBook"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooksByBook</con:operation><con:request name="searchBooksByBook" id="3a39ec23-b04e-4879-b324-0015e3ab41b5"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByBookRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByBookRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/searchBooksByBookRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="07f3b941-da90-4946-bd93-3ecfaccfaf2f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooksByPublisher TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="ac922aac-1d8b-4c3d-8b25-9a26cbf13f8e" name="searchBooksByPublisher"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooksByPublisher</con:operation><con:request name="searchBooksByPublisher" id="b00964c7-6ad3-4aad-8587-365f8f6cc4ef"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByPublisherRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByPublisherRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/searchBooksByPublisherRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="15df8c46-ec68-4e85-92cf-1496241b5456" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooksByTag TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="dd69871e-a89a-43ea-955a-8c2dde62cf8b" name="searchBooksByTag"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooksByTag</con:operation><con:request name="searchBooksByTag" id="beff7bc3-2d7b-4a11-b72c-884b4261a830"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByTagRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByTagRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/searchBooksByTagRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="a38cf241-8c1d-47fa-93fd-ed1ccf471807" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="signIn TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="635cbda3-b795-47bd-8285-d0c7f4371db2" name="signIn"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>signIn</con:operation><con:request name="signIn" id="b855a23a-374e-4f22-9c0d-80d46c6a9f26"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:signInRequest>
+         <lib:signInForm>
+            <lib:email>?</lib:email>
+            <lib:password>?</lib:password>
+         </lib:signInForm>
+      </lib:signInRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/signInRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f256d0a7-6137-403e-981c-95811f413c5a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="signUp TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="df608eed-1dd8-45e0-a2d2-16798d62f4ef" name="signUp"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>signUp</con:operation><con:request name="signUp" id="c579110c-aba1-4f54-a37d-c8671eb07b16"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:signUpRequest>
+         <lib:signUpForm>
+            <lib:firstName>?</lib:firstName>
+            <lib:lastName>?</lib:lastName>
+            <lib:email>?</lib:email>
+            <lib:password>?</lib:password>
+            <lib:checkPassword>?</lib:checkPassword>
+            <!--Optional:-->
+            <lib:phone>?</lib:phone>
+         </lib:signUpForm>
+      </lib:signUpRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/signUpRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="68ab7ae8-a213-4c1d-8fad-a3e3c63ee8c0" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="updateRental TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="83ca9748-9e8d-4b67-98e6-6b3cb5e3c040" name="updateRental"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>updateRental</con:operation><con:request name="updateRental" id="e175cfb7-67b3-43b4-8f56-1450edcc262d"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:updateRentalRequest>
+         <lib:rental>
+            <!--Optional:-->
+            <lib:account>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:email>?</lib:email>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+               <!--Optional:-->
+               <lib:phoneNumber>?</lib:phoneNumber>
+               <!--Optional:-->
+               <lib:reminder>?</lib:reminder>
+            </lib:account>
+            <!--Optional:-->
+            <lib:book>
+               <!--Optional:-->
+               <lib:author>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+               </lib:author>
+               <!--Optional:-->
+               <lib:copy>?</lib:copy>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+               <!--Optional:-->
+               <lib:publisher>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:name>?</lib:name>
+               </lib:publisher>
+               <!--Zero or more repetitions:-->
+               <lib:rentals/>
+               <!--Zero or more repetitions:-->
+               <lib:reservations>
+                  <!--Optional:-->
+                  <lib:account>
+                     <!--Optional:-->
+                     <lib:id>?</lib:id>
+                     <!--Optional:-->
+                     <lib:email>?</lib:email>
+                     <!--Optional:-->
+                     <lib:firstName>?</lib:firstName>
+                     <!--Optional:-->
+                     <lib:lastName>?</lib:lastName>
+                     <!--Optional:-->
+                     <lib:phoneNumber>?</lib:phoneNumber>
+                     <!--Optional:-->
+                     <lib:reminder>?</lib:reminder>
+                  </lib:account>
+                  <!--Optional:-->
+                  <lib:book/>
+                  <!--Optional:-->
+                  <lib:id>
+                     <!--Optional:-->
+                     <lib:accountId>?</lib:accountId>
+                     <!--Optional:-->
+                     <lib:bookId>?</lib:bookId>
+                  </lib:id>
+                  <!--Optional:-->
+                  <lib:reservationEnd>?</lib:reservationEnd>
+               </lib:reservations>
+               <!--Zero or more repetitions:-->
+               <lib:tags>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:value>?</lib:value>
+               </lib:tags>
+            </lib:book>
+            <!--Optional:-->
+            <lib:deadLine>?</lib:deadLine>
+            <!--Optional:-->
+            <lib:extended>?</lib:extended>
+            <!--Optional:-->
+            <lib:id>
+               <!--Optional:-->
+               <lib:accountId>?</lib:accountId>
+               <!--Optional:-->
+               <lib:bookId>?</lib:bookId>
+            </lib:id>
+            <!--Optional:-->
+            <lib:rentalOver>?</lib:rentalOver>
+         </lib:rental>
+      </lib:updateRentalRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/updateRentalRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b45ee855-b18f-4e79-ac42-f49bb86eaaf6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="addReservation TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="c1c18ced-8caf-4721-982e-5c4d97e8ec6c" name="addReservation"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>addReservation</con:operation><con:request name="addReservation" id="9edd4439-5a49-4d6b-b03b-ca7bf7b384fd"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:addReservationRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:addReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/addReservationRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="c72d69a0-afdc-431c-92e1-4602921d2f30" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getLastReservation TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="6a306c89-8321-44c7-a799-e192f9ceb7af" name="getLastReservation"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getLastReservation</con:operation><con:request name="getLastReservation" id="e471bb8b-d57f-4d4f-8f2f-9ad9ad51f8a0"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getLastReservationRequest>
+         <lib:book>
+            <!--Optional:-->
+            <lib:author>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+            </lib:author>
+            <!--Optional:-->
+            <lib:copy>?</lib:copy>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:name>?</lib:name>
+            <!--Optional:-->
+            <lib:publisher>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+            </lib:publisher>
+            <!--Zero or more repetitions:-->
+            <lib:rentals>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:deadLine>?</lib:deadLine>
+               <!--Optional:-->
+               <lib:extended>?</lib:extended>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:rentalOver>?</lib:rentalOver>
+            </lib:rentals>
+            <!--Zero or more repetitions:-->
+            <lib:reservations>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:reservationEnd>?</lib:reservationEnd>
+            </lib:reservations>
+            <!--Zero or more repetitions:-->
+            <lib:tags>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:value>?</lib:value>
+            </lib:tags>
+         </lib:book>
+      </lib:getLastReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getLastReservationRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="1a5c9e3c-f843-487a-9767-348fa6e72d76" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="account TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="3c6667e3-d937-478b-8291-1530695efb31" name="account"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>account</con:operation><con:request name="account" id="5145768c-770d-444e-8cf2-1498f76f00d0"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:accountResponse>
+         <lib:account>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:email>?</lib:email>
+            <!--Optional:-->
+            <lib:firstName>?</lib:firstName>
+            <!--Optional:-->
+            <lib:lastName>?</lib:lastName>
+            <!--Optional:-->
+            <lib:phoneNumber>?</lib:phoneNumber>
+            <!--Optional:-->
+            <lib:reminder>?</lib:reminder>
+         </lib:account>
+      </lib:accountResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="59df787c-59cc-497e-aa97-14dea48b438c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteReservation TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="2883251e-3c9b-44a4-9765-f762b3b9dbd2" name="deleteReservation"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>deleteReservation</con:operation><con:request name="deleteReservation" id="8d1e70bc-be5d-4697-acc6-d6b7a59e70ba"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:deleteReservationRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:deleteReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/deleteReservationRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="46d4eb25-deef-4b73-ad80-ed596cf3ad40" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllReservationByAccount TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="44f0a474-134b-4298-bc78-7c23a40d47c1" name="getAllReservationByAccount"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllReservationByAccount</con:operation><con:request name="getAllReservationByAccount" id="00d8ecfe-5379-4130-bc24-ec3e3a670eb3"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllReservationByAccountRequest>
+         <lib:accountId>?</lib:accountId>
+      </lib:getAllReservationByAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllReservationByAccountRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="5e86565a-61e7-441b-92e2-c286dd72d0fe" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllReservationByBook TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="7b91cd6b-fa2e-4c17-95fb-5dd4059c21fa" name="getAllReservationByBook"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllReservationByBook</con:operation><con:request name="getAllReservationByBook" id="07882258-8f6d-4db9-9663-96626dd505ce"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllReservationByBookRequest>
+         <lib:bookId>?</lib:bookId>
+      </lib:getAllReservationByBookRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllReservationByBookRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="9738daa9-2f37-4cac-ab28-eac4a7c21de1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="updateAccount TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="f2f75e8f-136d-4762-819d-ee0fcacd904e" name="updateAccount"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>updateAccount</con:operation><con:request name="updateAccount" id="837e4328-6221-4046-a8f5-03faa33568d5"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:updateAccountRequest>
+         <lib:account>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:email>?</lib:email>
+            <!--Optional:-->
+            <lib:firstName>?</lib:firstName>
+            <!--Optional:-->
+            <lib:lastName>?</lib:lastName>
+            <!--Optional:-->
+            <lib:phoneNumber>?</lib:phoneNumber>
+            <!--Optional:-->
+            <lib:reminder>?</lib:reminder>
+         </lib:account>
+      </lib:updateAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/updateAccountRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="603ea2c6-1202-4118-b4a8-561131b2ba84" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findOneAccount TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="2d238acb-5d8f-46d8-a424-5c41aa706f00" name="findOneAccount"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>findOneAccount</con:operation><con:request name="findOneAccount" id="55c551f3-8935-4def-a944-b3178ec9e97f"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:findOneAccountRequest>
+         <lib:accountId>?</lib:accountId>
+      </lib:findOneAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/findOneAccountRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="2d5e531b-6480-4f5e-94cd-9e21a9e16fc5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteOne TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="a4531271-64a8-4602-89b3-4303a4aca5a2" name="deleteOne"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>deleteOneRental</con:operation><con:request name="deleteOne" id="92673000-f542-4e04-9709-5fc5f3467d50"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:deleteOneRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:deleteOneRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/deleteOneRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="da2dbfa0-37a5-4d22-958c-f6b11e92d2a5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllAuthors TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="b69aaea8-16ad-42dd-b5b2-33e6dc9a38f5" name="getAllAuthors"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllAuthors</con:operation><con:request name="getAllAuthors" id="ba26f9f3-b58e-4953-b1c9-7729a0cdca0c"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllAuthorsRequest>?</lib:getAllAuthorsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllAuthorsRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="a5fa7e02-a2ba-43e0-afbb-779bec3e4a3e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllBooks TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="4a6f456e-be35-47da-bada-344041ccd5c1" name="getAllBooks"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllBooks</con:operation><con:request name="getAllBooks" id="6c91826c-df2d-48c4-b4d6-3e5e9ab236ca"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllBooksRequest>?</lib:getAllBooksRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllBooksRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="7c19f65a-a4d8-46f8-99e4-e2dab861e1d6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllRentals TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="cb14ae23-b4d3-4897-8123-d54ec47aab69" name="getAllRentals"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllRentals</con:operation><con:request name="getAllRentals" id="d81bbdb9-44b9-4a93-8673-f4d40077be82"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllRentalsRequest>?</lib:getAllRentalsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllRentalsRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="7faa8a99-0d78-4b31-a1b5-362de575b5f6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllTags TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="88ad8069-7092-4706-a85f-be219d10f742" name="getAllTags"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllTags</con:operation><con:request name="getAllTags" id="fe7d4d04-99c6-4425-8ffa-710545edc0f2"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllTagsRequest>?</lib:getAllTagsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllTagsRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="8b103830-e903-489e-8af6-903da1971031" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getRentalById TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="022e0ca5-d4e0-49b0-aea7-db0f4989a85c" name="getRentalById"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getRentalById</con:operation><con:request name="getRentalById" id="6334d3d5-5202-4374-97be-003d7db0bfd6"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getRentalByIdRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:getRentalByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getRentalByIdRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ffd4389b-3f61-4aed-905b-386be7aefa2f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getRentalsByUser TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="3e40e51e-9773-4a1b-9cf0-992861fc1f54" name="getRentalsByUser"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getRentalsByUser</con:operation><con:request name="getRentalsByUser" id="fc3fb52f-94f3-4e36-8966-8c337362ae7f"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getRentalsByUserRequest>
+         <lib:id>?</lib:id>
+      </lib:getRentalsByUserRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getRentalsByUserRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="087fbec0-e4d8-4849-9122-cf7a536099d1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooks TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="f08c5c8f-748a-4366-8f54-b8b327d06ee8" name="searchBooks"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooks</con:operation><con:request name="searchBooks" id="3a0e65e2-7c86-48a4-a1c1-3099b6689279"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksResponse>
+         <!--Zero or more repetitions:-->
+         <lib:books>
+            <!--Optional:-->
+            <lib:author>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+            </lib:author>
+            <!--Optional:-->
+            <lib:copy>?</lib:copy>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:name>?</lib:name>
+            <!--Optional:-->
+            <lib:publisher>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+            </lib:publisher>
+            <!--Zero or more repetitions:-->
+            <lib:rentals>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:deadLine>?</lib:deadLine>
+               <!--Optional:-->
+               <lib:extended>?</lib:extended>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:rentalOver>?</lib:rentalOver>
+            </lib:rentals>
+            <!--Zero or more repetitions:-->
+            <lib:reservations>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:reservationEnd>?</lib:reservationEnd>
+            </lib:reservations>
+            <!--Zero or more repetitions:-->
+            <lib:tags>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:value>?</lib:value>
+            </lib:tags>
+         </lib:books>
+      </lib:searchBooksResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4af941c2-ff76-4551-945f-e6e69c57eb5b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooksByAuthor TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="57227061-a085-45d6-9a3b-bbbb5d0882e2" name="searchBooksByAuthor"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooksByAuthor</con:operation><con:request name="searchBooksByAuthor" id="57d40829-b614-49de-a929-0f8a38adaf85"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByAuthorRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByAuthorRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/searchBooksByAuthorRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="5b7f7ee3-3356-4409-8197-85b0b36e370e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooksByBook TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="7bd1e142-a1b9-4153-9731-b378e4c7dd07" name="searchBooksByBook"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooksByBook</con:operation><con:request name="searchBooksByBook" id="069ac4df-b1e1-45eb-90ea-7b3fc9ed6abb"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByBookRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByBookRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/searchBooksByBookRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="efd085b0-571a-4697-8ca5-1fd971bf31ea" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooksByPublisher TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="e1e134b5-b3d5-4215-b35e-97b902915dde" name="searchBooksByPublisher"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooksByPublisher</con:operation><con:request name="searchBooksByPublisher" id="51753b51-aa2a-4131-a05d-628d4bc91d8c"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByPublisherRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByPublisherRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/searchBooksByPublisherRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="1909cd21-03b9-4f92-9245-d0766f666fba" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchBooksByTag TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="71167fe8-c7c6-404d-a348-4394e4b1b883" name="searchBooksByTag"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>searchBooksByTag</con:operation><con:request name="searchBooksByTag" id="f2e63052-ee15-4e99-8871-5bdd72aa4d91"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:searchBooksByTagRequest>
+         <lib:search>?</lib:search>
+      </lib:searchBooksByTagRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/searchBooksByTagRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f49549dc-25cc-4f6c-9fe6-6d73239db2f9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="signIn TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="4e0766e0-38ca-4756-bffd-4c5427ebd58d" name="signIn"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>signIn</con:operation><con:request name="signIn" id="d2710727-128d-42b3-b636-1d0f61736f8a"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:signInRequest>
+         <lib:signInForm>
+            <lib:email>?</lib:email>
+            <lib:password>?</lib:password>
+         </lib:signInForm>
+      </lib:signInRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/signInRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="7d8d2e04-cd2d-4a45-b344-0fcbda61c10d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="signUp TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="4147d066-aebf-4357-a28c-a9264bc05e20" name="signUp"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>signUp</con:operation><con:request name="signUp" id="7963692f-6089-4030-8256-37bbb11cc8d6"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:signUpRequest>
+         <lib:signUpForm>
+            <lib:firstName>?</lib:firstName>
+            <lib:lastName>?</lib:lastName>
+            <lib:email>?</lib:email>
+            <lib:password>?</lib:password>
+            <lib:checkPassword>?</lib:checkPassword>
+            <!--Optional:-->
+            <lib:phone>?</lib:phone>
+         </lib:signUpForm>
+      </lib:signUpRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/signUpRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="c8ea18cc-51be-4bb7-aed5-f4eccd8a9beb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="updateRental TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="cf512548-0aa5-4dc4-b31e-54ce0dbb1c61" name="updateRental"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>updateRental</con:operation><con:request name="updateRental" id="3d4dd44d-8af6-4aef-b462-d8c78464d3f1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:updateRentalRequest>
+         <lib:rental>
+            <!--Optional:-->
+            <lib:account>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:email>?</lib:email>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+               <!--Optional:-->
+               <lib:phoneNumber>?</lib:phoneNumber>
+               <!--Optional:-->
+               <lib:reminder>?</lib:reminder>
+            </lib:account>
+            <!--Optional:-->
+            <lib:book>
+               <!--Optional:-->
+               <lib:author>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+               </lib:author>
+               <!--Optional:-->
+               <lib:copy>?</lib:copy>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+               <!--Optional:-->
+               <lib:publisher>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:name>?</lib:name>
+               </lib:publisher>
+               <!--Zero or more repetitions:-->
+               <lib:rentals/>
+               <!--Zero or more repetitions:-->
+               <lib:reservations>
+                  <!--Optional:-->
+                  <lib:account>
+                     <!--Optional:-->
+                     <lib:id>?</lib:id>
+                     <!--Optional:-->
+                     <lib:email>?</lib:email>
+                     <!--Optional:-->
+                     <lib:firstName>?</lib:firstName>
+                     <!--Optional:-->
+                     <lib:lastName>?</lib:lastName>
+                     <!--Optional:-->
+                     <lib:phoneNumber>?</lib:phoneNumber>
+                     <!--Optional:-->
+                     <lib:reminder>?</lib:reminder>
+                  </lib:account>
+                  <!--Optional:-->
+                  <lib:book/>
+                  <!--Optional:-->
+                  <lib:id>
+                     <!--Optional:-->
+                     <lib:accountId>?</lib:accountId>
+                     <!--Optional:-->
+                     <lib:bookId>?</lib:bookId>
+                  </lib:id>
+                  <!--Optional:-->
+                  <lib:reservationEnd>?</lib:reservationEnd>
+               </lib:reservations>
+               <!--Zero or more repetitions:-->
+               <lib:tags>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:value>?</lib:value>
+               </lib:tags>
+            </lib:book>
+            <!--Optional:-->
+            <lib:deadLine>?</lib:deadLine>
+            <!--Optional:-->
+            <lib:extended>?</lib:extended>
+            <!--Optional:-->
+            <lib:id>
+               <!--Optional:-->
+               <lib:accountId>?</lib:accountId>
+               <!--Optional:-->
+               <lib:bookId>?</lib:bookId>
+            </lib:id>
+            <!--Optional:-->
+            <lib:rentalOver>?</lib:rentalOver>
+         </lib:rental>
+      </lib:updateRentalRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/updateRentalRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="df5e8f75-b07e-4891-ab72-7deae5195c05" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="addReservation TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="7f5d4ea7-be7c-4fe4-9318-1f51ee4f9685" name="addReservation"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>addReservation</con:operation><con:request name="addReservation" id="58bb4688-7077-4c24-9176-2c74378da508"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:addReservationRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:addReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/addReservationRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="0a63f87b-0fbd-4df4-acfb-76a427e6b632" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getLastReservation TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="460124ee-3086-45d2-b9e1-b8257cba8576" name="getLastReservation"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getLastReservation</con:operation><con:request name="getLastReservation" id="f331fb87-7779-441a-8b77-ba84ae54686d"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getLastReservationRequest>
+         <lib:book>
+            <!--Optional:-->
+            <lib:author>
+               <!--Optional:-->
+               <lib:firstName>?</lib:firstName>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:lastName>?</lib:lastName>
+            </lib:author>
+            <!--Optional:-->
+            <lib:copy>?</lib:copy>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:name>?</lib:name>
+            <!--Optional:-->
+            <lib:publisher>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:name>?</lib:name>
+            </lib:publisher>
+            <!--Zero or more repetitions:-->
+            <lib:rentals>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:deadLine>?</lib:deadLine>
+               <!--Optional:-->
+               <lib:extended>?</lib:extended>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:rentalOver>?</lib:rentalOver>
+            </lib:rentals>
+            <!--Zero or more repetitions:-->
+            <lib:reservations>
+               <!--Optional:-->
+               <lib:account>
+                  <!--Optional:-->
+                  <lib:id>?</lib:id>
+                  <!--Optional:-->
+                  <lib:email>?</lib:email>
+                  <!--Optional:-->
+                  <lib:firstName>?</lib:firstName>
+                  <!--Optional:-->
+                  <lib:lastName>?</lib:lastName>
+                  <!--Optional:-->
+                  <lib:phoneNumber>?</lib:phoneNumber>
+                  <!--Optional:-->
+                  <lib:reminder>?</lib:reminder>
+               </lib:account>
+               <!--Optional:-->
+               <lib:book/>
+               <!--Optional:-->
+               <lib:id>
+                  <!--Optional:-->
+                  <lib:accountId>?</lib:accountId>
+                  <!--Optional:-->
+                  <lib:bookId>?</lib:bookId>
+               </lib:id>
+               <!--Optional:-->
+               <lib:reservationEnd>?</lib:reservationEnd>
+            </lib:reservations>
+            <!--Zero or more repetitions:-->
+            <lib:tags>
+               <!--Optional:-->
+               <lib:id>?</lib:id>
+               <!--Optional:-->
+               <lib:value>?</lib:value>
+            </lib:tags>
+         </lib:book>
+      </lib:getLastReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getLastReservationRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ed0f8735-4ba1-4414-b528-ea3edf0c2a56" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="account TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="62d6991a-62a9-434d-b09e-bf400cbf6780" name="account"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>account</con:operation><con:request name="account" id="6b6d2cf6-6974-41fe-8b01-d4f3937373b5"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:accountResponse>
+         <lib:account>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:email>?</lib:email>
+            <!--Optional:-->
+            <lib:firstName>?</lib:firstName>
+            <!--Optional:-->
+            <lib:lastName>?</lib:lastName>
+            <!--Optional:-->
+            <lib:phoneNumber>?</lib:phoneNumber>
+            <!--Optional:-->
+            <lib:reminder>?</lib:reminder>
+         </lib:account>
+      </lib:accountResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="e48d51cf-6b6b-4588-8f9b-0326f5557bd2" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteReservation TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="36956605-1e18-40bb-8046-ff5eb91983b0" name="deleteReservation"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>deleteReservation</con:operation><con:request name="deleteReservation" id="2be77eae-02b8-4dfb-9feb-fc7401b106b8"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:deleteReservationRequest>
+         <lib:accountId>?</lib:accountId>
+         <lib:bookId>?</lib:bookId>
+      </lib:deleteReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/deleteReservationRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="c8568569-fb28-44fb-a5a4-a3c5e494cc71" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllReservationByAccount TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="117f4826-47ed-4bbf-9c2e-ff1e4670fb02" name="getAllReservationByAccount"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllReservationByAccount</con:operation><con:request name="getAllReservationByAccount" id="e5bb7058-db43-4a16-8ec1-251ca527ba48"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllReservationByAccountRequest>
+         <lib:accountId>?</lib:accountId>
+      </lib:getAllReservationByAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllReservationByAccountRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="9a53c995-5cab-4a70-82f8-8bd1e516625d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getAllReservationByBook TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="b63e7fa5-1465-4ef8-99ab-468a524f370a" name="getAllReservationByBook"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>getAllReservationByBook</con:operation><con:request name="getAllReservationByBook" id="d656ad9c-efd3-4d29-8fb7-e04cc4fd18ac"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:getAllReservationByBookRequest>
+         <lib:bookId>?</lib:bookId>
+      </lib:getAllReservationByBookRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/getAllReservationByBookRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="8200ae68-4ffa-4398-ae81-e304a6f6ef16" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="updateAccount TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="095013b4-8c1b-41c6-8420-b0ac98227a8b" name="updateAccount"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>updateAccount</con:operation><con:request name="updateAccount" id="e0849814-7513-49f7-9079-a08ab496b42d"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:updateAccountRequest>
+         <lib:account>
+            <!--Optional:-->
+            <lib:id>?</lib:id>
+            <!--Optional:-->
+            <lib:email>?</lib:email>
+            <!--Optional:-->
+            <lib:firstName>?</lib:firstName>
+            <!--Optional:-->
+            <lib:lastName>?</lib:lastName>
+            <!--Optional:-->
+            <lib:phoneNumber>?</lib:phoneNumber>
+            <!--Optional:-->
+            <lib:reminder>?</lib:reminder>
+         </lib:account>
+      </lib:updateAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/updateAccountRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="810a5ca8-6c69-40b8-84d8-70ea41143b44" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findOneAccount TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="edcd09a8-da0c-429e-81ff-eb29a7579986" name="findOneAccount"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>findOneAccount</con:operation><con:request name="findOneAccount" id="999755ca-2165-4225-847a-8f1d6f3dad0c"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:findOneAccountRequest>
+         <lib:accountId>?</lib:accountId>
+      </lib:findOneAccountRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://ab.io/library/LibraryPort/findOneAccountRequest"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="eeb6e1e0-340c-4286-b9f6-8850355b5171" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteOneRental TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="d0cce613-2d1b-4690-b804-000667b09888" name="deleteOneRental"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LibraryPortSoap11</con:interface><con:operation>deleteOneRental</con:operation><con:request name="deleteOneRental" id="6f43dabd-bce5-4f37-add7-e7295c930616"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lib="http://ab.io/library">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lib:deleteOneRentalRequest>
+         <lib:accountId>1</lib:accountId>
+         <lib:bookId>4</lib:bookId>
+      </lib:deleteOneRentalRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://ab.io/library/LibraryPort/deleteOneRentalRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

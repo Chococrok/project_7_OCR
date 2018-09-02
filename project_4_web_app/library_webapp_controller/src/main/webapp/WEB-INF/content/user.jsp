@@ -22,11 +22,15 @@
 				n'avez pas encore fini votre lecture. Vous pouvez également
 				consulter vos réservations.</a>
 			</p>
-			<form class="d-flex" id="reminderForm" action="user/update" methode="POST">
-				<input class="my-auto" type="checkbox" ${ sessionScope.account.reminder ? "checked" : "" }
+			<form class="d-flex" id="reminderForm" action="user/update"
+				methode="POST">
+				<input class="my-auto" type="checkbox"
+					${ sessionScope.account.reminder ? "checked" : "" }
 					id="reminderInput" name="accountValues.reminder">
-				<label class="my-auto pl-2" for="reminderInput" ${ sessionScope.account.reminder ? "" : "style=\"color: grey;\"" }>
-					Me rappeller quand un de mes emprunts arrive à expiration dans 5 jours </label>
+				<label class="my-auto pl-2" for="reminderInput"
+					${ sessionScope.account.reminder ? "" : "style=\"color: grey;\"" }>
+					Me rappeller quand un de mes emprunts arrive à expiration dans 5
+					jours </label>
 			</form>
 		</div>
 		<div class="card-body">
@@ -89,11 +93,20 @@
 									${ reservation.book.author.lastName } (Editon ${ reservation.book.publisher.name })
 								</span>
 							</p>
-							<c:if test="${ reservation.reservationEnd != null }">
-								<p>
-									<span>Reservé jusqu'au ${ reservation.getReservationEndFormated() }</span>
-								</p>
-							</c:if>
+							<p>
+								<span>Vous êtes numéro <strong>${ reservation.reservationNumber }</strong>
+									dans la liste d'attente.</span>
+							</p>
+							<c:choose>
+								<c:when test="${ reservation.reservationEnd != null }">
+									<p>
+										<span>Reservé jusqu'au ${ reservation.getReservationEndFormated() }</span>
+									</p>
+								</c:when>
+								<c:when test="${ reservation.soonestReturned != null }">
+										Le prochain retour de <strong>${ reservation.book.name }</strong> est prévu le ${ reservation.soonestReturned.getDeadLineFormated() }.
+								</c:when>
+							</c:choose>
 						</div>
 						<form class="d-flex m-auto" action="/library/reservation/delete"
 							method="POST">

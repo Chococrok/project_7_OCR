@@ -95,6 +95,7 @@
       <xs:element minOccurs="0" name="book" type="tns:book"/>
       <xs:element minOccurs="0" name="id" type="tns:reservationPK"/>
       <xs:element minOccurs="0" name="reservationEnd" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="reservationNumber" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
 
