@@ -21,6 +21,9 @@ public class Reservation implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "reservation_end")
 	private Date reservationEnd;
+	
+	@Column(name = "reservation_number", updatable = false, insertable = false)
+	private int reservationNumber;
 
 	// bi-directional many-to-one association to Account
 	@ManyToOne
@@ -58,6 +61,14 @@ public class Reservation implements Serializable {
 
 	public void setReservationEnd(Date reservationEnd) {
 		this.reservationEnd = reservationEnd;
+	}
+
+	public int getReservationNumber() {
+		return reservationNumber;
+	}
+
+	public void setReservationNumber(int reservationNumber) {
+		this.reservationNumber = reservationNumber;
 	}
 
 	public Account getAccount() {

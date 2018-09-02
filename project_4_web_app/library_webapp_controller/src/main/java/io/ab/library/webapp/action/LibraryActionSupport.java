@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.interceptor.ParameterNameAware;
 
 import io.ab.library.webapp.service.*;
 import io.ab.library.webapp.service.pojo.BookPOJO;
+import io.ab.library.webapp.service.pojo.ReservationPOJO;
 import io.ab.library.webapp.utils.DateUtils;
 import io.ab.library.webapp.wsdl.Account;
 import io.ab.library.webapp.wsdl.Author;
@@ -29,7 +30,7 @@ public abstract class LibraryActionSupport extends ActionSupport implements Sess
 	protected List<Author> authors;
 	protected List<BookPOJO> books;
 	protected List<Rental> rentals;
-	protected List<Reservation> reservations;
+	protected List<ReservationPOJO> reservationPOJOs;
 
 	protected String error;
 
@@ -86,12 +87,12 @@ public abstract class LibraryActionSupport extends ActionSupport implements Sess
 		this.rentals = rentals;
 	}
 
-	public List<Reservation> getReservations() {
-		return reservations;
+	public List<ReservationPOJO> getReservations() {
+		return reservationPOJOs;
 	}
 
-	public void setReservations(List<Reservation> reservations) {
-		this.reservations = reservations;
+	public void setReservations(List<ReservationPOJO> reservationPOJOs) {
+		this.reservationPOJOs = reservationPOJOs;
 	}
 
 	public String getPage() {

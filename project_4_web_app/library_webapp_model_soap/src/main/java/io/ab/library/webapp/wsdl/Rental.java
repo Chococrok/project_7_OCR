@@ -8,6 +8,7 @@
 
 package io.ab.library.webapp.wsdl;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -221,5 +222,11 @@ public class Rental {
     	Gson gson = new Gson();
     	return gson.toJson(this);
     }
+    
+ // Not generated methods
+ 	public String getDeadLineFormated() {
+ 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm");
+ 		return dateFormat.format(this.deadLine.toGregorianCalendar().getTime());
+ 	}
 
 }

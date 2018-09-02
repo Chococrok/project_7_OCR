@@ -5,15 +5,23 @@
 // Généré le : 2018.09.02 à 03:07:18 AM CEST 
 //
 
-package io.ab.library.webapp.wsdl;
+package io.ab.library.webapp.service.pojo;
 
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+
+import io.ab.library.webapp.wsdl.Account;
+import io.ab.library.webapp.wsdl.Book;
+import io.ab.library.webapp.wsdl.Rental;
+import io.ab.library.webapp.wsdl.Reservation;
+import io.ab.library.webapp.wsdl.ReservationPK;
 
 /**
  * The persistent class for the rental database table.
@@ -43,16 +51,28 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "reservation", propOrder = { "account", "book", "id", "reservationEnd", "reservationNumber" })
-public class Reservation {
-
-	protected Account account;
-	protected Book book;
-	protected ReservationPK id;
-	@XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar reservationEnd;
-	protected int reservationNumber;
+public class ReservationPOJO extends Reservation {
+	
+	Rental soonestReturned;
+	
+	public ReservationPOJO(Reservation reservation) {
+		this.account = reservation.getAccount();
+		this.book = reservation.getBook();
+		
+		for(Rental rental : this.book.getRentals()) {
+			if (this.soonestReturned == null) {
+				this.soonestReturned = rental;
+			}
+			
+			if (rental.getDeadLine().toGregorianCalendar().before(soonestReturned.getDeadLine().toGregorianCalendar())) {
+				this.soonestReturned = rental;
+			}
+		}
+		this.id = reservation.getId();
+		this.reservationEnd = reservation.getReservationEnd();
+		this.reservationNumber = reservation.getReservationNumber();
+	}
+	
 
 	/**
 	 * Obtient la valeur de la propriété account.
@@ -158,6 +178,18 @@ public class Reservation {
 	public void setReservationNumber(int value) {
 		this.reservationNumber = value;
 	}
+	
+	
+
+	public Rental getSoonestReturned() {
+		return soonestReturned;
+	}
+
+
+	public void setSoonestReturned(Rental soonestReturned) {
+		this.soonestReturned = soonestReturned;
+	}
+
 
 	// Not generated methods
 	public String getReservationEndFormated() {
